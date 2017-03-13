@@ -17,5 +17,10 @@ namespace _4Events.Model
         public string Postcode { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+
+        public override string ToString()
+        {
+            return ID + " " + Naam + " " + Email;
+        }
     }
 }

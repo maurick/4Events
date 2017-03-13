@@ -4,7 +4,7 @@ namespace _4Events.Database
 {
     public class Database
     {
-        private static readonly string connectionString = "Data Source=DESKTOP-72SE5L8\\SQLEXPRESS;Initial Catalog=SpacedRepetitionLearning;Integrated Security=True";
+        private static readonly string connectionString = "Data Source=mssql.fhict.local;Initial Catalog=dbi342472;User ID=dbi342472;Password=PTS24Events";
 
         public static SqlConnection Connection
         {

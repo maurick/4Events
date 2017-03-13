@@ -89,12 +89,12 @@ namespace _4Events.Database
                 ID = Convert.ToInt32(reader["ID"]),
                 Naam = Convert.ToString(reader["Naam"]),
                 Email = Convert.ToString(reader["Email"]),
-                Huisnummer = Convert.ToInt32(reader["Huisnummer"]),
-                HuisnummerToevoeging = Convert.ToString(reader["HuisnummerToevoeging"]),
+                Huisnummer = Convert.ToInt32(reader["Huisnr"]),
+                HuisnummerToevoeging = Convert.ToString(reader["Huisnr_Toevoeging"]),
                 Plaats = Convert.ToString(reader["Plaats"]),
                 Postcode = Convert.ToString(reader["Postcode"]),
                 Straat = Convert.ToString(reader["Straat"]),
-                Password = Convert.ToString(reader["Password"])
+                Password = Convert.ToString(reader["Wachtwoord"])
             };
             return account;
         }

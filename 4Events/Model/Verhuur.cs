@@ -9,6 +9,5 @@ namespace _4Events.Model
     class Verhuur
     {
         public int AccountID { get; set; }
-        public int Exe { get; set; }
     }
 }

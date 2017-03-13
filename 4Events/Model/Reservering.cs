@@ -12,5 +12,10 @@ namespace _4Events.Model
         public DateTime Datum { get; set; }
         public bool Ingechecked { get; set; }
         public bool Betaald { get; set; }
+
+        public override string ToString()
+        {
+            return ID + " " + Datum.ToShortDateString();
+        }
     }
 }

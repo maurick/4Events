@@ -14,5 +14,10 @@ namespace _4Events.Model
         public int Huisnummer { get; set; }
         public string HuisnummerToevoeging { get; set; }
         public string Postcode { get; set; }
+
+        public override string ToString()
+        {
+            return Plaats + " " + Straat + " " + Huisnummer;
+        }
     }
 }

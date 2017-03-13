@@ -12,5 +12,10 @@ namespace _4Events.Model
         public byte[] Bestand { get; set; }
         public string Tags { get; set; }
         public string Tekst { get; set; }
+
+        public override string ToString()
+        {
+            return Tekst;
+        }
     }
 }

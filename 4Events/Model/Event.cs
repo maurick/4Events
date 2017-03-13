@@ -9,8 +9,14 @@ namespace _4Events.Model
     class Event
     {
         public int ID { get; set; }
+        public string Naam { get; set; }
         public int MaxBezoekers { get; set; }
         public int LocatieID { get; set; }
         public DateTime Datum { get; set; }
+
+        public override string ToString()
+        {
+            return Naam;
+        }
     }
 }
