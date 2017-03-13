@@ -52,14 +52,14 @@ namespace _4Events.Database
             return null;
         }
 
-        public Account GetByUsername(string username)
+        public Account GetByEmail(string email)
         {
             using (SqlConnection connection = Database.Connection)
             {
-                string query = "SELECT * FROM Account WHERE Username = @username";
+                string query = "SELECT * FROM Account WHERE Email = @email";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@email", email);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

@@ -16,7 +16,6 @@ namespace _4Events
     public partial class LoginForm : Form
     {
         AccountRepository accountRepo = new AccountRepository(new AccountContext());
-        List<Account> accountList;
 
         public LoginForm()
         {
@@ -25,12 +24,25 @@ namespace _4Events
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            accountList = accountRepo.GetAll();
-
-            foreach (var item in accountList)
+            if (Login(tbEmail.Text, tbWachtwoord.Text))
             {
-                MessageBox.Show(item.ToString());
+                MessageBox.Show("Ingelogd");
             }
+            else
+            {
+                MessageBox.Show("Email of wachtwoord is verkeerd.");
+            }
+        }
+
+        private bool Login(string email, string wachtwoord)
+        {
+            Account account = accountRepo.GetByEmail(email);
+            if(wachtwoord == account.Password)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

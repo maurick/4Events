@@ -6,7 +6,7 @@ namespace _4Events.Database
     {
         List<Account> GetAll();
         Account GetById(int id);
-        Account GetByUsername(string username);
+        Account GetByEmail(string email);
         Account Insert(Account newItem);
         bool Update(Account newItem);
         bool Delete(int id);

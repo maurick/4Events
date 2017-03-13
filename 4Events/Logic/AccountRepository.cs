@@ -23,9 +23,9 @@ namespace _4Events.Logic
             return context.GetById(id);
         }
 
-        public Account GetByUsername(string username)
+        public Account GetByEmail(string email)
         {
-            return context.GetByUsername(username);
+            return context.GetByEmail(email);
         }
     }
 }
