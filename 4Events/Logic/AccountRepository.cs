@@ -1,12 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using _4Events.Model;
+using _4Events.Database;
 
 namespace _4Events.Logic
 {
-    class AccountRepository
+    public class AccountRepository
     {
+        private IAccountContext<Account> context;
+
+        public AccountRepository(IAccountContext<Account> context)
+        {
+            this.context = context;
+        }
+
+        public List<Account> GetAll()
+        {
+            return context.GetAll();
+        }
+
+        public Account GetById(int id)
+        {
+            return context.GetById(id);
+        }
+
+        public Account GetByUsername(string username)
+        {
+            return context.GetByUsername(username);
+        }
     }
 }
