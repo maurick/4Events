@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _4Events.Database;
 using _4Events.Model;
+using _4Events.View;
 
 namespace _4Events
 {
@@ -27,6 +28,10 @@ namespace _4Events
             if (Login(tbEmail.Text, tbWachtwoord.Text))
             {
                 MessageBox.Show("Ingelogd");
+                this.Hide();
+                MainForm Form = new MainForm();
+                Form.ShowDialog();
+                this.Close();
             }
             else
             {
