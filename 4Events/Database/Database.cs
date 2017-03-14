@@ -1,10 +1,11 @@
 ﻿using System.Data.SqlClient;
+using System.Configuration;
 
 namespace _4Events.Database
 {
     public class Database
     {
-        private static readonly string connectionString = "Data Source=mssql.fhict.local;Initial Catalog=dbi342472;User ID=dbi342472;Password=PTS24Events";
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         public static SqlConnection Connection
         {

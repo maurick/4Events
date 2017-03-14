@@ -27,8 +27,6 @@ namespace _4Events
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MainForm Form = new MainForm();
-
             foreach (Control textbox in this.Controls)
             {
                 if (textbox is TextBox && string.IsNullOrWhiteSpace(textbox.Text))
@@ -45,6 +43,7 @@ namespace _4Events
                 accountRepo.CreateAccountCache(viewModel.Account);
 
                 this.Hide();
+                MainForm Form = new MainForm();
                 Form.ShowDialog();
                 this.Close();
             }
