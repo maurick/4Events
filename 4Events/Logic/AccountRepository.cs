@@ -27,5 +27,10 @@ namespace _4Events.Logic
         {
             return context.GetByEmail(email);
         }
+
+        public Account Insert(Account account)
+        {
+            return context.Insert(account);
+        }
     }
 }

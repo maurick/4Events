@@ -25,11 +25,21 @@ namespace _4Events
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            MainForm Form = new MainForm();
+
+            foreach (Control textbox in this.Controls)
+            {
+                if (textbox is TextBox && string.IsNullOrWhiteSpace(textbox.Text))
+                {
+                    MessageBox.Show("Niet alle velden zijn ingevuld.");
+                    return;
+                }
+            }
+
             if (Login(tbEmail.Text, tbWachtwoord.Text))
             {
                 MessageBox.Show("Ingelogd");
                 this.Hide();
-                MainForm Form = new MainForm();
                 Form.ShowDialog();
                 this.Close();
             }
@@ -41,13 +51,33 @@ namespace _4Events
 
         private bool Login(string email, string wachtwoord)
         {
+            wachtwoord = EncryptPassword(wachtwoord);
+
             Account account = accountRepo.GetByEmail(email);
-            if(wachtwoord == account.Password)
+            if(account != null && wachtwoord == account.Password)
             {
                 return true;
             }
 
             return false;
+        }
+
+        private void btnRegistreer_Click(object sender, EventArgs e)
+        {
+            RegistreerForm Form = new RegistreerForm();
+            this.Hide();
+            Form.ShowDialog();
+            this.Close();
+        }
+
+
+        // Waar moet dit
+        private string EncryptPassword(string inputString)
+        {
+            byte[] data = Encoding.ASCII.GetBytes(inputString);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            string hash = Encoding.ASCII.GetString(data);
+            return hash;
         }
     }
 }

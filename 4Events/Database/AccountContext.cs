@@ -74,7 +74,42 @@ namespace _4Events.Database
 
         public Account Insert(Account newItem)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = Database.Connection)
+            {
+
+                newItem.Password = EncryptPassword(newItem.Password);
+
+                string query = "INSERT INTO Account (Functie, Naam, Plaats, Straat, Huisnr, Postcode, Email, Wachtwoord)" +
+                    " VALUES(" +
+                    " 'Bezoeker', @naam, @plaats, @straat, @huisnr, @postcode, @email, @wachtwoord)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@naam", newItem.Naam);
+                    command.Parameters.AddWithValue("@plaats", newItem.Plaats);
+                    command.Parameters.AddWithValue("@straat", newItem.Straat);
+                    command.Parameters.AddWithValue("@huisnr", newItem.Huisnummer);
+                    command.Parameters.AddWithValue("@postcode", newItem.Postcode);
+                    command.Parameters.AddWithValue("@email", newItem.Email);
+                    command.Parameters.AddWithValue("@wachtwoord", newItem.Password);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        // TODO: make this work.
+                        if (e.ErrorCode == 1)
+                        {
+                            return null;
+                        }
+                       throw;
+
+                    }
+
+                    
+                }
+            }
+            return newItem;
         }
 
         public bool Update(Account newItem)
@@ -97,6 +132,14 @@ namespace _4Events.Database
                 Password = Convert.ToString(reader["Wachtwoord"])
             };
             return account;
+        }
+
+        private string EncryptPassword(string inputString)
+        {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            string hash = System.Text.Encoding.ASCII.GetString(data);
+            return hash;
         }
     }
 }
