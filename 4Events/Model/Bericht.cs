@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _4Events.Model
 {
-    class Bericht
+    public class Bericht
     {
         public int ID { get; set; }
         public byte[] Bestand { get; set; }

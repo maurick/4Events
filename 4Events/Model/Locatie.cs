@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _4Events.Model
 {
-    class Locatie
+    public class Locatie
     {
         public int ID { get; set; }
         public string Plaats { get; set; }

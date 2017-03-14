@@ -64,8 +64,17 @@
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\IAccountContext.cs" />
     <Compile Include="Database\IGenericContext.cs" />
+    <Compile Include="Database\IMediaContext.cs" />
+    <Compile Include="Database\IReserveringContext.cs" />
+    <Compile Include="Database\IVerhuurContext.cs" />
+    <Compile Include="Database\MediaContext.cs" />
+    <Compile Include="Database\ReserveringContext.cs" />
+    <Compile Include="Database\VerhuurContext.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Logic\MediaRepository.cs" />
+    <Compile Include="Logic\ReserveringRepository.cs" />
+    <Compile Include="Logic\VerhuurRepository.cs" />
     <Compile Include="Model\Bericht.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Locatie.cs" />
