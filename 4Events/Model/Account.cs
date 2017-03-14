@@ -3,6 +3,7 @@
     public class Account
     {
         public int ID { get; set; }
+        public Enums.Functie Functie { get; set; }
         public string Naam { get; set; }
         public string Plaats { get; set; }
         public string Straat { get; set; }
@@ -14,7 +15,7 @@
 
         public override string ToString()
         {
-            return ID + " " + Naam + " " + Email;
+            return ID + "\t" + Naam + "\t" + Email + "\t" + Functie.ToString();
         }
     }
 }

@@ -9,7 +9,28 @@ namespace _4Events.Database
     {
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "DELETE FROM ACCOUNT WHERE ID = @id";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        if(e.ErrorCode != 0)
+                        {
+                            return false;
+                        }
+                        throw;
+                    }
+                }
+            }
+            return true;
         }
 
         public List<Account> GetAll()
@@ -81,9 +102,10 @@ namespace _4Events.Database
 
                 string query = "INSERT INTO Account (Functie, Naam, Plaats, Straat, Huisnr, Postcode, Email, Wachtwoord)" +
                     " VALUES(" +
-                    " 'Bezoeker', @naam, @plaats, @straat, @huisnr, @postcode, @email, @wachtwoord)";
+                    " @functie, @naam, @plaats, @straat, @huisnr, @postcode, @email, @wachtwoord)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@functie", newItem.Functie.ToString());
                     command.Parameters.AddWithValue("@naam", newItem.Naam);
                     command.Parameters.AddWithValue("@plaats", newItem.Plaats);
                     command.Parameters.AddWithValue("@straat", newItem.Straat);
@@ -119,6 +141,7 @@ namespace _4Events.Database
             Account account = new Account
             {
                 ID = Convert.ToInt32(reader["ID"]),
+                Functie = (Enums.Functie) Enum.Parse(typeof(Enums.Functie), Convert.ToString(reader["Functie"])),
                 Naam = Convert.ToString(reader["Naam"]),
                 Email = Convert.ToString(reader["Email"]),
                 Huisnummer = Convert.ToInt32(reader["Huisnr"]),

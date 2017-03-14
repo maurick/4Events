@@ -54,6 +54,12 @@ namespace _4Events.View
                 Straat = tbStraat.Text
             };
 
+            if (Properties.Settings.Default.Debug)
+                newAccount.Functie = Enums.Functie.Beheerder;
+            else
+                newAccount.Functie = Enums.Functie.Bezoeker;
+
+
             if (accountRepo.Insert(newAccount) != null)
             {
                 MessageBox.Show("GEREGISTREERD");

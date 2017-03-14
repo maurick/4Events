@@ -1,17 +1,11 @@
 ﻿using _4Events.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using _4Events.Database;
-using _4Events.Model;
 using _4Events.View;
 using _4Events.ViewModel;
+using System.Configuration;
 
 namespace _4Events
 {
@@ -23,6 +17,9 @@ namespace _4Events
         public LoginForm()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.Debug)
+                lblDebug.Visible = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -38,8 +35,6 @@ namespace _4Events
 
             if (Login(tbEmail.Text, tbWachtwoord.Text))
             {
-                MessageBox.Show("Ingelogd");
-
                 accountRepo.CreateAccountCache(viewModel.Account);
 
                 this.Hide();

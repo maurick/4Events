@@ -133,15 +133,16 @@
             this.tbWachtwoord.Name = "tbWachtwoord";
             this.tbWachtwoord.Size = new System.Drawing.Size(140, 20);
             this.tbWachtwoord.TabIndex = 10;
+            this.tbWachtwoord.UseSystemPasswordChar = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(102, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Straat";
+            this.label3.Text = "Straat - Huisnummer";
             // 
             // label4
             // 
@@ -176,6 +177,7 @@
             this.tbHerhaal.Name = "tbHerhaal";
             this.tbHerhaal.Size = new System.Drawing.Size(140, 20);
             this.tbHerhaal.TabIndex = 15;
+            this.tbHerhaal.UseSystemPasswordChar = true;
             // 
             // label7
             // 

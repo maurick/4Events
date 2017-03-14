@@ -8,14 +8,14 @@ namespace _4Events
 {
     public class Enums
     {
-        enum Functie
+        public enum Functie
         {
             Bezoeker,
             Medewerker,
             Beheerder
         }
 
-        enum Specificatie
+        public enum Specificatie
         {
             Normaal,
             Green,

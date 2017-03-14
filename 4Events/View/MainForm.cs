@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using _4Events.ViewModel;
 using _4Events.Database;
 using _4Events.Logic;
+using System.Configuration;
 
 namespace _4Events.View
 {
@@ -25,7 +26,10 @@ namespace _4Events.View
             // TODO:
             // Beter Implementeren. Met expiration date
             viewModel.Account = accountRepo.GetById(accountRepo.GetAccountCache());
-            MessageBox.Show("Welkom, " + viewModel.Account.Naam);
+            lblWelkom.Text = "Welkom, " + viewModel.Account.Naam;
+            lblFunctie.Text = "Uw huidige functie is: " + viewModel.Account.Functie.ToString();
+
+            AccessControl();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -34,6 +38,36 @@ namespace _4Events.View
             LoginForm Form = new LoginForm();
             Form.ShowDialog();
             this.Close();
+        }
+
+        private void btnAccountBeheer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AccountBeheerForm Form = new AccountBeheerForm();
+            Form.ShowDialog();
+            this.Close();
+        }
+
+        private void AccessControl()
+        {
+            switch (viewModel.Account.Functie)
+            {
+                // Alle controls als default disabled.
+                // Hier worden ze op enabled gezet.
+
+                case (Enums.Functie.Beheerder):
+                    /* Buttons */
+                    btnAccountBeheer.Enabled = true;
+                    break;
+                case (Enums.Functie.Medewerker):
+                    /* Buttons */
+                    btnAccountBeheer.Enabled = true;
+                    break;
+                case (Enums.Functie.Bezoeker):
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
