@@ -11,12 +11,14 @@ using System.Windows.Forms;
 using _4Events.Database;
 using _4Events.Model;
 using _4Events.View;
+using _4Events.ViewModel;
 
 namespace _4Events
 {
     public partial class LoginForm : Form
     {
         AccountRepository accountRepo = new AccountRepository(new AccountContext());
+        LoginViewModel viewModel = new LoginViewModel();
 
         public LoginForm()
         {
@@ -39,6 +41,9 @@ namespace _4Events
             if (Login(tbEmail.Text, tbWachtwoord.Text))
             {
                 MessageBox.Show("Ingelogd");
+
+                accountRepo.CreateAccountCache(viewModel.Account);
+
                 this.Hide();
                 Form.ShowDialog();
                 this.Close();
@@ -53,8 +58,8 @@ namespace _4Events
         {
             wachtwoord = EncryptPassword(wachtwoord);
 
-            Account account = accountRepo.GetByEmail(email);
-            if(account != null && wachtwoord == account.Password)
+            viewModel.Account = accountRepo.GetByEmail(email);
+            if(viewModel.Account != null && wachtwoord == viewModel.Account.Password)
             {
                 return true;
             }

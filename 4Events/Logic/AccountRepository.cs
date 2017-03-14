@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using _4Events.Model;
 using _4Events.Database;
+using System.IO;
+using System;
 
 namespace _4Events.Logic
 {
@@ -31,6 +33,18 @@ namespace _4Events.Logic
         public Account Insert(Account account)
         {
             return context.Insert(account);
+        }
+
+        // Waar meot dit
+        private string path = "CurrentAccount";
+        public void CreateAccountCache(Account account)
+        {
+            File.WriteAllText(path, account.ID + "");
+        }
+
+        public int GetAccountCache()
+        {
+            return Convert.ToInt32(File.ReadAllText(path));
         }
     }
 }

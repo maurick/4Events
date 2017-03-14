@@ -81,6 +81,8 @@
     <Compile Include="Model\Plek.cs" />
     <Compile Include="Model\Reservering.cs" />
     <Compile Include="Model\Verhuur.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegistreerViewModel.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
