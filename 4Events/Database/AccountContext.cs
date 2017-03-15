@@ -133,7 +133,35 @@ namespace _4Events.Database
 
         public bool Update(Account newItem)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "UPDATE ACCOUNT SET Functie = @functie, Naam = @naam, Plaats = @plaats, Straat = @straat, Huisnr = @huisnr, Postcode = @postcode, Email = @email WHERE ID = @id; ";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", newItem.ID);
+                    command.Parameters.AddWithValue("@functie", newItem.Functie.ToString());
+                    command.Parameters.AddWithValue("@naam", newItem.Naam);
+                    command.Parameters.AddWithValue("@plaats", newItem.Plaats);
+                    command.Parameters.AddWithValue("@straat", newItem.Straat);
+                    command.Parameters.AddWithValue("@huisnr", newItem.Huisnummer);
+                    command.Parameters.AddWithValue("@postcode", newItem.Postcode);
+                    command.Parameters.AddWithValue("@email", newItem.Email);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        if (e.ErrorCode != 0)
+                        {
+                            return false;
+                        }
+                        throw;
+                    }
+                }
+            }
+            return true;
         }
 
         private Account CreateAccountFromReader(SqlDataReader reader)

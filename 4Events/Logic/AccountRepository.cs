@@ -40,6 +40,11 @@ namespace _4Events.Logic
             return context.Delete(id);
         }
 
+        public bool Update(Account newItem)
+        {
+            return context.Update(newItem);
+        }
+
         // Waar meot dit
         private string path = "CurrentAccount";
         public void CreateAccountCache(Account account)

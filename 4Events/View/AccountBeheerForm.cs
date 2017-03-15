@@ -68,7 +68,10 @@ namespace _4Events.View
 
         private void btnWijzig_Click(object sender, EventArgs e)
         {
-            
+            AccountBeheerWijzigForm Form = new AccountBeheerWijzigForm();
+            Form.GetAccountInformation(viewModel.SelectedAccount);
+            Form.ShowDialog();
+            RefreshForm();
         }
     }
 }
