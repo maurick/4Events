@@ -7,7 +7,7 @@ using _4Events.Model;
 
 namespace _4Events.ViewModel
 {
-    public class AccountBeheerWijzigViewModel
+    public class BeheerWijzigAccountViewModel
     {
         public Account Account { get; set; }
     }

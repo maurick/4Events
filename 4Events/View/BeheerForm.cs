@@ -14,23 +14,24 @@ using _4Events.Model;
 
 namespace _4Events.View
 {
-    public partial class AccountBeheerForm : Form
+    public partial class BeheerForm : Form
     {
-        AccountBeheerViewModel viewModel = new AccountBeheerViewModel();
-        BeheerRepository accountRepo = new BeheerRepository(new BeheerContext());
+        BeheerViewModel viewModel = new BeheerViewModel();
+        BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
 
-        public AccountBeheerForm()
+        public BeheerForm()
         {
             InitializeComponent();
 
-            viewModel.Account = accountRepo.GetAccountById(accountRepo.GetAccountCache());
+            viewModel.Account = beheerRepo.GetAccountById(beheerRepo.GetAccountCache());
             
             RefreshForm();
         }
 
         private void RefreshForm()
         {
-            viewModel.AccountList = accountRepo.GetAllAccounts();
+            viewModel.AccountList = beheerRepo.GetAllAccounts();
+            
 
             lbAccounts.Items.Clear();
 
@@ -55,7 +56,7 @@ namespace _4Events.View
                 MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
-            accountRepo.DeleteAccount(viewModel.SelectedAccount.ID);
+            beheerRepo.DeleteAccount(viewModel.SelectedAccount.ID);
 
             RefreshForm();
         }
@@ -68,7 +69,7 @@ namespace _4Events.View
 
         private void btnWijzig_Click(object sender, EventArgs e)
         {
-            AccountBeheerWijzigForm Form = new AccountBeheerWijzigForm();
+            BeheerWijzigAccountForm Form = new BeheerWijzigAccountForm();
             Form.GetAccountInformation(viewModel.SelectedAccount);
             Form.ShowDialog();
             RefreshForm();

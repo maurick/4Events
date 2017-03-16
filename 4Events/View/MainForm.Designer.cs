@@ -32,7 +32,6 @@
             this.lblWelkom = new System.Windows.Forms.Label();
             this.lblFunctie = new System.Windows.Forms.Label();
             this.btnAccountBeheer = new System.Windows.Forms.Button();
-            this.btnEventBeheer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
@@ -76,22 +75,11 @@
             this.btnAccountBeheer.UseVisualStyleBackColor = true;
             this.btnAccountBeheer.Click += new System.EventHandler(this.btnAccountBeheer_Click);
             // 
-            // btnEventBeheer
-            // 
-            this.btnEventBeheer.Location = new System.Drawing.Point(139, 44);
-            this.btnEventBeheer.Name = "btnEventBeheer";
-            this.btnEventBeheer.Size = new System.Drawing.Size(120, 37);
-            this.btnEventBeheer.TabIndex = 4;
-            this.btnEventBeheer.Text = "Event Beheer";
-            this.btnEventBeheer.UseVisualStyleBackColor = true;
-            this.btnEventBeheer.Click += new System.EventHandler(this.btnEventBeheer_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(266, 261);
-            this.Controls.Add(this.btnEventBeheer);
             this.Controls.Add(this.btnAccountBeheer);
             this.Controls.Add(this.lblFunctie);
             this.Controls.Add(this.lblWelkom);
@@ -109,6 +97,5 @@
         private System.Windows.Forms.Label lblWelkom;
         private System.Windows.Forms.Label lblFunctie;
         private System.Windows.Forms.Button btnAccountBeheer;
-        private System.Windows.Forms.Button btnEventBeheer;
     }
 }

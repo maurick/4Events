@@ -48,11 +48,6 @@ namespace _4Events.View
             this.Close();
         }
 
-        private void btnEventBeheer_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AccessControl()
         {
             switch (viewModel.Account.Functie)

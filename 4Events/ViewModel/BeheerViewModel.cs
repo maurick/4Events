@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace _4Events.ViewModel
 {
-    public class AccountBeheerViewModel
+    public class BeheerViewModel
     {
+        /* Account */
         public Account Account { get; set; }
         public List<Account> AccountList { get; set; }
         public Account SelectedAccount { get; set; }
+        /* Event */
+        public List<Event> EventList { get; set; }
+        public Event SelectedEvent { get; set; }
     }
 }
