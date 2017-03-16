@@ -18,9 +18,14 @@ namespace _4Events.Logic
         }
 
 
-        public List<Reservering> GetAllMessages()
+        public List<Reservering> GetAllReserveringen()
         {
-            return context.GetAll();
+            return context.GetAllReserveringen();
+        }
+
+        public List<Locatie> GetAllLocaties()
+        {
+            return context.GetAllLocaties();
         }
     }
 }

@@ -7,6 +7,13 @@ namespace _4Events.Database
 {
     public class BeheerContext : IBeheerContext
     {
+
+        /*
+
+            -=- ACCOUNT -=-
+
+        */
+
         public bool DeleteAccount(int id)
         {
             using (SqlConnection connection = Database.Connection)
@@ -164,9 +171,30 @@ namespace _4Events.Database
             return true;
         }
 
+        /*
+
+            -=- EVENT -=-
+
+        */
+
         public List<Event> GetAllEvents()
         {
-            throw new NotImplementedException();
+            List<Event> result = new List<Event>();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT * FROM Event ORDER BY Id";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(CreateEventFromReader(reader));
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         public Event GetEventById(int id)
@@ -176,7 +204,33 @@ namespace _4Events.Database
 
         public Event InsertEvent(Event newItem)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO Event (Naam, Max_Bezoekers, LocatieID, Datum)" +
+                    " VALUES(" +
+                    " @naam, @maxbezoekers, @locatieid, @datum)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@naam", newItem.Naam);
+                    command.Parameters.AddWithValue("@maxbezoekers", newItem.MaxBezoekers);
+                    command.Parameters.AddWithValue("@locatieid", newItem.LocatieID);
+                    command.Parameters.AddWithValue("@datum", newItem.Datum);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        // TODO: make this work.
+                        if (e.ErrorCode != 0)
+                        {
+                            return null;
+                        }
+                        throw;
+                    }
+                }
+            }
+            return newItem;
         }
 
         public bool UpdateEvent(Event newItem)
@@ -193,7 +247,11 @@ namespace _4Events.Database
         {
             Event newEvent = new Event
             {
-                //TODO
+                ID = Convert.ToInt32(reader["ID"]),
+                Datum = Convert.ToDateTime(reader["Datum"]),
+                LocatieID = Convert.ToInt32(reader["LocatieID"]),
+                MaxBezoekers = Convert.ToInt32(reader["Max_Bezoekers"]),
+                Naam = Convert.ToString(reader["Naam"])
             };
 
             return newEvent;

@@ -14,12 +14,12 @@ using _4Events.Model;
 
 namespace _4Events.View
 {
-    public partial class AccountBeheerWijzigForm : Form
+    public partial class BeheerWijzigAccountForm : Form
     {
-        AccountBeheerWijzigViewModel viewModel = new AccountBeheerWijzigViewModel();
-        BeheerRepository accountRepo = new BeheerRepository(new BeheerContext());
+        BeheerWijzigAccountViewModel viewModel = new BeheerWijzigAccountViewModel();
+        BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
 
-        public AccountBeheerWijzigForm()
+        public BeheerWijzigAccountForm()
         {
             InitializeComponent();
         }
@@ -64,7 +64,7 @@ namespace _4Events.View
             viewModel.Account.Straat = tbStraat.Text;
             viewModel.Account.Email = tbEmail.Text;
             viewModel.Account.Huisnummer = Convert.ToInt32(tbHuisnr.Text);
-            accountRepo.UpdateAccount(viewModel.Account);
+            beheerRepo.UpdateAccount(viewModel.Account);
             this.Close();
         }
     }

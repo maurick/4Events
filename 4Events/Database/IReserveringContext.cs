@@ -9,6 +9,7 @@ namespace _4Events.Database
 {
     public interface IReserveringContext
     {
-        List<Reservering> GetAll();
+        List<Reservering> GetAllReserveringen();
+        List<Locatie> GetAllLocaties();
     }
 }

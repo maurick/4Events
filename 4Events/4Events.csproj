@@ -82,29 +82,22 @@
     <Compile Include="Model\Plek.cs" />
     <Compile Include="Model\Reservering.cs" />
     <Compile Include="Model\Verhuur.cs" />
-    <Compile Include="ViewModel\AccountBeheerViewModel.cs" />
-    <Compile Include="ViewModel\AccountBeheerWijzigViewModel.cs" />
-    <Compile Include="ViewModel\EventBeheerViewModel.cs" />
+    <Compile Include="ViewModel\BeheerViewModel.cs" />
+    <Compile Include="ViewModel\BeheerWijzigAccountViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegistreerViewModel.cs" />
-    <Compile Include="View\AccountBeheerForm.cs">
+    <Compile Include="View\BeheerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AccountBeheerForm.Designer.cs">
-      <DependentUpon>AccountBeheerForm.cs</DependentUpon>
+    <Compile Include="View\BeheerForm.Designer.cs">
+      <DependentUpon>BeheerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AccountBeheerWijzigForm.cs">
+    <Compile Include="View\BeheerWijzigAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AccountBeheerWijzigForm.Designer.cs">
-      <DependentUpon>AccountBeheerWijzigForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\EventBeheerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\EventBeheerForm.Designer.cs">
-      <DependentUpon>EventBeheerForm.cs</DependentUpon>
+    <Compile Include="View\BeheerWijzigAccountForm.Designer.cs">
+      <DependentUpon>BeheerWijzigAccountForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -137,14 +130,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\AccountBeheerForm.resx">
-      <DependentUpon>AccountBeheerForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\BeheerForm.resx">
+      <DependentUpon>BeheerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AccountBeheerWijzigForm.resx">
-      <DependentUpon>AccountBeheerWijzigForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\EventBeheerForm.resx">
-      <DependentUpon>EventBeheerForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\BeheerWijzigAccountForm.resx">
+      <DependentUpon>BeheerWijzigAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

@@ -17,7 +17,7 @@ namespace _4Events.View
     public partial class RegistreerForm : Form
     {
         RegistreerViewModel viewModel = new RegistreerViewModel();
-        BeheerRepository accountRepo = new BeheerRepository(new BeheerContext());
+        BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
 
         public RegistreerForm()
         {
@@ -60,7 +60,7 @@ namespace _4Events.View
                 newAccount.Functie = Enums.Functie.Bezoeker;
 
 
-            if (accountRepo.InsertAccount(newAccount) != null)
+            if (beheerRepo.InsertAccount(newAccount) != null)
             {
                 MessageBox.Show("GEREGISTREERD");
                 Terug();

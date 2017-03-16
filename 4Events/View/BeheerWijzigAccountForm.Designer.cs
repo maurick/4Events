@@ -1,6 +1,6 @@
 ﻿namespace _4Events.View
 {
-    partial class AccountBeheerWijzigForm
+    partial class BeheerWijzigAccountForm
     {
         /// <summary>
         /// Required designer variable.

@@ -71,7 +71,7 @@
             this.btnAccountBeheer.Name = "btnAccountBeheer";
             this.btnAccountBeheer.Size = new System.Drawing.Size(120, 37);
             this.btnAccountBeheer.TabIndex = 3;
-            this.btnAccountBeheer.Text = "Account Beheer";
+            this.btnAccountBeheer.Text = "Beheer";
             this.btnAccountBeheer.UseVisualStyleBackColor = true;
             this.btnAccountBeheer.Click += new System.EventHandler(this.btnAccountBeheer_Click);
             // 
@@ -85,7 +85,7 @@
             this.Controls.Add(this.lblWelkom);
             this.Controls.Add(this.btnBack);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Main Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 

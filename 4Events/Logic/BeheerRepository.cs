@@ -45,6 +45,16 @@ namespace _4Events.Logic
             return context.UpdateAccount(newItem);
         }
 
+        public List<Event> GetAllEvents()
+        {
+            return context.GetAllEvents();
+        }
+
+        public Event InsertEvent(Event newItem)
+        {
+            return context.InsertEvent(newItem);
+        }
+
         // Waar meot dit
         private string path = "CurrentAccount";
         public void CreateAccountCache(Account account)

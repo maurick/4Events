@@ -11,7 +11,7 @@ namespace _4Events
 {
     public partial class LoginForm : Form
     {
-        BeheerRepository accountRepo = new BeheerRepository(new BeheerContext());
+        BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
         LoginViewModel viewModel = new LoginViewModel();
 
         public LoginForm()
@@ -35,7 +35,7 @@ namespace _4Events
 
             if (Login(tbEmail.Text, tbWachtwoord.Text))
             {
-                accountRepo.CreateAccountCache(viewModel.Account);
+                beheerRepo.CreateAccountCache(viewModel.Account);
 
                 this.Hide();
                 MainForm Form = new MainForm();
@@ -52,7 +52,7 @@ namespace _4Events
         {
             wachtwoord = EncryptPassword(wachtwoord);
 
-            viewModel.Account = accountRepo.GetAccountByEmail(email);
+            viewModel.Account = beheerRepo.GetAccountByEmail(email);
             if(viewModel.Account != null && wachtwoord == viewModel.Account.Password)
             {
                 return true;

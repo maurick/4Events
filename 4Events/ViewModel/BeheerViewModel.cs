@@ -16,5 +16,7 @@ namespace _4Events.ViewModel
         /* Event */
         public List<Event> EventList { get; set; }
         public Event SelectedEvent { get; set; }
+
+        public List<Locatie> LocatieList { get; set; }
     }
 }

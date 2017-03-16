@@ -16,7 +16,7 @@ namespace _4Events.Model
 
         public override string ToString()
         {
-            return Naam;
+            return Naam + "\t" + Datum + "\t" + MaxBezoekers;
         }
     }
 }

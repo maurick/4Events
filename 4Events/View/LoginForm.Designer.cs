@@ -39,9 +39,9 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(12, 114);
+            this.btnLogin.Location = new System.Drawing.Point(12, 90);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(100, 23);
+            this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -49,23 +49,23 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(12, 31);
+            this.tbEmail.Location = new System.Drawing.Point(12, 25);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(100, 20);
+            this.tbEmail.Size = new System.Drawing.Size(156, 20);
             this.tbEmail.TabIndex = 1;
             // 
             // tbWachtwoord
             // 
-            this.tbWachtwoord.Location = new System.Drawing.Point(12, 73);
+            this.tbWachtwoord.Location = new System.Drawing.Point(12, 64);
             this.tbWachtwoord.Name = "tbWachtwoord";
-            this.tbWachtwoord.Size = new System.Drawing.Size(100, 20);
+            this.tbWachtwoord.Size = new System.Drawing.Size(156, 20);
             this.tbWachtwoord.TabIndex = 2;
             this.tbWachtwoord.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 3;
@@ -74,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 57);
+            this.label2.Location = new System.Drawing.Point(9, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 4;
@@ -82,7 +82,7 @@
             // 
             // btnRegistreer
             // 
-            this.btnRegistreer.Location = new System.Drawing.Point(121, 114);
+            this.btnRegistreer.Location = new System.Drawing.Point(93, 90);
             this.btnRegistreer.Name = "btnRegistreer";
             this.btnRegistreer.Size = new System.Drawing.Size(75, 23);
             this.btnRegistreer.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             this.lblDebug.AutoSize = true;
             this.lblDebug.ForeColor = System.Drawing.Color.Red;
-            this.lblDebug.Location = new System.Drawing.Point(71, 9);
+            this.lblDebug.Location = new System.Drawing.Point(243, 48);
             this.lblDebug.Name = "lblDebug";
             this.lblDebug.Size = new System.Drawing.Size(81, 13);
             this.lblDebug.TabIndex = 6;
@@ -105,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(208, 149);
+            this.ClientSize = new System.Drawing.Size(388, 121);
             this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.btnRegistreer);
             this.Controls.Add(this.label2);

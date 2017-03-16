@@ -17,7 +17,7 @@ namespace _4Events.Model
 
         public override string ToString()
         {
-            return Plaats + " " + Straat + " " + Huisnummer;
+            return Plaats;
         }
     }
 }
