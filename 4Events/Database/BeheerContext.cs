@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 
 namespace _4Events.Database
 {
-    public class AccountContext : IAccountContext<Account>
+    public class BeheerContext : IBeheerContext
     {
-        public bool Delete(int id)
+        public bool DeleteAccount(int id)
         {
             using (SqlConnection connection = Database.Connection)
             {
@@ -33,7 +33,7 @@ namespace _4Events.Database
             return true;
         }
 
-        public List<Account> GetAll()
+        public List<Account> GetAllAccounts()
         {
             List<Account> result = new List<Account>();
             using (SqlConnection connection = Database.Connection)
@@ -53,7 +53,7 @@ namespace _4Events.Database
             return result;
         }
 
-        public Account GetById(int id)
+        public Account GetAccountById(int id)
         {
             using (SqlConnection connection = Database.Connection)
             {
@@ -73,7 +73,7 @@ namespace _4Events.Database
             return null;
         }
 
-        public Account GetByEmail(string email)
+        public Account GetAccountByEmail(string email)
         {
             using (SqlConnection connection = Database.Connection)
             {
@@ -93,7 +93,7 @@ namespace _4Events.Database
             return null;
         }
 
-        public Account Insert(Account newItem)
+        public Account InsertAccount(Account newItem)
         {
             using (SqlConnection connection = Database.Connection)
             {
@@ -131,7 +131,7 @@ namespace _4Events.Database
             return newItem;
         }
 
-        public bool Update(Account newItem)
+        public bool UpdateAccount(Account newItem)
         {
             using (SqlConnection connection = Database.Connection)
             {
@@ -164,12 +164,47 @@ namespace _4Events.Database
             return true;
         }
 
+        public List<Event> GetAllEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Event GetEventById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Event InsertEvent(Event newItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateEvent(Event newItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteEvent(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Event CreateEventFromReader(SqlDataReader reader)
+        {
+            Event newEvent = new Event
+            {
+                //TODO
+            };
+
+            return newEvent;
+        }
+
         private Account CreateAccountFromReader(SqlDataReader reader)
         {
             Account account = new Account
             {
                 ID = Convert.ToInt32(reader["ID"]),
-                Functie = (Enums.Functie) Enum.Parse(typeof(Enums.Functie), Convert.ToString(reader["Functie"])),
+                Functie = (Enums.Functie)Enum.Parse(typeof(Enums.Functie), Convert.ToString(reader["Functie"])),
                 Naam = Convert.ToString(reader["Naam"]),
                 Email = Convert.ToString(reader["Email"]),
                 Huisnummer = Convert.ToInt32(reader["Huisnr"]),

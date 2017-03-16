@@ -17,7 +17,7 @@ namespace _4Events.View
     public partial class AccountBeheerWijzigForm : Form
     {
         AccountBeheerWijzigViewModel viewModel = new AccountBeheerWijzigViewModel();
-        AccountRepository accountRepo = new AccountRepository(new AccountContext());
+        BeheerRepository accountRepo = new BeheerRepository(new BeheerContext());
 
         public AccountBeheerWijzigForm()
         {
@@ -64,7 +64,7 @@ namespace _4Events.View
             viewModel.Account.Straat = tbStraat.Text;
             viewModel.Account.Email = tbEmail.Text;
             viewModel.Account.Huisnummer = Convert.ToInt32(tbHuisnr.Text);
-            accountRepo.Update(viewModel.Account);
+            accountRepo.UpdateAccount(viewModel.Account);
             this.Close();
         }
     }

@@ -61,9 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\AccountContext.cs" />
+    <Compile Include="Database\BeheerContext.cs" />
     <Compile Include="Database\Database.cs" />
-    <Compile Include="Database\IAccountContext.cs" />
+    <Compile Include="Database\IBeheerContext.cs" />
     <Compile Include="Database\IGenericContext.cs" />
     <Compile Include="Database\IMediaContext.cs" />
     <Compile Include="Database\IReserveringContext.cs" />
@@ -112,7 +112,7 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\AccountRepository.cs" />
+    <Compile Include="Logic\BeheerRepository.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

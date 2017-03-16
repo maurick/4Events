@@ -17,7 +17,7 @@ namespace _4Events.View
     public partial class EventBeheerForm : Form
     {
         EventBeheerViewModel viewModel = new EventBeheerViewModel();
-        AccountRepository accountRepo = new AccountRepository(new AccountContext());
+        BeheerRepository accountRepo = new BeheerRepository(new BeheerContext());
 
         public EventBeheerForm()
         {

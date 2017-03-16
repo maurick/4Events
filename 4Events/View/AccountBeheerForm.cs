@@ -17,20 +17,20 @@ namespace _4Events.View
     public partial class AccountBeheerForm : Form
     {
         AccountBeheerViewModel viewModel = new AccountBeheerViewModel();
-        AccountRepository accountRepo = new AccountRepository(new AccountContext());
+        BeheerRepository accountRepo = new BeheerRepository(new BeheerContext());
 
         public AccountBeheerForm()
         {
             InitializeComponent();
 
-            viewModel.Account = accountRepo.GetById(accountRepo.GetAccountCache());
+            viewModel.Account = accountRepo.GetAccountById(accountRepo.GetAccountCache());
             
             RefreshForm();
         }
 
         private void RefreshForm()
         {
-            viewModel.AccountList = accountRepo.GetAll();
+            viewModel.AccountList = accountRepo.GetAllAccounts();
 
             lbAccounts.Items.Clear();
 
@@ -55,7 +55,7 @@ namespace _4Events.View
                 MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
-            accountRepo.Delete(viewModel.SelectedAccount.ID);
+            accountRepo.DeleteAccount(viewModel.SelectedAccount.ID);
 
             RefreshForm();
         }
