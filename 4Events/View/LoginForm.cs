@@ -6,6 +6,7 @@ using _4Events.Database;
 using _4Events.View;
 using _4Events.ViewModel;
 using System.Configuration;
+using System.Security.Principal;
 
 namespace _4Events
 {

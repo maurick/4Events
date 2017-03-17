@@ -45,19 +45,19 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.lbAccounts = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnNieuwEvent = new System.Windows.Forms.Button();
+            this.btnEventWijzig = new System.Windows.Forms.Button();
+            this.cbLocatie = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpEvent = new System.Windows.Forms.DateTimePicker();
+            this.tbEventBezoekers = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbEventNaam = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnDeleteEvent = new System.Windows.Forms.Button();
             this.lbEvents = new System.Windows.Forms.ListBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbEventNaam = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbEventBezoekers = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dtpEvent = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbLocatie = new System.Windows.Forms.ComboBox();
-            this.btnEventWijzig = new System.Windows.Forms.Button();
-            this.btnNieuwEvent = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -202,7 +202,7 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Verwijder";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnWijzig_Click);
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // lbAccounts
             // 
@@ -235,6 +235,91 @@
             this.tabPage2.Text = "Event";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnNieuwEvent
+            // 
+            this.btnNieuwEvent.Location = new System.Drawing.Point(454, 207);
+            this.btnNieuwEvent.Name = "btnNieuwEvent";
+            this.btnNieuwEvent.Size = new System.Drawing.Size(217, 23);
+            this.btnNieuwEvent.TabIndex = 14;
+            this.btnNieuwEvent.Text = "Maak nieuw";
+            this.btnNieuwEvent.UseVisualStyleBackColor = true;
+            this.btnNieuwEvent.Click += new System.EventHandler(this.btnNieuwEvent_Click);
+            // 
+            // btnEventWijzig
+            // 
+            this.btnEventWijzig.Enabled = false;
+            this.btnEventWijzig.Location = new System.Drawing.Point(6, 34);
+            this.btnEventWijzig.Name = "btnEventWijzig";
+            this.btnEventWijzig.Size = new System.Drawing.Size(75, 23);
+            this.btnEventWijzig.TabIndex = 13;
+            this.btnEventWijzig.Text = "Wijzig";
+            this.btnEventWijzig.UseVisualStyleBackColor = true;
+            // 
+            // cbLocatie
+            // 
+            this.cbLocatie.FormattingEnabled = true;
+            this.cbLocatie.Location = new System.Drawing.Point(532, 87);
+            this.cbLocatie.Name = "cbLocatie";
+            this.cbLocatie.Size = new System.Drawing.Size(140, 21);
+            this.cbLocatie.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(454, 90);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Locatie";
+            // 
+            // dtpEvent
+            // 
+            this.dtpEvent.Location = new System.Drawing.Point(532, 34);
+            this.dtpEvent.Name = "dtpEvent";
+            this.dtpEvent.Size = new System.Drawing.Size(140, 20);
+            this.dtpEvent.TabIndex = 10;
+            // 
+            // tbEventBezoekers
+            // 
+            this.tbEventBezoekers.Location = new System.Drawing.Point(532, 60);
+            this.tbEventBezoekers.Name = "tbEventBezoekers";
+            this.tbEventBezoekers.Size = new System.Drawing.Size(140, 20);
+            this.tbEventBezoekers.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(454, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Max Bezoekers";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(454, 37);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Datum";
+            // 
+            // tbEventNaam
+            // 
+            this.tbEventNaam.Location = new System.Drawing.Point(532, 8);
+            this.tbEventNaam.Name = "tbEventNaam";
+            this.tbEventNaam.Size = new System.Drawing.Size(140, 20);
+            this.tbEventNaam.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(454, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Naam";
+            // 
             // btnDeleteEvent
             // 
             this.btnDeleteEvent.Enabled = false;
@@ -258,96 +343,11 @@
             // 
             this.btnBack.Location = new System.Drawing.Point(17, 281);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(448, 23);
+            this.btnBack.Size = new System.Drawing.Size(677, 23);
             this.btnBack.TabIndex = 7;
             this.btnBack.Text = "Terug";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(454, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Naam";
-            // 
-            // tbEventNaam
-            // 
-            this.tbEventNaam.Location = new System.Drawing.Point(532, 8);
-            this.tbEventNaam.Name = "tbEventNaam";
-            this.tbEventNaam.Size = new System.Drawing.Size(140, 20);
-            this.tbEventNaam.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(454, 37);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Datum";
-            // 
-            // tbEventBezoekers
-            // 
-            this.tbEventBezoekers.Location = new System.Drawing.Point(532, 60);
-            this.tbEventBezoekers.Name = "tbEventBezoekers";
-            this.tbEventBezoekers.Size = new System.Drawing.Size(140, 20);
-            this.tbEventBezoekers.TabIndex = 7;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(454, 63);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Max Bezoekers";
-            // 
-            // dtpEvent
-            // 
-            this.dtpEvent.Location = new System.Drawing.Point(532, 34);
-            this.dtpEvent.Name = "dtpEvent";
-            this.dtpEvent.Size = new System.Drawing.Size(140, 20);
-            this.dtpEvent.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(454, 90);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 13);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Locatie";
-            // 
-            // cbLocatie
-            // 
-            this.cbLocatie.FormattingEnabled = true;
-            this.cbLocatie.Location = new System.Drawing.Point(532, 87);
-            this.cbLocatie.Name = "cbLocatie";
-            this.cbLocatie.Size = new System.Drawing.Size(140, 21);
-            this.cbLocatie.TabIndex = 12;
-            // 
-            // btnEventWijzig
-            // 
-            this.btnEventWijzig.Enabled = false;
-            this.btnEventWijzig.Location = new System.Drawing.Point(6, 34);
-            this.btnEventWijzig.Name = "btnEventWijzig";
-            this.btnEventWijzig.Size = new System.Drawing.Size(75, 23);
-            this.btnEventWijzig.TabIndex = 13;
-            this.btnEventWijzig.Text = "Wijzig";
-            this.btnEventWijzig.UseVisualStyleBackColor = true;
-            // 
-            // btnNieuwEvent
-            // 
-            this.btnNieuwEvent.Location = new System.Drawing.Point(454, 207);
-            this.btnNieuwEvent.Name = "btnNieuwEvent";
-            this.btnNieuwEvent.Size = new System.Drawing.Size(217, 23);
-            this.btnNieuwEvent.TabIndex = 14;
-            this.btnNieuwEvent.Text = "Maak nieuw";
-            this.btnNieuwEvent.UseVisualStyleBackColor = true;
-            this.btnNieuwEvent.Click += new System.EventHandler(this.btnNieuwEvent_Click);
             // 
             // BeheerForm
             // 

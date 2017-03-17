@@ -11,6 +11,7 @@ using _4Events.ViewModel;
 using _4Events.Database;
 using _4Events.Logic;
 using System.Configuration;
+using System.Security;
 
 namespace _4Events.View
 {

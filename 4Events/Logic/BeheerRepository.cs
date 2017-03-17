@@ -3,6 +3,7 @@ using _4Events.Model;
 using _4Events.Database;
 using System.IO;
 using System;
+using System.Security.Principal;
 
 namespace _4Events.Logic
 {
