@@ -56,11 +56,9 @@ namespace _4Events.View
                 // Hier worden ze op enabled gezet.
 
                 case (Enums.Functie.Beheerder):
-                    /* Buttons */
                     btnAccountBeheer.Enabled = true;
                     break;
                 case (Enums.Functie.Medewerker):
-                    /* Buttons */
                     btnAccountBeheer.Enabled = true;
                     break;
                 case (Enums.Functie.Bezoeker):

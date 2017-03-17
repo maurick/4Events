@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="4Events.cs" />
     <Compile Include="Database\BeheerContext.cs" />
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\IBeheerContext.cs" />
@@ -83,7 +84,6 @@
     <Compile Include="Model\Reservering.cs" />
     <Compile Include="Model\Verhuur.cs" />
     <Compile Include="ViewModel\BeheerViewModel.cs" />
-    <Compile Include="ViewModel\BeheerWijzigAccountViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegistreerViewModel.cs" />
@@ -92,12 +92,6 @@
     </Compile>
     <Compile Include="View\BeheerForm.Designer.cs">
       <DependentUpon>BeheerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\BeheerWijzigAccountForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\BeheerWijzigAccountForm.Designer.cs">
-      <DependentUpon>BeheerWijzigAccountForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -132,9 +126,6 @@
     </Compile>
     <EmbeddedResource Include="View\BeheerForm.resx">
       <DependentUpon>BeheerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\BeheerWijzigAccountForm.resx">
-      <DependentUpon>BeheerWijzigAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
