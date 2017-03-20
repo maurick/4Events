@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using _4Events.Model;
 
-namespace _4Events.Database
+namespace _4Events.ViewModel
 {
-    public interface IMediaContext
+    class MediaViewModel
     {
-        List<Bericht> GetBerichten(int aantal);
+        public List<Bericht> ListBerichten { get; set; }
+        public Account Account { get; set; }
     }
 }

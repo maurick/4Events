@@ -10,14 +10,16 @@ namespace _4Events.Database
 {
     public class MediaContext : IMediaContext
     {
-        public List<Bericht> GetAll()
+        public List<Bericht> GetBerichten(int aantal)
         {
             List<Bericht> result = new List<Bericht>();
             using (SqlConnection connection = Database.Connection)
             {
-                string query = "SELECT * FROM Bericht ORDER BY Id";
+                string query = "SELECT TOP @aantal * FROM Bericht ORDER BY Id";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@aantal", aantal);
+
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())

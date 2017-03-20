@@ -17,9 +17,9 @@ namespace _4Events.Logic
         }
 
 
-        public List<Bericht> GetAllMessages()
+        public List<Bericht> GetBerichten(int aantal)
         {
-            return context.GetAll();
+            return context.GetBerichten(aantal);
         }
     }
 }

@@ -49,6 +49,14 @@ namespace _4Events.View
             this.Close();
         }
 
+        private void btnMedia_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MediaForm form = new MediaForm();
+            form.ShowDialog();
+            this.Close();
+        }
+
         private void AccessControl()
         {
             switch (viewModel.Account.Functie)
@@ -68,5 +76,7 @@ namespace _4Events.View
                     break;
             }
         }
+
+
     }
 }
