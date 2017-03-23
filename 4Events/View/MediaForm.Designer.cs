@@ -34,8 +34,8 @@
             this.lbReacties = new System.Windows.Forms.ListBox();
             this.lbBerichten = new System.Windows.Forms.ListBox();
             this.gbBerichten = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.rtbTekst = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnPost = new System.Windows.Forms.Button();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
@@ -77,6 +77,7 @@
             this.lbReacties.Name = "lbReacties";
             this.lbReacties.Size = new System.Drawing.Size(154, 290);
             this.lbReacties.TabIndex = 6;
+            this.lbReacties.SelectedIndexChanged += new System.EventHandler(this.GetBericht);
             // 
             // lbBerichten
             // 
@@ -85,6 +86,7 @@
             this.lbBerichten.Name = "lbBerichten";
             this.lbBerichten.Size = new System.Drawing.Size(154, 290);
             this.lbBerichten.TabIndex = 5;
+            this.lbBerichten.SelectedIndexChanged += new System.EventHandler(this.GetBericht);
             // 
             // gbBerichten
             // 
@@ -99,13 +101,6 @@
             this.gbBerichten.TabStop = false;
             this.gbBerichten.Text = "Berichten";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(7, 312);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
-            // 
             // rtbTekst
             // 
             this.rtbTekst.Location = new System.Drawing.Point(7, 339);
@@ -113,6 +108,13 @@
             this.rtbTekst.Size = new System.Drawing.Size(263, 115);
             this.rtbTekst.TabIndex = 8;
             this.rtbTekst.Text = "";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(7, 312);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 7;
             // 
             // btnPost
             // 
@@ -122,6 +124,7 @@
             this.btnPost.TabIndex = 9;
             this.btnPost.Text = "Post";
             this.btnPost.UseVisualStyleBackColor = true;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
             // MediaForm
             // 

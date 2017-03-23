@@ -11,5 +11,6 @@ namespace _4Events.ViewModel
     {
         public List<Bericht> ListBerichten { get; set; }
         public Account Account { get; set; }
+        public Bericht SelectedBericht { get; set; }
     }
 }

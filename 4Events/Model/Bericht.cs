@@ -9,7 +9,8 @@ namespace _4Events.Model
     public class Bericht
     {
         public int ID { get; set; }
-        public byte[] Bestand { get; set; }
+        public byte?[] Bestand { get; set; }
+        public int? ReplyTo { get; set; }
         public string Tags { get; set; }
         public string Tekst { get; set; }
 
