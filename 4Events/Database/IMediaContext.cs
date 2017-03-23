@@ -10,5 +10,8 @@ namespace _4Events.Database
     public interface IMediaContext
     {
         List<Bericht> GetBerichten(int aantal);
+        List<Bericht> GetReacties();
+        bool InsertBericht(Bericht bericht);
+        bool DeleteBericht(int id);
     }
 }

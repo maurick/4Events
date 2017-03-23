@@ -29,86 +29,115 @@
         private void InitializeComponent()
         {
             this.btnBack = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pbFile = new System.Windows.Forms.PictureBox();
+            this.gbBestand = new System.Windows.Forms.GroupBox();
+            this.pbBestand = new System.Windows.Forms.PictureBox();
+            this.lbReacties = new System.Windows.Forms.ListBox();
             this.lbBerichten = new System.Windows.Forms.ListBox();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFile)).BeginInit();
+            this.gbBerichten = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rtbTekst = new System.Windows.Forms.RichTextBox();
+            this.btnPost = new System.Windows.Forms.Button();
+            this.gbBestand.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
+            this.gbBerichten.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(395, 324);
+            this.btnBack.Location = new System.Drawing.Point(554, 324);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.Size = new System.Drawing.Size(70, 23);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Terug";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // tabControl1
+            // gbBestand
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 13);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(174, 334);
-            this.tabControl1.TabIndex = 1;
+            this.gbBestand.Controls.Add(this.pbBestand);
+            this.gbBestand.Location = new System.Drawing.Point(356, 13);
+            this.gbBestand.Name = "gbBestand";
+            this.gbBestand.Size = new System.Drawing.Size(268, 305);
+            this.gbBestand.TabIndex = 2;
+            this.gbBestand.TabStop = false;
+            this.gbBestand.Text = "Bestand";
             // 
-            // tabPage1
+            // pbBestand
             // 
-            this.tabPage1.Controls.Add(this.lbBerichten);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(166, 308);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.pbBestand.Location = new System.Drawing.Point(6, 19);
+            this.pbBestand.Name = "pbBestand";
+            this.pbBestand.Size = new System.Drawing.Size(256, 280);
+            this.pbBestand.TabIndex = 0;
+            this.pbBestand.TabStop = false;
             // 
-            // tabPage2
+            // lbReacties
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(166, 308);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // pbFile
-            // 
-            this.pbFile.Location = new System.Drawing.Point(193, 13);
-            this.pbFile.Name = "pbFile";
-            this.pbFile.Size = new System.Drawing.Size(277, 305);
-            this.pbFile.TabIndex = 2;
-            this.pbFile.TabStop = false;
+            this.lbReacties.FormattingEnabled = true;
+            this.lbReacties.Location = new System.Drawing.Point(177, 15);
+            this.lbReacties.Name = "lbReacties";
+            this.lbReacties.Size = new System.Drawing.Size(154, 290);
+            this.lbReacties.TabIndex = 6;
             // 
             // lbBerichten
             // 
             this.lbBerichten.FormattingEnabled = true;
-            this.lbBerichten.Location = new System.Drawing.Point(6, 6);
+            this.lbBerichten.Location = new System.Drawing.Point(6, 15);
             this.lbBerichten.Name = "lbBerichten";
             this.lbBerichten.Size = new System.Drawing.Size(154, 290);
-            this.lbBerichten.TabIndex = 3;
+            this.lbBerichten.TabIndex = 5;
+            // 
+            // gbBerichten
+            // 
+            this.gbBerichten.Controls.Add(this.rtbTekst);
+            this.gbBerichten.Controls.Add(this.textBox1);
+            this.gbBerichten.Controls.Add(this.lbReacties);
+            this.gbBerichten.Controls.Add(this.lbBerichten);
+            this.gbBerichten.Location = new System.Drawing.Point(13, 13);
+            this.gbBerichten.Name = "gbBerichten";
+            this.gbBerichten.Size = new System.Drawing.Size(337, 460);
+            this.gbBerichten.TabIndex = 7;
+            this.gbBerichten.TabStop = false;
+            this.gbBerichten.Text = "Berichten";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(7, 312);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 7;
+            // 
+            // rtbTekst
+            // 
+            this.rtbTekst.Location = new System.Drawing.Point(7, 339);
+            this.rtbTekst.Name = "rtbTekst";
+            this.rtbTekst.Size = new System.Drawing.Size(263, 115);
+            this.rtbTekst.TabIndex = 8;
+            this.rtbTekst.Text = "";
+            // 
+            // btnPost
+            // 
+            this.btnPost.Location = new System.Drawing.Point(549, 450);
+            this.btnPost.Name = "btnPost";
+            this.btnPost.Size = new System.Drawing.Size(75, 23);
+            this.btnPost.TabIndex = 9;
+            this.btnPost.Text = "Post";
+            this.btnPost.UseVisualStyleBackColor = true;
             // 
             // MediaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 359);
-            this.Controls.Add(this.pbFile);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(636, 485);
+            this.Controls.Add(this.btnPost);
+            this.Controls.Add(this.gbBerichten);
+            this.Controls.Add(this.gbBestand);
             this.Controls.Add(this.btnBack);
             this.Name = "MediaForm";
             this.Text = "MediaForm";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbFile)).EndInit();
+            this.gbBestand.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).EndInit();
+            this.gbBerichten.ResumeLayout(false);
+            this.gbBerichten.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -116,10 +145,13 @@
         #endregion
 
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox gbBestand;
+        private System.Windows.Forms.PictureBox pbBestand;
+        private System.Windows.Forms.ListBox lbReacties;
         private System.Windows.Forms.ListBox lbBerichten;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.PictureBox pbFile;
+        private System.Windows.Forms.GroupBox gbBerichten;
+        private System.Windows.Forms.RichTextBox rtbTekst;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnPost;
     }
 }

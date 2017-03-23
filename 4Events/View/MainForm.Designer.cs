@@ -33,15 +33,17 @@
             this.lblFunctie = new System.Windows.Forms.Label();
             this.btnAccountBeheer = new System.Windows.Forms.Button();
             this.btnMedia = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(184, 226);
+            this.btnBack.Location = new System.Drawing.Point(12, 130);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
+            this.btnBack.Size = new System.Drawing.Size(242, 23);
             this.btnBack.TabIndex = 0;
-            this.btnBack.Text = "Terug";
+            this.btnBack.Text = "Log uit";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -86,11 +88,31 @@
             this.btnMedia.UseVisualStyleBackColor = true;
             this.btnMedia.Click += new System.EventHandler(this.btnMedia_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(139, 44);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 37);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Toegangscontrole";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(139, 88);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 36);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Verhuur";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 261);
+            this.ClientSize = new System.Drawing.Size(266, 161);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMedia);
             this.Controls.Add(this.btnAccountBeheer);
             this.Controls.Add(this.lblFunctie);
@@ -110,5 +132,7 @@
         private System.Windows.Forms.Label lblFunctie;
         private System.Windows.Forms.Button btnAccountBeheer;
         private System.Windows.Forms.Button btnMedia;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

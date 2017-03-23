@@ -18,5 +18,7 @@ namespace _4Events.ViewModel
         public Event SelectedEvent { get; set; }
 
         public List<Locatie> LocatieList { get; set; }
+        public List<Reservering> ReserveringList { get; set; }
+        public List<Account> Aanwezigen { get; set; }
     }
 }

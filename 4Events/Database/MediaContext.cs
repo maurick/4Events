@@ -10,6 +10,11 @@ namespace _4Events.Database
 {
     public class MediaContext : IMediaContext
     {
+        public bool DeleteBericht(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Bericht> GetBerichten(int aantal)
         {
             List<Bericht> result = new List<Bericht>();
@@ -30,6 +35,16 @@ namespace _4Events.Database
                 }
             }
             return result;
+        }
+
+        public List<Bericht> GetReacties()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool InsertBericht(Bericht bericht)
+        {
+            throw new NotImplementedException();
         }
 
         private Bericht CreateBerichtFromReader(SqlDataReader reader)

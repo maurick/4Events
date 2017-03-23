@@ -163,12 +163,37 @@ namespace _4Events.View
             RefreshForm();
         }
 
+
+        //TODO: TIMER
+
+        private void RefreshOverzicht()
+        {
+            // TODO: get reservering selected event
+            // get aanwezigen selected event
+
+            foreach (var reservering in viewModel.ReserveringList)
+            {
+                lbReservering.Items.Add(reservering);
+            }
+
+            foreach (var account in viewModel.Aanwezigen)
+            {
+                lbAanwezig.Items.Add(account);
+            }
+        }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
             MainForm form = new MainForm();
             form.ShowDialog();
             this.Close();
+        }
+
+        private void btnOverzicht_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedTab = tabPage3;
+            RefreshOverzicht();
         }
     }
 }
