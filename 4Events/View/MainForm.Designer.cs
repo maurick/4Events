@@ -35,13 +35,15 @@
             this.btnMedia = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnReservering = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(12, 130);
+            this.btnBack.Location = new System.Drawing.Point(17, 210);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(242, 23);
+            this.btnBack.Size = new System.Drawing.Size(323, 28);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Log uit";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -50,9 +52,10 @@
             // lblWelkom
             // 
             this.lblWelkom.AutoSize = true;
-            this.lblWelkom.Location = new System.Drawing.Point(12, 9);
+            this.lblWelkom.Location = new System.Drawing.Point(16, 11);
+            this.lblWelkom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWelkom.Name = "lblWelkom";
-            this.lblWelkom.Size = new System.Drawing.Size(80, 13);
+            this.lblWelkom.Size = new System.Drawing.Size(103, 17);
             this.lblWelkom.TabIndex = 1;
             this.lblWelkom.Text = "Welkom, Naam";
             this.lblWelkom.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -60,9 +63,10 @@
             // lblFunctie
             // 
             this.lblFunctie.AutoSize = true;
-            this.lblFunctie.Location = new System.Drawing.Point(12, 22);
+            this.lblFunctie.Location = new System.Drawing.Point(16, 27);
+            this.lblFunctie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFunctie.Name = "lblFunctie";
-            this.lblFunctie.Size = new System.Drawing.Size(146, 13);
+            this.lblFunctie.Size = new System.Drawing.Size(191, 17);
             this.lblFunctie.TabIndex = 2;
             this.lblFunctie.Text = "Uw huidige functie is: Functie";
             this.lblFunctie.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -70,9 +74,10 @@
             // btnAccountBeheer
             // 
             this.btnAccountBeheer.Enabled = false;
-            this.btnAccountBeheer.Location = new System.Drawing.Point(13, 44);
+            this.btnAccountBeheer.Location = new System.Drawing.Point(17, 54);
+            this.btnAccountBeheer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAccountBeheer.Name = "btnAccountBeheer";
-            this.btnAccountBeheer.Size = new System.Drawing.Size(120, 37);
+            this.btnAccountBeheer.Size = new System.Drawing.Size(160, 46);
             this.btnAccountBeheer.TabIndex = 3;
             this.btnAccountBeheer.Text = "Beheer";
             this.btnAccountBeheer.UseVisualStyleBackColor = true;
@@ -80,9 +85,10 @@
             // 
             // btnMedia
             // 
-            this.btnMedia.Location = new System.Drawing.Point(15, 87);
+            this.btnMedia.Location = new System.Drawing.Point(20, 107);
+            this.btnMedia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMedia.Name = "btnMedia";
-            this.btnMedia.Size = new System.Drawing.Size(118, 37);
+            this.btnMedia.Size = new System.Drawing.Size(157, 46);
             this.btnMedia.TabIndex = 4;
             this.btnMedia.Text = "Media";
             this.btnMedia.UseVisualStyleBackColor = true;
@@ -90,27 +96,41 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(139, 44);
+            this.button1.Location = new System.Drawing.Point(185, 54);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 37);
+            this.button1.Size = new System.Drawing.Size(153, 46);
             this.button1.TabIndex = 5;
             this.button1.Text = "Toegangscontrole";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(139, 88);
+            this.button2.Location = new System.Drawing.Point(185, 108);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 36);
+            this.button2.Size = new System.Drawing.Size(153, 44);
             this.button2.TabIndex = 6;
             this.button2.Text = "Verhuur";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // btnReservering
+            // 
+            this.btnReservering.Location = new System.Drawing.Point(104, 158);
+            this.btnReservering.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReservering.Name = "btnReservering";
+            this.btnReservering.Size = new System.Drawing.Size(153, 44);
+            this.btnReservering.TabIndex = 7;
+            this.btnReservering.Text = "Reservering";
+            this.btnReservering.UseVisualStyleBackColor = true;
+            this.btnReservering.Click += new System.EventHandler(this.btnReservering_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 161);
+            this.ClientSize = new System.Drawing.Size(357, 251);
+            this.Controls.Add(this.btnReservering);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMedia);
@@ -118,6 +138,7 @@
             this.Controls.Add(this.lblFunctie);
             this.Controls.Add(this.lblWelkom);
             this.Controls.Add(this.btnBack);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Main Form";
             this.ResumeLayout(false);
@@ -134,5 +155,6 @@
         private System.Windows.Forms.Button btnMedia;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnReservering;
     }
 }

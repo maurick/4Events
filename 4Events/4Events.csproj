@@ -122,6 +122,12 @@
     <Compile Include="View\RegistreerForm.Designer.cs">
       <DependentUpon>RegistreerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReserveringsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReserveringsForm.Designer.cs">
+      <DependentUpon>ReserveringsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -130,6 +136,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\BeheerForm.resx">
       <DependentUpon>BeheerForm.cs</DependentUpon>
@@ -145,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RegistreerForm.resx">
       <DependentUpon>RegistreerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReserveringsForm.resx">
+      <DependentUpon>ReserveringsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -170,6 +180,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Camping_ReeënDal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
