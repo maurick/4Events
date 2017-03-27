@@ -77,6 +77,12 @@ namespace _4Events.View
             }
         }
 
-
+        private void btnReservering_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReserveringsForm form = new ReserveringsForm();
+            form.ShowDialog();
+            this.Close();
+        }
     }
 }
