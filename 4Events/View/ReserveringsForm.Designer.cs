@@ -40,6 +40,8 @@
             this.lblEinddatum = new System.Windows.Forms.Label();
             this.dtpEinddatum = new System.Windows.Forms.DateTimePicker();
             this.btnReserveer = new System.Windows.Forms.Button();
+            this.lblPrijs = new System.Windows.Forms.Label();
+            this.tbPrijs = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Plattegrond)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -47,9 +49,9 @@
             // pb_Plattegrond
             // 
             this.pb_Plattegrond.InitialImage = global::_4Events.Properties.Resources.Camping_ReeënDal;
-            this.pb_Plattegrond.Location = new System.Drawing.Point(13, 13);
+            this.pb_Plattegrond.Location = new System.Drawing.Point(12, 12);
             this.pb_Plattegrond.Name = "pb_Plattegrond";
-            this.pb_Plattegrond.Size = new System.Drawing.Size(918, 662);
+            this.pb_Plattegrond.Size = new System.Drawing.Size(918, 626);
             this.pb_Plattegrond.TabIndex = 0;
             this.pb_Plattegrond.TabStop = false;
             // 
@@ -137,18 +139,37 @@
             // 
             // btnReserveer
             // 
-            this.btnReserveer.Location = new System.Drawing.Point(937, 337);
+            this.btnReserveer.Location = new System.Drawing.Point(936, 411);
             this.btnReserveer.Name = "btnReserveer";
             this.btnReserveer.Size = new System.Drawing.Size(262, 65);
             this.btnReserveer.TabIndex = 11;
             this.btnReserveer.Text = "Reserveer";
             this.btnReserveer.UseVisualStyleBackColor = true;
             // 
+            // lblPrijs
+            // 
+            this.lblPrijs.AutoSize = true;
+            this.lblPrijs.Location = new System.Drawing.Point(941, 324);
+            this.lblPrijs.Name = "lblPrijs";
+            this.lblPrijs.Size = new System.Drawing.Size(62, 17);
+            this.lblPrijs.TabIndex = 12;
+            this.lblPrijs.Text = "Prijs in €";
+            // 
+            // tbPrijs
+            // 
+            this.tbPrijs.Location = new System.Drawing.Point(937, 345);
+            this.tbPrijs.Name = "tbPrijs";
+            this.tbPrijs.ReadOnly = true;
+            this.tbPrijs.Size = new System.Drawing.Size(138, 22);
+            this.tbPrijs.TabIndex = 13;
+            // 
             // ReserveringsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1212, 650);
+            this.Controls.Add(this.tbPrijs);
+            this.Controls.Add(this.lblPrijs);
             this.Controls.Add(this.btnReserveer);
             this.Controls.Add(this.dtpEinddatum);
             this.Controls.Add(this.lblEinddatum);
@@ -184,5 +205,7 @@
         private System.Windows.Forms.Label lblEinddatum;
         private System.Windows.Forms.DateTimePicker dtpEinddatum;
         private System.Windows.Forms.Button btnReserveer;
+        private System.Windows.Forms.Label lblPrijs;
+        private System.Windows.Forms.TextBox tbPrijs;
     }
 }
