@@ -16,10 +16,14 @@ namespace _4Events.Logic
             this.context = context;
         }
 
-
         public List<Bericht> GetBerichten(int aantal)
         {
             return context.GetBerichten(aantal);
+        }
+
+        public bool InsertBericht(Bericht bericht)
+        {
+            return context.InsertBericht(bericht);
         }
     }
 }

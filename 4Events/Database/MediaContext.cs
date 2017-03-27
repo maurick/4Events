@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _4Events.Model;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace _4Events.Database
 {
@@ -46,15 +47,44 @@ namespace _4Events.Database
         {
             using(SqlConnection connection = Database.Connection)
             {
-                string query = "INSERT INTO Bericht";
+                string query;
+
+                if (bericht.Bestand == null)
+                {
+                    query = "INSERT INTO Bericht (ReplyTo, Tags, Tekst, AccountID) VALUES (@replyTo, @tags, @tekst, @accountid)";
+                }
+                else
+                {
+                    query = "INSERT INTO Bericht (ReplyTo, Bestand, Tags, Tekst, AccountID) VALUES (@replyTo, @bestand, @tags, @tekst, @accountid)";
+                }
+
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
+                    if(bericht.Bestand != null)
+                    {
+                        command.Parameters.Add("@bestand", SqlDbType.VarBinary).Value = bericht.Bestand;
+                    }
+
+                    if(bericht.ReplyTo == null)
+                    {
+                        command.Parameters.AddWithValue("@replyto", 0);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@replyto", bericht.ReplyTo);
+                    }
+
+                    command.Parameters.AddWithValue("@tags", bericht.Tags);
+                    command.Parameters.AddWithValue("@tekst", bericht.Tekst);
+                    command.Parameters.AddWithValue("@accountid", bericht.AccountID);
+
                     try
                     {
                         command.ExecuteNonQuery();
                     }
                     catch (Exception)
                     {
+                        throw;
                         return false;
                     }
                 }
@@ -67,10 +97,11 @@ namespace _4Events.Database
             Bericht bericht = new Bericht()
             {
                 ID = Convert.ToInt32(reader["ID"]),
-                Bestand = (reader["Bestand"] == DBNull.Value) ? null : (byte?[])(reader["Bestand"]),
+                Bestand = (reader["Bestand"] == DBNull.Value) ? null : (byte[])(reader["Bestand"]),
                 ReplyTo = (reader["ReplyTo"] == DBNull.Value) ? null : (int?)(reader["ReplyTo"]),
                 Tags = Convert.ToString(reader["Tags"]),
-                Tekst = Convert.ToString(reader["Tekst"])
+                Tekst = Convert.ToString(reader["Tekst"]),
+                AccountID = Convert.ToInt32(reader["AccountID"])
             };
 
             return bericht;

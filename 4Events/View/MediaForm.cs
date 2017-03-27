@@ -12,6 +12,7 @@ using _4Events.Logic;
 using _4Events.Model;
 using _4Events.ViewModel;
 using _4Events.Properties;
+using System.IO;
 
 namespace _4Events.View
 {
@@ -24,8 +25,6 @@ namespace _4Events.View
         public MediaForm()
         {
             InitializeComponent();
-
-            viewModel.ListBerichten = mediaRepo.GetBerichten(5);
             viewModel.Account = beheerRepo.GetAccountById((beheerRepo.GetAccountCache()));
 
             RefreshForm();
@@ -33,18 +32,24 @@ namespace _4Events.View
 
         private void RefreshForm()
         {
+            viewModel.ListBerichten = mediaRepo.GetBerichten(20);
+            viewModel.Bericht = new Bericht();
+            viewModel.Bericht.Bestand = null;
+
             lbBerichten.Items.Clear();
 
             foreach (var bericht in viewModel.ListBerichten)
             {
-                if(bericht.ReplyTo == null)
+                if(bericht.ReplyTo == 0)
                 {
                     lbBerichten.Items.Add(bericht);
                 }
             }
 
+
+
             rtbTekst.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tekst);
-            textBox1.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tags);
+            tbTags.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tags);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -57,7 +62,26 @@ namespace _4Events.View
 
         private void btnPost_Click(object sender, EventArgs e)
         {
-            //rtbTekst
+            viewModel.Bericht = new Bericht
+            {
+                Tekst = rtbTekst.Text,
+                Tags = tbTags.Text,
+                Bestand = viewModel.Bericht.Bestand,
+                AccountID = viewModel.Account.ID
+            };
+
+            if(viewModel.SelectedBericht != null)
+            {
+                viewModel.Bericht.ReplyTo = viewModel.SelectedBericht.AccountID;
+            }
+
+            if (mediaRepo.InsertBericht(viewModel.Bericht) != true)
+            {
+                MessageBox.Show("Error: Kan geen bericht in de database plaatsen.");
+                return;
+            }
+
+            MessageBox.Show("Bericht succesvol gepost.");
 
             RefreshForm();
         }
@@ -65,26 +89,68 @@ namespace _4Events.View
         private void GetBericht(object sender, EventArgs e)
         {
             var s = (ListBox)sender;
-            Bericht selected = (Bericht)s.SelectedItem;
 
-            viewModel.SelectedBericht = new Bericht
+            if(s.SelectedItem == null)
             {
-                ID = selected.ID,
-                Bestand = selected.Bestand,
-                ReplyTo = selected.ReplyTo,
-                Tags = selected.Tags,
-                Tekst = selected.Tekst
-            };
+                return;
+            }
 
-            foreach (var bericht in viewModel.ListBerichten)
+            viewModel.SelectedBericht = (Bericht)s.SelectedItem;
+
+            //viewModel.SelectedBericht = new Bericht
+            //{
+            //    ID = selected.ID,
+            //    Bestand = selected.Bestand,
+            //    ReplyTo = selected.ReplyTo,
+            //    Tags = selected.Tags,
+            //    Tekst = selected.Tekst,
+            //    AccountID = selected.AccountID
+            //};
+
+            if(s == lbBerichten)
             {
-                if (bericht.ID == viewModel.SelectedBericht.ReplyTo)
+                lbReacties.Items.Clear();
+
+                foreach (var bericht in viewModel.ListBerichten)
                 {
-                    
+                    if (bericht.ReplyTo == viewModel.SelectedBericht.ID)
+                    {
+                        lbReacties.Items.Add(bericht);
+                    }
                 }
             }
 
-            RefreshForm();
+            if (viewModel.SelectedBericht != null && viewModel.SelectedBericht.Bestand != null)
+            {
+                pbBestand.Image = (Bitmap)((new ImageConverter()).ConvertFrom(viewModel.SelectedBericht.Bestand));
+            }
+            else
+            {
+                pbBestand.Image = null;
+            }
+        }
+
+        private void btnBestand_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openBestand = new OpenFileDialog();
+            string filename;
+
+            if(viewModel.Bericht == null)
+            {
+                MessageBox.Show("Geen bericht.");
+            }
+
+            if(openBestand.ShowDialog() == DialogResult.OK)
+            {
+                filename = openBestand.FileName;
+                
+
+                Image x = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+
+                pbBestand.Image = x;
+                viewModel.Bericht.Bestand = File.ReadAllBytes(filename);
+                //pbBestand.
+            }
         }
     }
 }

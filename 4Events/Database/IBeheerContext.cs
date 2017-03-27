@@ -9,6 +9,7 @@ namespace _4Events.Database
         List<Event> GetAllEvents();
         Account GetAccountById(int id);
         Account GetAccountByEmail(string email);
+        List<Account> GetPresentAccountsByEventID(int EventID);
         Event GetEventById(int id);
         Account InsertAccount(Account newItem);
         Event InsertEvent(Event newItem);

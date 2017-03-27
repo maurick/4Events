@@ -32,7 +32,27 @@ namespace _4Events.Database
 
         public List<Reservering> GetAllReserveringen()
         {
-            throw new NotImplementedException();
+            List<Reservering> result = new List<Reservering>();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT r.*, a.Naam AS MainAccountNaam " +
+                                "FROM RESERVERING r " +
+                                "INNER JOIN RESERVERING_ACCOUNT ra on r.ID = ra.ReserveringID " +
+                                "INNER JOIN ACCOUNT a on ra.AccountID = a.ID " +
+                                "WHERE MainAccount = 1 " +
+                                "ORDER BY r.ID;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(CreateReserveringFromReader(reader));
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         private Locatie CreateLocatieFromReader(SqlDataReader reader)
@@ -48,6 +68,21 @@ namespace _4Events.Database
             };
 
             return locatie;
+        }
+
+        private Reservering CreateReserveringFromReader(SqlDataReader reader)
+        {
+            Reservering reservering = new Reservering()
+            {
+                ID = Convert.ToInt32(reader["ID"]),
+                MainAccountNaam = Convert.ToString(reader["MainAccountNaam"]),
+                EventID = Convert.ToInt32(reader["EventID"]),
+                Datum = Convert.ToDateTime(reader["Datum"]),
+                Ingechecked = Convert.ToBoolean(reader["Ingechecked"]),
+                Betaald = Convert.ToBoolean(reader["Betaald"])
+            };
+
+            return reservering;
         }
     }
 }

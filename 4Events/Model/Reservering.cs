@@ -9,13 +9,15 @@ namespace _4Events.Model
     public class Reservering
     {
         public int ID { get; set; }
+        public int EventID { get; set; }
         public DateTime Datum { get; set; }
         public bool Ingechecked { get; set; }
         public bool Betaald { get; set; }
+        public string MainAccountNaam { get; set; }
 
         public override string ToString()
         {
-            return ID + " " + Datum.ToShortDateString();
+            return ID + " " + Datum.ToShortDateString() + " " + MainAccountNaam;
         }
     }
 }
