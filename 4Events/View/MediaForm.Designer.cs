@@ -35,8 +35,9 @@
             this.lbBerichten = new System.Windows.Forms.ListBox();
             this.gbBerichten = new System.Windows.Forms.GroupBox();
             this.rtbTekst = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbTags = new System.Windows.Forms.TextBox();
             this.btnPost = new System.Windows.Forms.Button();
+            this.btnBestand = new System.Windows.Forms.Button();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
             this.gbBerichten.SuspendLayout();
@@ -67,6 +68,7 @@
             this.pbBestand.Location = new System.Drawing.Point(6, 19);
             this.pbBestand.Name = "pbBestand";
             this.pbBestand.Size = new System.Drawing.Size(256, 280);
+            this.pbBestand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbBestand.TabIndex = 0;
             this.pbBestand.TabStop = false;
             // 
@@ -91,7 +93,7 @@
             // gbBerichten
             // 
             this.gbBerichten.Controls.Add(this.rtbTekst);
-            this.gbBerichten.Controls.Add(this.textBox1);
+            this.gbBerichten.Controls.Add(this.tbTags);
             this.gbBerichten.Controls.Add(this.lbReacties);
             this.gbBerichten.Controls.Add(this.lbBerichten);
             this.gbBerichten.Location = new System.Drawing.Point(13, 13);
@@ -109,12 +111,12 @@
             this.rtbTekst.TabIndex = 8;
             this.rtbTekst.Text = "";
             // 
-            // textBox1
+            // tbTags
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 312);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.tbTags.Location = new System.Drawing.Point(7, 312);
+            this.tbTags.Name = "tbTags";
+            this.tbTags.Size = new System.Drawing.Size(100, 20);
+            this.tbTags.TabIndex = 7;
             // 
             // btnPost
             // 
@@ -126,11 +128,22 @@
             this.btnPost.UseVisualStyleBackColor = true;
             this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
+            // btnBestand
+            // 
+            this.btnBestand.Location = new System.Drawing.Point(356, 323);
+            this.btnBestand.Name = "btnBestand";
+            this.btnBestand.Size = new System.Drawing.Size(75, 23);
+            this.btnBestand.TabIndex = 10;
+            this.btnBestand.Text = "Bestand";
+            this.btnBestand.UseVisualStyleBackColor = true;
+            this.btnBestand.Click += new System.EventHandler(this.btnBestand_Click);
+            // 
             // MediaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 485);
+            this.Controls.Add(this.btnBestand);
             this.Controls.Add(this.btnPost);
             this.Controls.Add(this.gbBerichten);
             this.Controls.Add(this.gbBestand);
@@ -154,7 +167,8 @@
         private System.Windows.Forms.ListBox lbBerichten;
         private System.Windows.Forms.GroupBox gbBerichten;
         private System.Windows.Forms.RichTextBox rtbTekst;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbTags;
         private System.Windows.Forms.Button btnPost;
+        private System.Windows.Forms.Button btnBestand;
     }
 }
