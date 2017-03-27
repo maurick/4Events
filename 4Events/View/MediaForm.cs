@@ -32,7 +32,7 @@ namespace _4Events.View
 
         private void RefreshForm()
         {
-            viewModel.ListBerichten = mediaRepo.GetBerichten(20);
+            viewModel.ListBerichten = mediaRepo.GetBerichten(999);
             viewModel.Bericht = new Bericht();
             viewModel.Bericht.Bestand = null;
 
@@ -72,7 +72,7 @@ namespace _4Events.View
 
             if(viewModel.SelectedBericht != null)
             {
-                viewModel.Bericht.ReplyTo = viewModel.SelectedBericht.AccountID;
+                viewModel.Bericht.ReplyTo = viewModel.SelectedBericht.ID;
             }
 
             if (mediaRepo.InsertBericht(viewModel.Bericht) != true)
@@ -88,26 +88,16 @@ namespace _4Events.View
 
         private void GetBericht(object sender, EventArgs e)
         {
-            var s = (ListBox)sender;
+            var listbox = (ListBox)sender;
 
-            if(s.SelectedItem == null)
+            if(listbox.SelectedItem == null)
             {
                 return;
             }
 
-            viewModel.SelectedBericht = (Bericht)s.SelectedItem;
+            viewModel.SelectedBericht = (Bericht)listbox.SelectedItem;
 
-            //viewModel.SelectedBericht = new Bericht
-            //{
-            //    ID = selected.ID,
-            //    Bestand = selected.Bestand,
-            //    ReplyTo = selected.ReplyTo,
-            //    Tags = selected.Tags,
-            //    Tekst = selected.Tekst,
-            //    AccountID = selected.AccountID
-            //};
-
-            if(s == lbBerichten)
+            if(listbox == lbBerichten)
             {
                 lbReacties.Items.Clear();
 
@@ -122,6 +112,8 @@ namespace _4Events.View
 
             if (viewModel.SelectedBericht != null && viewModel.SelectedBericht.Bestand != null)
             {
+                //TODO zet buiten de form
+
                 pbBestand.Image = (Bitmap)((new ImageConverter()).ConvertFrom(viewModel.SelectedBericht.Bestand));
             }
             else
@@ -145,12 +137,38 @@ namespace _4Events.View
                 filename = openBestand.FileName;
                 
 
-                Image x = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+                Image image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
 
-                pbBestand.Image = x;
+                pbBestand.Image = image;
                 viewModel.Bericht.Bestand = File.ReadAllBytes(filename);
                 //pbBestand.
             }
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnZoek_Click(object sender, EventArgs e)
+        {
+            lbBerichten.Items.Clear();
+            foreach (var bericht in mediaRepo.SearchBerichten(tbZoek.Text))
+            {
+                lbBerichten.Items.Add(bericht);
+            }
+        }
+
+        private void DoubleClick(object sender, MouseEventArgs e)
+        {
+            var listbox = (ListBox)sender;
+
+            int index = listbox.IndexFromPoint(e.Location);
+            if (index != ListBox.NoMatches)
+            {
+                MessageBox.Show("laat reacties van dit bericht zien ofzo TODO toedeloe.");
+            }
+
         }
     }
 }

@@ -85,7 +85,7 @@ namespace _4Events.Database
                     catch (Exception)
                     {
                         throw;
-                        return false;
+                        // return false;
                     }
                 }
             }

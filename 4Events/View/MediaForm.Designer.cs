@@ -38,6 +38,9 @@
             this.tbTags = new System.Windows.Forms.TextBox();
             this.btnPost = new System.Windows.Forms.Button();
             this.btnBestand = new System.Windows.Forms.Button();
+            this.btnDownload = new System.Windows.Forms.Button();
+            this.btnZoek = new System.Windows.Forms.Button();
+            this.tbZoek = new System.Windows.Forms.TextBox();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
             this.gbBerichten.SuspendLayout();
@@ -80,6 +83,7 @@
             this.lbReacties.Size = new System.Drawing.Size(154, 290);
             this.lbReacties.TabIndex = 6;
             this.lbReacties.SelectedIndexChanged += new System.EventHandler(this.GetBericht);
+            this.lbReacties.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DoubleClick);
             // 
             // lbBerichten
             // 
@@ -89,6 +93,7 @@
             this.lbBerichten.Size = new System.Drawing.Size(154, 290);
             this.lbBerichten.TabIndex = 5;
             this.lbBerichten.SelectedIndexChanged += new System.EventHandler(this.GetBericht);
+            this.lbBerichten.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DoubleClick);
             // 
             // gbBerichten
             // 
@@ -138,11 +143,41 @@
             this.btnBestand.UseVisualStyleBackColor = true;
             this.btnBestand.Click += new System.EventHandler(this.btnBestand_Click);
             // 
+            // btnDownload
+            // 
+            this.btnDownload.Location = new System.Drawing.Point(357, 352);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(75, 23);
+            this.btnDownload.TabIndex = 11;
+            this.btnDownload.Text = "Download";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
+            // btnZoek
+            // 
+            this.btnZoek.Location = new System.Drawing.Point(356, 381);
+            this.btnZoek.Name = "btnZoek";
+            this.btnZoek.Size = new System.Drawing.Size(75, 23);
+            this.btnZoek.TabIndex = 12;
+            this.btnZoek.Text = "Zoek";
+            this.btnZoek.UseVisualStyleBackColor = true;
+            this.btnZoek.Click += new System.EventHandler(this.btnZoek_Click);
+            // 
+            // tbZoek
+            // 
+            this.tbZoek.Location = new System.Drawing.Point(437, 383);
+            this.tbZoek.Name = "tbZoek";
+            this.tbZoek.Size = new System.Drawing.Size(100, 20);
+            this.tbZoek.TabIndex = 13;
+            // 
             // MediaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 485);
+            this.Controls.Add(this.tbZoek);
+            this.Controls.Add(this.btnZoek);
+            this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.btnBestand);
             this.Controls.Add(this.btnPost);
             this.Controls.Add(this.gbBerichten);
@@ -155,6 +190,7 @@
             this.gbBerichten.ResumeLayout(false);
             this.gbBerichten.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -170,5 +206,8 @@
         private System.Windows.Forms.TextBox tbTags;
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.Button btnBestand;
+        private System.Windows.Forms.Button btnDownload;
+        private System.Windows.Forms.Button btnZoek;
+        private System.Windows.Forms.TextBox tbZoek;
     }
 }
