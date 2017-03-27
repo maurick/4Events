@@ -98,11 +98,13 @@ namespace _4Events.View
         private void SelectedEventChanged(object sender, EventArgs e)
         {
             if (lbEvents.SelectedItem != null)
+            {
                 viewModel.SelectedEvent = (Event)lbEvents.SelectedItem;
 
-            tbEventNaam.Text = viewModel.SelectedEvent.Naam;
-            tbEventBezoekers.Text = Convert.ToString(viewModel.SelectedEvent.MaxBezoekers);
-            dtpEvent.Value = viewModel.SelectedEvent.Datum;
+                tbEventNaam.Text = viewModel.SelectedEvent.Naam;
+                tbEventBezoekers.Text = Convert.ToString(viewModel.SelectedEvent.MaxBezoekers);
+                dtpEvent.Value = viewModel.SelectedEvent.Datum;
+            }
         }
 
         private void btnWijzig_Click(object sender, EventArgs e)
@@ -183,19 +185,39 @@ namespace _4Events.View
 
         private void RefreshOverzicht()
         {
-            lbAanwezig.Items.Clear();
-            lbReservering.Items.Clear();
-            viewModel.Aanwezigen = beheerRepo.GetPresentAccountsByEventID(viewModel.SelectedEvent.ID);
-            viewModel.ReserveringList = reserveerRepo.GetAllReserveringen();
-
-            foreach (var reservering in viewModel.ReserveringList)
+            int RSelected = -1,
+                ASelected = -1;
+            if (lvReservering.Items.Count > 0)
+                RSelected = lvReservering.SelectedIndices[0];
+            if (lvAanwezig.Items.Count > 0)
+                ASelected = lvAanwezig.SelectedIndices[0];
+            lvAanwezig.Items.Clear();
+            lvReservering.Items.Clear();
+            if (viewModel.SelectedEvent != null)
             {
-                lbReservering.Items.Add(reservering);
-            }
+                viewModel.Aanwezigen = beheerRepo.GetPresentAccountsByEventID(viewModel.SelectedEvent.ID);
+                viewModel.ReserveringList = reserveerRepo.GetAllReserveringen();
 
-            foreach (var account in viewModel.Aanwezigen)
-            {
-                lbAanwezig.Items.Add(account);
+                ListViewItem item;
+                foreach (var reservering in viewModel.ReserveringList)
+                {
+                    item = new ListViewItem(new string[] { reservering.MainAccountNaam, Convert.ToString(reservering.Betaald) });
+                    lvReservering.Items.Add(item);
+                }
+
+                foreach (var account in viewModel.Aanwezigen)
+                {
+                    item = new ListViewItem(new string[] { account.Naam });
+                    lvAanwezig.Items.Add(item);
+                }
+                if (ASelected != -1)
+                    lvAanwezig.Items[ASelected].Selected = true;
+                else
+                    lvAanwezig.Items[0].Selected = true;
+                if (RSelected != -1)
+                    lvReservering.Items[RSelected].Selected = true;
+                else
+                    lvReservering.Items[0].Selected = true;
             }
         }
 

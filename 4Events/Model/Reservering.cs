@@ -17,7 +17,7 @@ namespace _4Events.Model
 
         public override string ToString()
         {
-            return ID + " " + Datum.ToShortDateString() + " " + MainAccountNaam;
+            return ID + " " + Datum.ToShortDateString() + " " + MainAccountNaam + " " + Betaald;
         }
     }
 }

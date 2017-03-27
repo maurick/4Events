@@ -61,9 +61,12 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lbAanwezig = new System.Windows.Forms.ListBox();
-            this.lbReservering = new System.Windows.Forms.ListBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lvReservering = new System.Windows.Forms.ListView();
+            this.Naam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Betaald = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvAanwezig = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -76,7 +79,7 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Location = new System.Drawing.Point(17, 16);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(913, 322);
@@ -100,9 +103,9 @@
             this.tabPage1.Controls.Add(this.btnDelete);
             this.tabPage1.Controls.Add(this.lbAccounts);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(905, 293);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Account";
@@ -141,7 +144,7 @@
             // tbEmail
             // 
             this.tbEmail.Location = new System.Drawing.Point(709, 135);
-            this.tbEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(185, 22);
             this.tbEmail.TabIndex = 36;
@@ -149,7 +152,7 @@
             // tbHuisnr
             // 
             this.tbHuisnr.Location = new System.Drawing.Point(851, 74);
-            this.tbHuisnr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbHuisnr.Margin = new System.Windows.Forms.Padding(4);
             this.tbHuisnr.Name = "tbHuisnr";
             this.tbHuisnr.Size = new System.Drawing.Size(44, 22);
             this.tbHuisnr.TabIndex = 35;
@@ -157,7 +160,7 @@
             // tbPostcode
             // 
             this.tbPostcode.Location = new System.Drawing.Point(709, 103);
-            this.tbPostcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPostcode.Margin = new System.Windows.Forms.Padding(4);
             this.tbPostcode.Name = "tbPostcode";
             this.tbPostcode.Size = new System.Drawing.Size(185, 22);
             this.tbPostcode.TabIndex = 34;
@@ -165,7 +168,7 @@
             // tbStraat
             // 
             this.tbStraat.Location = new System.Drawing.Point(709, 71);
-            this.tbStraat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbStraat.Margin = new System.Windows.Forms.Padding(4);
             this.tbStraat.Name = "tbStraat";
             this.tbStraat.Size = new System.Drawing.Size(132, 22);
             this.tbStraat.TabIndex = 33;
@@ -173,7 +176,7 @@
             // tbPlaats
             // 
             this.tbPlaats.Location = new System.Drawing.Point(709, 42);
-            this.tbPlaats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPlaats.Margin = new System.Windows.Forms.Padding(4);
             this.tbPlaats.Name = "tbPlaats";
             this.tbPlaats.Size = new System.Drawing.Size(185, 22);
             this.tbPlaats.TabIndex = 32;
@@ -181,7 +184,7 @@
             // tbNaam
             // 
             this.tbNaam.Location = new System.Drawing.Point(709, 10);
-            this.tbNaam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbNaam.Margin = new System.Windows.Forms.Padding(4);
             this.tbNaam.Name = "tbNaam";
             this.tbNaam.Size = new System.Drawing.Size(185, 22);
             this.tbNaam.TabIndex = 31;
@@ -209,7 +212,7 @@
             // btnWijzig
             // 
             this.btnWijzig.Location = new System.Drawing.Point(8, 43);
-            this.btnWijzig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnWijzig.Margin = new System.Windows.Forms.Padding(4);
             this.btnWijzig.Name = "btnWijzig";
             this.btnWijzig.Size = new System.Drawing.Size(100, 28);
             this.btnWijzig.TabIndex = 7;
@@ -220,7 +223,7 @@
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(8, 7);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 28);
             this.btnDelete.TabIndex = 5;
@@ -233,7 +236,7 @@
             this.lbAccounts.FormattingEnabled = true;
             this.lbAccounts.ItemHeight = 16;
             this.lbAccounts.Location = new System.Drawing.Point(116, 7);
-            this.lbAccounts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbAccounts.Margin = new System.Windows.Forms.Padding(4);
             this.lbAccounts.Name = "lbAccounts";
             this.lbAccounts.Size = new System.Drawing.Size(480, 276);
             this.lbAccounts.TabIndex = 4;
@@ -255,9 +258,9 @@
             this.tabPage2.Controls.Add(this.btnDeleteEvent);
             this.tabPage2.Controls.Add(this.lbEvents);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(905, 293);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Event";
@@ -266,7 +269,7 @@
             // btnOverzicht
             // 
             this.btnOverzicht.Location = new System.Drawing.Point(4, 78);
-            this.btnOverzicht.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOverzicht.Margin = new System.Windows.Forms.Padding(4);
             this.btnOverzicht.Name = "btnOverzicht";
             this.btnOverzicht.Size = new System.Drawing.Size(104, 28);
             this.btnOverzicht.TabIndex = 15;
@@ -277,7 +280,7 @@
             // btnNieuwEvent
             // 
             this.btnNieuwEvent.Location = new System.Drawing.Point(605, 255);
-            this.btnNieuwEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNieuwEvent.Margin = new System.Windows.Forms.Padding(4);
             this.btnNieuwEvent.Name = "btnNieuwEvent";
             this.btnNieuwEvent.Size = new System.Drawing.Size(289, 28);
             this.btnNieuwEvent.TabIndex = 14;
@@ -289,7 +292,7 @@
             // 
             this.btnEventWijzig.Enabled = false;
             this.btnEventWijzig.Location = new System.Drawing.Point(8, 42);
-            this.btnEventWijzig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEventWijzig.Margin = new System.Windows.Forms.Padding(4);
             this.btnEventWijzig.Name = "btnEventWijzig";
             this.btnEventWijzig.Size = new System.Drawing.Size(100, 28);
             this.btnEventWijzig.TabIndex = 13;
@@ -300,7 +303,7 @@
             // 
             this.cbLocatie.FormattingEnabled = true;
             this.cbLocatie.Location = new System.Drawing.Point(709, 107);
-            this.cbLocatie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbLocatie.Margin = new System.Windows.Forms.Padding(4);
             this.cbLocatie.Name = "cbLocatie";
             this.cbLocatie.Size = new System.Drawing.Size(185, 24);
             this.cbLocatie.TabIndex = 12;
@@ -318,7 +321,7 @@
             // dtpEvent
             // 
             this.dtpEvent.Location = new System.Drawing.Point(709, 42);
-            this.dtpEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEvent.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEvent.Name = "dtpEvent";
             this.dtpEvent.Size = new System.Drawing.Size(185, 22);
             this.dtpEvent.TabIndex = 10;
@@ -326,7 +329,7 @@
             // tbEventBezoekers
             // 
             this.tbEventBezoekers.Location = new System.Drawing.Point(709, 74);
-            this.tbEventBezoekers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbEventBezoekers.Margin = new System.Windows.Forms.Padding(4);
             this.tbEventBezoekers.Name = "tbEventBezoekers";
             this.tbEventBezoekers.Size = new System.Drawing.Size(185, 22);
             this.tbEventBezoekers.TabIndex = 7;
@@ -354,7 +357,7 @@
             // tbEventNaam
             // 
             this.tbEventNaam.Location = new System.Drawing.Point(709, 10);
-            this.tbEventNaam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbEventNaam.Margin = new System.Windows.Forms.Padding(4);
             this.tbEventNaam.Name = "tbEventNaam";
             this.tbEventNaam.Size = new System.Drawing.Size(185, 22);
             this.tbEventNaam.TabIndex = 3;
@@ -373,7 +376,7 @@
             // 
             this.btnDeleteEvent.Enabled = false;
             this.btnDeleteEvent.Location = new System.Drawing.Point(8, 7);
-            this.btnDeleteEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteEvent.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteEvent.Name = "btnDeleteEvent";
             this.btnDeleteEvent.Size = new System.Drawing.Size(100, 28);
             this.btnDeleteEvent.TabIndex = 1;
@@ -385,7 +388,7 @@
             this.lbEvents.FormattingEnabled = true;
             this.lbEvents.ItemHeight = 16;
             this.lbEvents.Location = new System.Drawing.Point(116, 7);
-            this.lbEvents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbEvents.Margin = new System.Windows.Forms.Padding(4);
             this.lbEvents.Name = "lbEvents";
             this.lbEvents.Size = new System.Drawing.Size(480, 276);
             this.lbEvents.TabIndex = 0;
@@ -393,12 +396,12 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lvAanwezig);
+            this.tabPage3.Controls.Add(this.lvReservering);
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.lbAanwezig);
-            this.tabPage3.Controls.Add(this.lbReservering);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(905, 293);
             this.tabPage3.TabIndex = 2;
@@ -425,36 +428,56 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Reserveringen";
             // 
-            // lbAanwezig
-            // 
-            this.lbAanwezig.FormattingEnabled = true;
-            this.lbAanwezig.ItemHeight = 16;
-            this.lbAanwezig.Location = new System.Drawing.Point(443, 28);
-            this.lbAanwezig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lbAanwezig.Name = "lbAanwezig";
-            this.lbAanwezig.Size = new System.Drawing.Size(455, 244);
-            this.lbAanwezig.TabIndex = 1;
-            // 
-            // lbReservering
-            // 
-            this.lbReservering.FormattingEnabled = true;
-            this.lbReservering.ItemHeight = 16;
-            this.lbReservering.Location = new System.Drawing.Point(5, 28);
-            this.lbReservering.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lbReservering.Name = "lbReservering";
-            this.lbReservering.Size = new System.Drawing.Size(428, 244);
-            this.lbReservering.TabIndex = 0;
-            // 
             // btnBack
             // 
             this.btnBack.Location = new System.Drawing.Point(23, 346);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(903, 28);
             this.btnBack.TabIndex = 7;
             this.btnBack.Text = "Terug";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // lvReservering
+            // 
+            this.lvReservering.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Naam,
+            this.Betaald});
+            this.lvReservering.FullRowSelect = true;
+            this.lvReservering.Location = new System.Drawing.Point(4, 28);
+            this.lvReservering.Name = "lvReservering";
+            this.lvReservering.Size = new System.Drawing.Size(432, 244);
+            this.lvReservering.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lvReservering.TabIndex = 4;
+            this.lvReservering.UseCompatibleStateImageBehavior = false;
+            this.lvReservering.View = System.Windows.Forms.View.Details;
+            // 
+            // Naam
+            // 
+            this.Naam.Text = "Naam";
+            // 
+            // Betaald
+            // 
+            this.Betaald.Text = "Betaald";
+            this.Betaald.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lvAanwezig
+            // 
+            this.lvAanwezig.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvAanwezig.FullRowSelect = true;
+            this.lvAanwezig.Location = new System.Drawing.Point(442, 28);
+            this.lvAanwezig.Name = "lvAanwezig";
+            this.lvAanwezig.Size = new System.Drawing.Size(460, 244);
+            this.lvAanwezig.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lvAanwezig.TabIndex = 5;
+            this.lvAanwezig.UseCompatibleStateImageBehavior = false;
+            this.lvAanwezig.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Naam";
             // 
             // BeheerForm
             // 
@@ -463,7 +486,7 @@
             this.ClientSize = new System.Drawing.Size(947, 385);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.tabControl);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BeheerForm";
             this.Text = "Beheer Form";
             this.tabControl.ResumeLayout(false);
@@ -513,7 +536,10 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ListBox lbAanwezig;
-        private System.Windows.Forms.ListBox lbReservering;
+        private System.Windows.Forms.ListView lvReservering;
+        private System.Windows.Forms.ColumnHeader Naam;
+        private System.Windows.Forms.ColumnHeader Betaald;
+        private System.Windows.Forms.ListView lvAanwezig;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
