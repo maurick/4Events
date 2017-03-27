@@ -282,5 +282,30 @@ namespace _4Events.Database
             string hash = System.Text.Encoding.ASCII.GetString(data);
             return hash;
         }
+        
+        public List<Account> GetPresentAccountsByEventID(int EventID)
+        {
+            List<Account> result = new List<Account>();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT a.* " +
+                                "FROM ACCOUNT a " +
+                                "INNER JOIN RESERVERING_ACCOUNT ra on a.ID = ra.AccountID " +
+                                "INNER JOIN RESERVERING r on ra.ReserveringID = r.ID " +
+                                "WHERE r.EventID = " + EventID + " " +
+                                "AND Ingechecked = '1';";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(CreateAccountFromReader(reader));
+                        }
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

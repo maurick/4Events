@@ -11,6 +11,7 @@ using _4Events.ViewModel;
 using _4Events.Logic;
 using _4Events.Database;
 using _4Events.Model;
+using System.Timers;
 
 namespace _4Events.View
 {
@@ -19,10 +20,12 @@ namespace _4Events.View
         BeheerViewModel viewModel = new BeheerViewModel();
         BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
         ReserveringRepository reserveerRepo = new ReserveringRepository(new ReserveringContext());
+        System.Timers.Timer timer;
 
         public BeheerForm()
         {
             InitializeComponent();
+            InitializeTimer();
 
             viewModel.Account = beheerRepo.GetAccountById(beheerRepo.GetAccountCache());
             
@@ -163,13 +166,27 @@ namespace _4Events.View
             RefreshForm();
         }
 
-
-        //TODO: TIMER
+        private void InvokeOverzicht()
+        {
+            if (InvokeRequired)
+                try
+                {
+                    MethodInvoker method = new MethodInvoker(RefreshOverzicht);
+                    Invoke(method);
+                    return;
+                }
+                catch (Exception)
+                {
+                    
+                }
+        }
 
         private void RefreshOverzicht()
         {
-            // TODO: get reservering selected event
-            // get aanwezigen selected event
+            lbAanwezig.Items.Clear();
+            lbReservering.Items.Clear();
+            viewModel.Aanwezigen = beheerRepo.GetPresentAccountsByEventID(viewModel.SelectedEvent.ID);
+            viewModel.ReserveringList = reserveerRepo.GetAllReserveringen();
 
             foreach (var reservering in viewModel.ReserveringList)
             {
@@ -194,6 +211,29 @@ namespace _4Events.View
         {
             tabControl.SelectedTab = tabPage3;
             RefreshOverzicht();
+        }
+
+        private void InitializeTimer()
+        {
+            timer = new System.Timers.Timer();
+            timer.Elapsed += new ElapsedEventHandler(TimerTick);
+            timer.Interval = 5000;
+        }
+
+        private void TimerTick(object sender, ElapsedEventArgs e)
+        {
+            InvokeOverzicht();
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab == tabPage3)
+            {
+                if (!timer.Enabled)
+                    timer.Start();
+            }
+            else if (timer.Enabled)
+                timer.Stop();
         }
     }
 }

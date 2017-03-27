@@ -31,6 +31,11 @@ namespace _4Events.Logic
             return context.GetAccountByEmail(email);
         }
 
+        public List<Account> GetPresentAccountsByEventID(int EventID)
+        {
+            return context.GetPresentAccountsByEventID(EventID);
+        }
+
         public Account InsertAccount(Account account)
         {
             return context.InsertAccount(account);
