@@ -139,7 +139,7 @@
             // 
             // btnReserveer
             // 
-            this.btnReserveer.Location = new System.Drawing.Point(936, 411);
+            this.btnReserveer.Location = new System.Drawing.Point(936, 373);
             this.btnReserveer.Name = "btnReserveer";
             this.btnReserveer.Size = new System.Drawing.Size(262, 65);
             this.btnReserveer.TabIndex = 11;
