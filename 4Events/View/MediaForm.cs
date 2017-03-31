@@ -88,7 +88,7 @@ namespace _4Events.View
 
             if (media.InsertBericht(viewModel.Bericht) != true)
             {
-                MessageBox.Show("Error: Kan geen bericht in de database plaatsen.");
+                MessageBox.Show("Kan geen bericht in de database plaatsen.");
                 return;
             }
 

@@ -19,7 +19,7 @@ namespace _4Events.View
     {
         BeheerViewModel viewModel = new BeheerViewModel();
         Beheer beheer = new Beheer(new BeheerContext());
-        Logic.ReserveringLogic reserveerRepo = new ReserveringLogic(new ReserveringContext());
+        ReserveringLogic reserveerRepo = new ReserveringLogic(new ReserveringContext());
         System.Timers.Timer timer;
 
         public BeheerForm()

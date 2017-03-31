@@ -28,7 +28,8 @@ namespace _4Events.View
         {
             foreach (Control textbox in this.Controls)
             {
-                if(textbox is TextBox && string.IsNullOrWhiteSpace(textbox.Text))
+                if(textbox is TextBox 
+                   && string.IsNullOrWhiteSpace(textbox.Text))
                 {
                     MessageBox.Show("Niet alle velden zijn ingevuld.");
                     return;
