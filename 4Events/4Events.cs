@@ -9,9 +9,9 @@ namespace _4Events
 {
     public class _4Events
     {
-        public BeheerRepository BeheerRepository { get; set; }
-        public MediaRepository MediaRepository { get; set; }
-        public ReserveringRepository ReserveringRepository { get; set; }
-        public VerhuurRepository VerhuurRepository { get; set; }
+        public Beheer BeheerRepository { get; set; }
+        public Media MediaRepository { get; set; }
+        public ReserveringLogic ReserveringRepository { get; set; }
+        public VerhuurLogic VerhuurRepository { get; set; }
     }
 }

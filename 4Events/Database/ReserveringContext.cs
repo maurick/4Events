@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace _4Events.Database
 {
-    public class ReserveringContext : IReserveringContext
+    public class ReserveringContext : IReserveringRepository
     {
         public List<Locatie> GetAllLocaties()
         {

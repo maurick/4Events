@@ -7,7 +7,7 @@ using _4Events.Model;
 
 namespace _4Events.Database
 {
-    public interface IVerhuurContext
+    public interface IVerhuurRepository
     {
         List<Verhuur> GetAllVerhuur();
     }

@@ -18,15 +18,15 @@ namespace _4Events.View
     public partial class MainForm : Form
     {
         MainViewModel viewModel = new MainViewModel();
-        BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
+        Beheer beheer = new Beheer();
 
         public MainForm()
         {
             InitializeComponent();
             // Globale authenticatie
             // TODO:
-            // Beter Implementeren. Met expiration date
-            viewModel.Account = beheerRepo.GetAccountById(beheerRepo.GetAccountCache());
+            // Beter Implementeren. Met expiration date?
+            viewModel.Account = beheer.GetAccountById(beheer.GetAccountCache());
             lblWelkom.Text = "Welkom, " + viewModel.Account.Naam;
             lblFunctie.Text = "Uw huidige functie is: " + viewModel.Account.Functie.ToString();
 

@@ -18,21 +18,21 @@ namespace _4Events.View
 {
     public partial class MediaForm : Form
     {
-        MediaRepository mediaRepo = new MediaRepository(new MediaContext());
-        BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
+        Media media = new Media();
+        Beheer beheer = new Beheer();
         MediaViewModel viewModel = new MediaViewModel();
 
         public MediaForm()
         {
             InitializeComponent();
-            viewModel.Account = beheerRepo.GetAccountById((beheerRepo.GetAccountCache()));
+            viewModel.Account = beheer.GetAccountById((beheer.GetAccountCache()));
 
             RefreshForm();
         }
 
         private void RefreshForm()
         {
-            viewModel.ListBerichten = mediaRepo.GetBerichten(999);
+            viewModel.ListBerichten = media.GetBerichten(999);
             viewModel.Bericht = new Bericht();
             viewModel.Bericht.Bestand = null;
 
@@ -45,8 +45,6 @@ namespace _4Events.View
                     lbBerichten.Items.Add(bericht);
                 }
             }
-
-
 
             rtbTekst.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tekst);
             tbTags.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tags);
@@ -75,7 +73,7 @@ namespace _4Events.View
                 viewModel.Bericht.ReplyTo = viewModel.SelectedBericht.ID;
             }
 
-            if (mediaRepo.InsertBericht(viewModel.Bericht) != true)
+            if (media.InsertBericht(viewModel.Bericht) != true)
             {
                 MessageBox.Show("Error: Kan geen bericht in de database plaatsen.");
                 return;
@@ -86,6 +84,7 @@ namespace _4Events.View
             RefreshForm();
         }
 
+        // Selected Index changed
         private void GetBericht(object sender, EventArgs e)
         {
             var listbox = (ListBox)sender;
@@ -132,6 +131,7 @@ namespace _4Events.View
                 MessageBox.Show("Geen bericht.");
             }
 
+            // Alle filelogic in logic
             if(openBestand.ShowDialog() == DialogResult.OK)
             {
                 filename = openBestand.FileName;
@@ -153,13 +153,15 @@ namespace _4Events.View
         private void btnZoek_Click(object sender, EventArgs e)
         {
             lbBerichten.Items.Clear();
-            foreach (var bericht in mediaRepo.SearchBerichten(tbZoek.Text))
+
+            // Kan in RefreshForm()
+            foreach (var bericht in media.SearchBerichten(tbZoek.Text))
             {
                 lbBerichten.Items.Add(bericht);
             }
         }
 
-        private void DoubleClick(object sender, MouseEventArgs e)
+        private new void DoubleClick(object sender, MouseEventArgs e)
         {
             var listbox = (ListBox)sender;
 

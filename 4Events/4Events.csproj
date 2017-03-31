@@ -64,19 +64,18 @@
     <Compile Include="4Events.cs" />
     <Compile Include="Database\BeheerContext.cs" />
     <Compile Include="Database\Database.cs" />
-    <Compile Include="Database\IBeheerContext.cs" />
-    <Compile Include="Database\IGenericContext.cs" />
-    <Compile Include="Database\IMediaContext.cs" />
-    <Compile Include="Database\IReserveringContext.cs" />
-    <Compile Include="Database\IVerhuurContext.cs" />
+    <Compile Include="Database\IBeheerRepository.cs" />
+    <Compile Include="Database\IMediaRepository.cs" />
+    <Compile Include="Database\IReserveringRepository.cs" />
+    <Compile Include="Database\IVerhuurRepository.cs" />
     <Compile Include="Database\MediaContext.cs" />
     <Compile Include="Database\ReserveringContext.cs" />
     <Compile Include="Database\VerhuurContext.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Logic\MediaRepository.cs" />
-    <Compile Include="Logic\ReserveringRepository.cs" />
-    <Compile Include="Logic\VerhuurRepository.cs" />
+    <Compile Include="Logic\Media.cs" />
+    <Compile Include="Logic\ReserveringLogic.cs" />
+    <Compile Include="Logic\VerhuurLogic.cs" />
     <Compile Include="Model\Bericht.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Locatie.cs" />
@@ -100,7 +99,7 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\BeheerRepository.cs" />
+    <Compile Include="Logic\Beheer.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

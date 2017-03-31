@@ -18,8 +18,8 @@ namespace _4Events.View
     public partial class BeheerForm : Form
     {
         BeheerViewModel viewModel = new BeheerViewModel();
-        BeheerRepository beheerRepo = new BeheerRepository(new BeheerContext());
-        ReserveringRepository reserveerRepo = new ReserveringRepository(new ReserveringContext());
+        Beheer beheer = new Beheer();
+        Logic.ReserveringLogic reserveerRepo = new ReserveringLogic();
         System.Timers.Timer timer;
 
         public BeheerForm()
@@ -27,15 +27,15 @@ namespace _4Events.View
             InitializeComponent();
             InitializeTimer();
 
-            viewModel.Account = beheerRepo.GetAccountById(beheerRepo.GetAccountCache());
+            viewModel.Account = beheer.GetAccountById(beheer.GetAccountCache());
             
             RefreshForm();
         }
 
         private void RefreshForm()
         {
-            viewModel.AccountList = beheerRepo.GetAllAccounts();
-            viewModel.EventList = beheerRepo.GetAllEvents();
+            viewModel.AccountList = beheer.GetAllAccounts();
+            viewModel.EventList = beheer.GetAllEvents();
             viewModel.LocatieList = reserveerRepo.GetAllLocaties();
 
             lbAccounts.Items.Clear();
@@ -75,7 +75,7 @@ namespace _4Events.View
                 return;
             }
 
-            beheerRepo.DeleteAccount(viewModel.SelectedAccount.ID);
+            beheer.DeleteAccount(viewModel.SelectedAccount.ID);
 
             RefreshForm();
         }
@@ -120,14 +120,14 @@ namespace _4Events.View
                     MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
-            Account newAccount = beheerRepo.GetAccountById(viewModel.SelectedAccount.ID);
+            Account newAccount = beheer.GetAccountById(viewModel.SelectedAccount.ID);
             newAccount.Naam = tbNaam.Text;
             newAccount.Plaats = tbPlaats.Text;
             newAccount.Huisnummer = Convert.ToInt32(tbHuisnr.Text);
             newAccount.Postcode = tbPostcode.Text;
             newAccount.Email = tbEmail.Text;
             
-            beheerRepo.UpdateAccount(newAccount);
+            beheer.UpdateAccount(newAccount);
             RefreshForm();
         }
 
@@ -164,7 +164,7 @@ namespace _4Events.View
                 MaxBezoekers = Convert.ToInt32(tbEventBezoekers.Text)
             };
 
-            beheerRepo.InsertEvent(newEvent);
+            beheer.InsertEvent(newEvent);
             RefreshForm();
         }
 
@@ -195,7 +195,7 @@ namespace _4Events.View
             lvReservering.Items.Clear();
             if (viewModel.SelectedEvent != null)
             {
-                viewModel.Aanwezigen = beheerRepo.GetPresentAccountsByEventID(viewModel.SelectedEvent.ID);
+                viewModel.Aanwezigen = beheer.GetPresentAccountsByEventID(viewModel.SelectedEvent.ID);
                 viewModel.ReserveringList = reserveerRepo.GetAllReserveringen();
 
                 ListViewItem item;

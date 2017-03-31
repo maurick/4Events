@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace _4Events.Database
 {
-    public class BeheerContext : IBeheerContext
+    public class BeheerContext : IBeheerRepository
     {
 
         /*
@@ -104,8 +104,6 @@ namespace _4Events.Database
         {
             using (SqlConnection connection = Database.Connection)
             {
-
-                newItem.Password = EncryptPassword(newItem.Password);
 
                 string query = "INSERT INTO Account (Functie, Naam, Plaats, Straat, Huisnr, Postcode, Email, Wachtwoord)" +
                     " VALUES(" +
@@ -273,14 +271,6 @@ namespace _4Events.Database
                 Password = Convert.ToString(reader["Wachtwoord"])
             };
             return account;
-        }
-
-        private string EncryptPassword(string inputString)
-        {
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
-            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            string hash = System.Text.Encoding.ASCII.GetString(data);
-            return hash;
         }
         
         public List<Account> GetPresentAccountsByEventID(int EventID)

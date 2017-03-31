@@ -7,7 +7,7 @@ using _4Events.Model;
 
 namespace _4Events.Database
 {
-    public interface IMediaContext
+    public interface IMediaRepository
     {
         List<Bericht> GetBerichten(int aantal);
         List<Bericht> GetReacties();

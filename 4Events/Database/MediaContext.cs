@@ -9,7 +9,7 @@ using System.Data;
 
 namespace _4Events.Database
 {
-    public class MediaContext : IMediaContext
+    public class MediaContext : IMediaRepository
     {
         public bool DeleteBericht(int id)
         {

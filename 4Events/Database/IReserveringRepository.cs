@@ -7,7 +7,7 @@ using _4Events.Model;
 
 namespace _4Events.Database
 {
-    public interface IReserveringContext
+    public interface IReserveringRepository
     {
         List<Reservering> GetAllReserveringen();
         List<Locatie> GetAllLocaties();

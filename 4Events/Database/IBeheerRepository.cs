@@ -3,7 +3,7 @@ using _4Events.Model;
 
 namespace _4Events.Database
 {
-    public interface IBeheerContext
+    public interface IBeheerRepository
     {
         List<Account> GetAllAccounts();
         List<Event> GetAllEvents();
