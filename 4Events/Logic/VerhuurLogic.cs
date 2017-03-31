@@ -12,6 +12,10 @@ namespace _4Events.Logic
     {
         private IVerhuurRepository repository = new VerhuurContext();
 
+        public VerhuurLogic(IVerhuurRepository repository)
+        {
+            this.repository = repository;
+        }
 
         public List<Model.Verhuur> GetAllMessages()
         {

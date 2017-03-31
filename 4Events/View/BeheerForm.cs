@@ -18,8 +18,8 @@ namespace _4Events.View
     public partial class BeheerForm : Form
     {
         BeheerViewModel viewModel = new BeheerViewModel();
-        Beheer beheer = new Beheer();
-        Logic.ReserveringLogic reserveerRepo = new ReserveringLogic();
+        Beheer beheer = new Beheer(new BeheerContext());
+        Logic.ReserveringLogic reserveerRepo = new ReserveringLogic(new ReserveringContext());
         System.Timers.Timer timer;
 
         public BeheerForm()

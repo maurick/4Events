@@ -71,7 +71,6 @@
     <Compile Include="Database\MediaContext.cs" />
     <Compile Include="Database\ReserveringContext.cs" />
     <Compile Include="Database\VerhuurContext.cs" />
-    <Compile Include="Encrypt.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Logic\Media.cs" />
     <Compile Include="Logic\ReserveringLogic.cs" />

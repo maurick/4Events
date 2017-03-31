@@ -12,6 +12,11 @@ namespace _4Events.Logic
         private IBeheerRepository repository = new BeheerContext();
         private string path = "CurrentAccount";
 
+        public Beheer(IBeheerRepository repository)
+        {
+            this.repository = repository;
+        }
+
         public Account Login(string email, string password)
         {
             Account account = GetAccountByEmail(email);

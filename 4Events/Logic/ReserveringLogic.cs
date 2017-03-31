@@ -12,6 +12,10 @@ namespace _4Events.Logic
     {
         private IReserveringRepository repository = new ReserveringContext();
 
+        public ReserveringLogic(IReserveringRepository repository)
+        {
+            this.repository = repository;
+        }
 
         public List<Model.Reservering> GetAllReserveringen()
         {

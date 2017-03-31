@@ -13,6 +13,11 @@ namespace _4Events.Logic
     {
         private IMediaRepository repository = new MediaContext();
 
+        public Media(IMediaRepository repository)
+        {
+            this.repository = repository;
+        }
+
         public List<Bericht> GetBerichten(int aantal)
         {
             return repository.GetBerichten(aantal);

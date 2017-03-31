@@ -18,8 +18,8 @@ namespace _4Events.View
 {
     public partial class MediaForm : Form
     {
-        Media media = new Media();
-        Beheer beheer = new Beheer();
+        Media media = new Media(new MediaContext());
+        Beheer beheer = new Beheer(new BeheerContext());
         MediaViewModel viewModel = new MediaViewModel();
 
         public MediaForm()

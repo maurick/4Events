@@ -18,7 +18,7 @@ namespace _4Events.View
     public partial class MainForm : Form
     {
         MainViewModel viewModel = new MainViewModel();
-        Beheer beheer = new Beheer();
+        Beheer beheer = new Beheer(new BeheerContext());
 
         public MainForm()
         {

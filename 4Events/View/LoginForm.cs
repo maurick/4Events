@@ -12,7 +12,7 @@ namespace _4Events
 {
     public partial class LoginForm : Form
     {
-        Beheer beheer = new Beheer();
+        Beheer beheer = new Beheer(new BeheerContext());
         LoginViewModel viewModel = new LoginViewModel();
 
         public LoginForm()
