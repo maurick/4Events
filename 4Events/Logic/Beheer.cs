@@ -4,6 +4,8 @@ using _4Events.Database;
 using System.IO;
 using System;
 using System.Security.Principal;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace _4Events.Logic
 {
@@ -70,21 +72,60 @@ namespace _4Events.Logic
             return repository.GetAllEvents();
         }
 
-        public Event InsertEvent(Event newItem)
+        public Event InsertEvent(Event Event)
         {
-            return repository.InsertEvent(newItem);
+            return repository.InsertEvent(Event);
         }
 
         public int GetAccountCache()
         {
-            return Convert.ToInt32(File.ReadAllText(path));
+            IFormatter formatter = new BinaryFormatter();
+            try
+            {
+                using (Stream s = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    Account account = (Account)formatter.Deserialize(s);
+                    return account.ID;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                throw;
+            }
+            catch (SerializationException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
-        public void CreateAccountCache(Account account)
+        public bool CreateAccountCache(Account account)
         {
-            File.WriteAllText(path, account.ID + "");
+            IFormatter formatter = new BinaryFormatter();
+            try
+            {
+                using (Stream s = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    formatter.Serialize(s, account);
+                }
+            }
+            //catch (ArgumentNullException)
+            //{ }
+            //catch (SerializationException)
+            //{ }
+
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
+        // Kan nog een salt toevoegen voor ultieme beveiliging.
         private string EncryptPassword(string inputString)
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);

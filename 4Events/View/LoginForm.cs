@@ -28,7 +28,11 @@ namespace _4Events
         {
             if ((viewModel.Account = beheer.Login(tbEmail.Text, tbWachtwoord.Text)) != null)
             {
-                beheer.CreateAccountCache(viewModel.Account);
+                if (!beheer.CreateAccountCache(viewModel.Account))
+                {
+                    MessageBox.Show("Kan geen account niet serialiseren.");
+                    return;
+                }
 
                 this.Hide();
                 MainForm Form = new MainForm();

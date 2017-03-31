@@ -19,8 +19,8 @@ namespace _4Events.View
         public MediaForm()
         {
             InitializeComponent();
-            viewModel.Account = beheer.GetAccountById((beheer.GetAccountCache()));
 
+            viewModel.Account = beheer.GetAccountById((beheer.GetAccountCache()));
             RefreshForm();
         }
 
@@ -93,7 +93,6 @@ namespace _4Events.View
             }
 
             MessageBox.Show("Bericht succesvol gepost.");
-
             RefreshForm();
         }
 
@@ -106,13 +105,12 @@ namespace _4Events.View
             {
                 MessageBox.Show("Geen bericht.");
             }
-
-            // Alle filelogic in logic ofzo
             if(openBestand.ShowDialog() == DialogResult.OK)
             {
+                // Kan in media logic misschien?
+
                 filename = openBestand.FileName;
                 
-
                 Image image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
 
                 pbBestand.Image = image;
@@ -130,13 +128,24 @@ namespace _4Events.View
 
             if(saveImageDialog.FileName != "")
             {
-                using (FileStream fs = (FileStream)saveImageDialog.OpenFile())
+                try
                 {
-                    pbBestand.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    using (FileStream fs = (FileStream)saveImageDialog.OpenFile())
+                    {
+                        pbBestand.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
                 }
+                catch (ArgumentNullException)
+                {
+                    MessageBox.Show("Filename or format is null");
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                
             }
         }
-
 
         private void btnZoek_Click(object sender, EventArgs e)
         {
@@ -150,19 +159,6 @@ namespace _4Events.View
                 tvBericht.Nodes.Add(tn);
             } 
         }
-
-        private new void DoubleClick(object sender, MouseEventArgs e)
-        {
-            var listbox = (ListBox)sender;
-
-            int index = listbox.IndexFromPoint(e.Location);
-            if (index != ListBox.NoMatches)
-            {
-                MessageBox.Show("laat reacties van dit bericht zien ofzo TODO toedeloe.");
-            }
-
-        }
-
         private void tvBericht_AfterSelect(object sender, TreeViewEventArgs e)
         {
             Bericht b = (Bericht)e.Node.Tag;
@@ -201,7 +197,7 @@ namespace _4Events.View
             }
             else
             {
-                MessageBox.Show("Kan bericht geen like geven.");
+                MessageBox.Show("Al gerapporteerd.");
             }
         }
     }

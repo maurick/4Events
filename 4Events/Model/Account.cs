@@ -1,5 +1,6 @@
 ﻿namespace _4Events.Model
 {
+    [System.Serializable]
     public class Account
     {
         public int ID { get; set; }
