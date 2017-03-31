@@ -38,6 +38,30 @@ namespace _4Events.Database
             return result;
         }
 
+        public int GetLikesAmount(Bericht bericht)
+        {
+            int result = 0;
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT COUNT(*) FROM [LIKE] WHERE BerichtID = @berichtid;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@berichtid", bericht.ID);
+
+                    try
+                    {
+                        result = (int)command.ExecuteScalar();
+                    }
+                    catch (SqlException)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+            return result;
+        }
+
         public List<Bericht> GetReacties()
         {
             throw new NotImplementedException();
@@ -92,6 +116,54 @@ namespace _4Events.Database
             return true;
         }
 
+        public bool InsertLike(Bericht bericht, Account account)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO [LIKE] (AccountID, BerichtID) VALUES (@accountid, @berichtid)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@accountid", account.ID);
+                    command.Parameters.AddWithValue("@berichtid", bericht.ID);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool InsertReport(Bericht bericht, Account account)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO [Report] (AccountID, BerichtID) VALUES (@accountid, @berichtid)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@accountid", account.ID);
+                    command.Parameters.AddWithValue("@berichtid", bericht.ID);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         private Bericht CreateBerichtFromReader(SqlDataReader reader)
         {
             Bericht bericht = new Bericht()
@@ -103,6 +175,8 @@ namespace _4Events.Database
                 Tekst = Convert.ToString(reader["Tekst"]),
                 AccountID = Convert.ToInt32(reader["AccountID"])
             };
+
+            bericht.AmountLikes = GetLikesAmount(bericht);
 
             return bericht;
         }

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using _4Events.Model;
 using _4Events.Database;
+using System.Drawing;
 
 namespace _4Events.Logic
 {
@@ -39,6 +40,18 @@ namespace _4Events.Logic
             return output;
         }
 
+        public bool LikeBericht(Bericht bericht, Account account)
+        {
+            return repository.InsertLike(bericht, account);
+        }
+
+        public bool RaporteerBericht(Bericht bericht, Account account)
+        {
+            // Als er te veel reports zijn delete/hide bericht
+
+            return repository.InsertReport(bericht, account);
+        }
+
         public bool InsertBericht(Bericht bericht)
         {
             if(Search(bericht.Tekst, "bad words")) // TODO bad word list
@@ -57,6 +70,23 @@ namespace _4Events.Logic
             isMatched = Regex.IsMatch(input, pattern);
 
             return isMatched;
+        }
+
+        public Image ConvertByteArrayToImage(byte[] bytes)
+        {
+            Image result;
+
+            try
+            {
+                result = (Bitmap)((new ImageConverter()).ConvertFrom(bytes));
+            }
+            catch (NotSupportedException)
+            {
+                throw;
+            }
+
+
+            return result;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace _4Events.View
             {
                 if(item.ReplyTo == 0)
                 {
-                    TreeNode tn = new TreeNode(item.Tekst);
+                    TreeNode tn = new TreeNode(item.ToString());
                     tn.Tag = item;
                     tvBericht.Nodes.Add(tn);
                     PopulateTreeNode(item.ID, tn);
@@ -53,7 +53,7 @@ namespace _4Events.View
             {
                 if(item.ReplyTo == parentID)
                 {
-                    TreeNode tn = new TreeNode(item.Tekst);
+                    TreeNode tn = new TreeNode(item.ToString());
                     tn.Tag = item;
 
                     parentNode.Nodes.Add(tn);
@@ -122,8 +122,21 @@ namespace _4Events.View
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            // direct uit de byte array lezen van verschillende bestanden.
+            // De byte array in bestand zou ook andere bestanden kunnen bevatten.
+            SaveFileDialog saveImageDialog = new SaveFileDialog();
+            saveImageDialog.Filter = "Bitmap Image|*.bmp";
+            saveImageDialog.Title = "Download een plaatje";
+            saveImageDialog.ShowDialog();
+
+            if(saveImageDialog.FileName != "")
+            {
+                using (FileStream fs = (FileStream)saveImageDialog.OpenFile())
+                {
+                    pbBestand.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+            }
         }
+
 
         private void btnZoek_Click(object sender, EventArgs e)
         {
@@ -131,7 +144,7 @@ namespace _4Events.View
             foreach (var item in media.SearchBerichten(tbZoek.Text))
             {
 
-                TreeNode tn = new TreeNode(item.Tekst);
+                TreeNode tn = new TreeNode(item.ToString());
                 tn.Tag = item;
 
                 tvBericht.Nodes.Add(tn);
@@ -155,12 +168,12 @@ namespace _4Events.View
             Bericht b = (Bericht)e.Node.Tag;
 
             viewModel.SelectedBericht = b;
+            lblSelectBericht.Text = b.ID + "";
 
-            if (viewModel.SelectedBericht != null && viewModel.SelectedBericht.Bestand != null)
+            if (viewModel.SelectedBericht != null
+                && viewModel.SelectedBericht.Bestand != null)
             {
-                //TODO zet buiten de form
-
-                pbBestand.Image = (Bitmap)((new ImageConverter()).ConvertFrom(viewModel.SelectedBericht.Bestand));
+                pbBestand.Image = media.ConvertByteArrayToImage(viewModel.SelectedBericht.Bestand);
             }
             else
             {
@@ -170,12 +183,26 @@ namespace _4Events.View
 
         private void btnLike_Click(object sender, EventArgs e)
         {
-            // TODO database query die like relatie maakt.
+            if(media.LikeBericht(viewModel.SelectedBericht, viewModel.Account))
+            {
+                RefreshForm();
+            }
+            else
+            {
+                MessageBox.Show("Kan bericht geen like geven.");
+            }
         }
 
         private void btnRaporteer_Click(object sender, EventArgs e)
         {
-            // TODO database query die report relatie maakt.
+            if (media.LikeBericht(viewModel.SelectedBericht, viewModel.Account))
+            {
+                RefreshForm();
+            }
+            else
+            {
+                MessageBox.Show("Kan bericht geen like geven.");
+            }
         }
     }
 }

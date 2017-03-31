@@ -42,6 +42,10 @@
             this.tbZoek = new System.Windows.Forms.TextBox();
             this.btnLike = new System.Windows.Forms.Button();
             this.btnRaporteer = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblSelectBericht = new System.Windows.Forms.Label();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
             this.gbBerichten.SuspendLayout();
@@ -49,9 +53,9 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(554, 324);
+            this.btnBack.Location = new System.Drawing.Point(6, 334);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(70, 23);
+            this.btnBack.Size = new System.Drawing.Size(256, 23);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Terug";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -59,10 +63,12 @@
             // 
             // gbBestand
             // 
+            this.gbBestand.Controls.Add(this.btnDownload);
             this.gbBestand.Controls.Add(this.pbBestand);
-            this.gbBestand.Location = new System.Drawing.Point(356, 13);
+            this.gbBestand.Controls.Add(this.btnBack);
+            this.gbBestand.Location = new System.Drawing.Point(616, 13);
             this.gbBestand.Name = "gbBestand";
-            this.gbBestand.Size = new System.Drawing.Size(268, 305);
+            this.gbBestand.Size = new System.Drawing.Size(268, 374);
             this.gbBestand.TabIndex = 2;
             this.gbBestand.TabStop = false;
             this.gbBestand.Text = "Bestand";
@@ -78,44 +84,54 @@
             // 
             // gbBerichten
             // 
+            this.gbBerichten.Controls.Add(this.btnRaporteer);
+            this.gbBerichten.Controls.Add(this.lblSelectBericht);
+            this.gbBerichten.Controls.Add(this.btnLike);
+            this.gbBerichten.Controls.Add(this.btnBestand);
+            this.gbBerichten.Controls.Add(this.label3);
+            this.gbBerichten.Controls.Add(this.btnZoek);
+            this.gbBerichten.Controls.Add(this.tbZoek);
+            this.gbBerichten.Controls.Add(this.label2);
+            this.gbBerichten.Controls.Add(this.label1);
             this.gbBerichten.Controls.Add(this.tvBericht);
             this.gbBerichten.Controls.Add(this.rtbTekst);
             this.gbBerichten.Controls.Add(this.tbTags);
+            this.gbBerichten.Controls.Add(this.btnPost);
             this.gbBerichten.Location = new System.Drawing.Point(13, 13);
             this.gbBerichten.Name = "gbBerichten";
-            this.gbBerichten.Size = new System.Drawing.Size(337, 460);
+            this.gbBerichten.Size = new System.Drawing.Size(596, 374);
             this.gbBerichten.TabIndex = 7;
             this.gbBerichten.TabStop = false;
             this.gbBerichten.Text = "Berichten";
             // 
             // tvBericht
             // 
-            this.tvBericht.Location = new System.Drawing.Point(7, 18);
+            this.tvBericht.Location = new System.Drawing.Point(6, 42);
             this.tvBericht.Name = "tvBericht";
-            this.tvBericht.Size = new System.Drawing.Size(324, 287);
+            this.tvBericht.Size = new System.Drawing.Size(324, 321);
             this.tvBericht.TabIndex = 14;
             this.tvBericht.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBericht_AfterSelect);
             // 
             // rtbTekst
             // 
-            this.rtbTekst.Location = new System.Drawing.Point(7, 339);
+            this.rtbTekst.Location = new System.Drawing.Point(337, 77);
             this.rtbTekst.Name = "rtbTekst";
-            this.rtbTekst.Size = new System.Drawing.Size(263, 115);
+            this.rtbTekst.Size = new System.Drawing.Size(253, 157);
             this.rtbTekst.TabIndex = 8;
             this.rtbTekst.Text = "";
             // 
             // tbTags
             // 
-            this.tbTags.Location = new System.Drawing.Point(7, 312);
+            this.tbTags.Location = new System.Drawing.Point(337, 34);
             this.tbTags.Name = "tbTags";
             this.tbTags.Size = new System.Drawing.Size(100, 20);
             this.tbTags.TabIndex = 7;
             // 
             // btnPost
             // 
-            this.btnPost.Location = new System.Drawing.Point(549, 450);
+            this.btnPost.Location = new System.Drawing.Point(336, 253);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(75, 23);
+            this.btnPost.Size = new System.Drawing.Size(253, 23);
             this.btnPost.TabIndex = 9;
             this.btnPost.Text = "Post";
             this.btnPost.UseVisualStyleBackColor = true;
@@ -123,19 +139,19 @@
             // 
             // btnBestand
             // 
-            this.btnBestand.Location = new System.Drawing.Point(356, 323);
+            this.btnBestand.Location = new System.Drawing.Point(336, 282);
             this.btnBestand.Name = "btnBestand";
-            this.btnBestand.Size = new System.Drawing.Size(75, 23);
+            this.btnBestand.Size = new System.Drawing.Size(254, 23);
             this.btnBestand.TabIndex = 10;
-            this.btnBestand.Text = "Bestand";
+            this.btnBestand.Text = "Voeg Bestand Toe";
             this.btnBestand.UseVisualStyleBackColor = true;
             this.btnBestand.Click += new System.EventHandler(this.btnBestand_Click);
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(357, 352);
+            this.btnDownload.Location = new System.Drawing.Point(6, 305);
             this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(75, 23);
+            this.btnDownload.Size = new System.Drawing.Size(256, 23);
             this.btnDownload.TabIndex = 11;
             this.btnDownload.Text = "Download";
             this.btnDownload.UseVisualStyleBackColor = true;
@@ -143,7 +159,7 @@
             // 
             // btnZoek
             // 
-            this.btnZoek.Location = new System.Drawing.Point(356, 381);
+            this.btnZoek.Location = new System.Drawing.Point(255, 13);
             this.btnZoek.Name = "btnZoek";
             this.btnZoek.Size = new System.Drawing.Size(75, 23);
             this.btnZoek.TabIndex = 12;
@@ -153,16 +169,16 @@
             // 
             // tbZoek
             // 
-            this.tbZoek.Location = new System.Drawing.Point(437, 383);
+            this.tbZoek.Location = new System.Drawing.Point(6, 15);
             this.tbZoek.Name = "tbZoek";
-            this.tbZoek.Size = new System.Drawing.Size(100, 20);
+            this.tbZoek.Size = new System.Drawing.Size(243, 20);
             this.tbZoek.TabIndex = 13;
             // 
             // btnLike
             // 
-            this.btnLike.Location = new System.Drawing.Point(437, 353);
+            this.btnLike.Location = new System.Drawing.Point(336, 311);
             this.btnLike.Name = "btnLike";
-            this.btnLike.Size = new System.Drawing.Size(75, 23);
+            this.btnLike.Size = new System.Drawing.Size(253, 23);
             this.btnLike.TabIndex = 14;
             this.btnLike.Text = "Like";
             this.btnLike.UseVisualStyleBackColor = true;
@@ -170,29 +186,57 @@
             // 
             // btnRaporteer
             // 
-            this.btnRaporteer.Location = new System.Drawing.Point(519, 351);
+            this.btnRaporteer.Location = new System.Drawing.Point(336, 340);
             this.btnRaporteer.Name = "btnRaporteer";
-            this.btnRaporteer.Size = new System.Drawing.Size(75, 23);
+            this.btnRaporteer.Size = new System.Drawing.Size(253, 23);
             this.btnRaporteer.TabIndex = 15;
             this.btnRaporteer.Text = "Raporteer";
             this.btnRaporteer.UseVisualStyleBackColor = true;
             this.btnRaporteer.Click += new System.EventHandler(this.btnRaporteer_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(337, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Tags";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(337, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Tekst";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(333, 237);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Geselecteerd Bericht:";
+            // 
+            // lblSelectBericht
+            // 
+            this.lblSelectBericht.AutoSize = true;
+            this.lblSelectBericht.Location = new System.Drawing.Point(448, 237);
+            this.lblSelectBericht.Name = "lblSelectBericht";
+            this.lblSelectBericht.Size = new System.Drawing.Size(27, 13);
+            this.lblSelectBericht.TabIndex = 18;
+            this.lblSelectBericht.Text = "N/A";
+            // 
             // MediaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 485);
-            this.Controls.Add(this.btnRaporteer);
-            this.Controls.Add(this.btnLike);
-            this.Controls.Add(this.tbZoek);
-            this.Controls.Add(this.btnZoek);
-            this.Controls.Add(this.btnDownload);
-            this.Controls.Add(this.btnBestand);
-            this.Controls.Add(this.btnPost);
+            this.ClientSize = new System.Drawing.Size(896, 395);
             this.Controls.Add(this.gbBerichten);
             this.Controls.Add(this.gbBestand);
-            this.Controls.Add(this.btnBack);
             this.Name = "MediaForm";
             this.Text = "MediaForm";
             this.gbBestand.ResumeLayout(false);
@@ -200,7 +244,6 @@
             this.gbBerichten.ResumeLayout(false);
             this.gbBerichten.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -220,5 +263,9 @@
         private System.Windows.Forms.TreeView tvBericht;
         private System.Windows.Forms.Button btnLike;
         private System.Windows.Forms.Button btnRaporteer;
+        private System.Windows.Forms.Label lblSelectBericht;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
