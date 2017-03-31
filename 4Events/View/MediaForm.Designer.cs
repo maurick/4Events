@@ -40,6 +40,8 @@
             this.btnDownload = new System.Windows.Forms.Button();
             this.btnZoek = new System.Windows.Forms.Button();
             this.tbZoek = new System.Windows.Forms.TextBox();
+            this.btnLike = new System.Windows.Forms.Button();
+            this.btnRaporteer = new System.Windows.Forms.Button();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
             this.gbBerichten.SuspendLayout();
@@ -156,11 +158,33 @@
             this.tbZoek.Size = new System.Drawing.Size(100, 20);
             this.tbZoek.TabIndex = 13;
             // 
+            // btnLike
+            // 
+            this.btnLike.Location = new System.Drawing.Point(437, 353);
+            this.btnLike.Name = "btnLike";
+            this.btnLike.Size = new System.Drawing.Size(75, 23);
+            this.btnLike.TabIndex = 14;
+            this.btnLike.Text = "Like";
+            this.btnLike.UseVisualStyleBackColor = true;
+            this.btnLike.Click += new System.EventHandler(this.btnLike_Click);
+            // 
+            // btnRaporteer
+            // 
+            this.btnRaporteer.Location = new System.Drawing.Point(519, 351);
+            this.btnRaporteer.Name = "btnRaporteer";
+            this.btnRaporteer.Size = new System.Drawing.Size(75, 23);
+            this.btnRaporteer.TabIndex = 15;
+            this.btnRaporteer.Text = "Raporteer";
+            this.btnRaporteer.UseVisualStyleBackColor = true;
+            this.btnRaporteer.Click += new System.EventHandler(this.btnRaporteer_Click);
+            // 
             // MediaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 485);
+            this.Controls.Add(this.btnRaporteer);
+            this.Controls.Add(this.btnLike);
             this.Controls.Add(this.tbZoek);
             this.Controls.Add(this.btnZoek);
             this.Controls.Add(this.btnDownload);
@@ -194,5 +218,7 @@
         private System.Windows.Forms.Button btnZoek;
         private System.Windows.Forms.TextBox tbZoek;
         private System.Windows.Forms.TreeView tvBericht;
+        private System.Windows.Forms.Button btnLike;
+        private System.Windows.Forms.Button btnRaporteer;
     }
 }

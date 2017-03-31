@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using _4Events.Database;
 using _4Events.Logic;
@@ -113,7 +107,7 @@ namespace _4Events.View
                 MessageBox.Show("Geen bericht.");
             }
 
-            // Alle filelogic in logic
+            // Alle filelogic in logic ofzo
             if(openBestand.ShowDialog() == DialogResult.OK)
             {
                 filename = openBestand.FileName;
@@ -123,24 +117,25 @@ namespace _4Events.View
 
                 pbBestand.Image = image;
                 viewModel.Bericht.Bestand = File.ReadAllBytes(filename);
-                //pbBestand.
             }
         }
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-
+            // direct uit de byte array lezen van verschillende bestanden.
         }
 
         private void btnZoek_Click(object sender, EventArgs e)
         {
-            //lbBerichten.Items.Clear();
+            tvBericht.Nodes.Clear();
+            foreach (var item in media.SearchBerichten(tbZoek.Text))
+            {
 
-            //// Kan in RefreshForm()
-            //foreach (var bericht in media.SearchBerichten(tbZoek.Text))
-            //{
-            //    lbBerichten.Items.Add(bericht);
-            //}
+                TreeNode tn = new TreeNode(item.Tekst);
+                tn.Tag = item;
+
+                tvBericht.Nodes.Add(tn);
+            } 
         }
 
         private new void DoubleClick(object sender, MouseEventArgs e)
@@ -171,6 +166,16 @@ namespace _4Events.View
             {
                 pbBestand.Image = Resources.geenImageMelding;
             }
+        }
+
+        private void btnLike_Click(object sender, EventArgs e)
+        {
+            // TODO database query die like relatie maakt.
+        }
+
+        private void btnRaporteer_Click(object sender, EventArgs e)
+        {
+            // TODO database query die report relatie maakt.
         }
     }
 }
