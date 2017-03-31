@@ -31,9 +31,8 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.gbBestand = new System.Windows.Forms.GroupBox();
             this.pbBestand = new System.Windows.Forms.PictureBox();
-            this.lbReacties = new System.Windows.Forms.ListBox();
-            this.lbBerichten = new System.Windows.Forms.ListBox();
             this.gbBerichten = new System.Windows.Forms.GroupBox();
+            this.tvBericht = new System.Windows.Forms.TreeView();
             this.rtbTekst = new System.Windows.Forms.RichTextBox();
             this.tbTags = new System.Windows.Forms.TextBox();
             this.btnPost = new System.Windows.Forms.Button();
@@ -75,38 +74,25 @@
             this.pbBestand.TabIndex = 0;
             this.pbBestand.TabStop = false;
             // 
-            // lbReacties
-            // 
-            this.lbReacties.FormattingEnabled = true;
-            this.lbReacties.Location = new System.Drawing.Point(177, 15);
-            this.lbReacties.Name = "lbReacties";
-            this.lbReacties.Size = new System.Drawing.Size(154, 290);
-            this.lbReacties.TabIndex = 6;
-            this.lbReacties.SelectedIndexChanged += new System.EventHandler(this.GetBericht);
-            this.lbReacties.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DoubleClick);
-            // 
-            // lbBerichten
-            // 
-            this.lbBerichten.FormattingEnabled = true;
-            this.lbBerichten.Location = new System.Drawing.Point(6, 15);
-            this.lbBerichten.Name = "lbBerichten";
-            this.lbBerichten.Size = new System.Drawing.Size(154, 290);
-            this.lbBerichten.TabIndex = 5;
-            this.lbBerichten.SelectedIndexChanged += new System.EventHandler(this.GetBericht);
-            this.lbBerichten.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DoubleClick);
-            // 
             // gbBerichten
             // 
+            this.gbBerichten.Controls.Add(this.tvBericht);
             this.gbBerichten.Controls.Add(this.rtbTekst);
             this.gbBerichten.Controls.Add(this.tbTags);
-            this.gbBerichten.Controls.Add(this.lbReacties);
-            this.gbBerichten.Controls.Add(this.lbBerichten);
             this.gbBerichten.Location = new System.Drawing.Point(13, 13);
             this.gbBerichten.Name = "gbBerichten";
             this.gbBerichten.Size = new System.Drawing.Size(337, 460);
             this.gbBerichten.TabIndex = 7;
             this.gbBerichten.TabStop = false;
             this.gbBerichten.Text = "Berichten";
+            // 
+            // tvBericht
+            // 
+            this.tvBericht.Location = new System.Drawing.Point(7, 18);
+            this.tvBericht.Name = "tvBericht";
+            this.tvBericht.Size = new System.Drawing.Size(324, 287);
+            this.tvBericht.TabIndex = 14;
+            this.tvBericht.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBericht_AfterSelect);
             // 
             // rtbTekst
             // 
@@ -174,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 485);
+            this.ClientSize = new System.Drawing.Size(896, 485);
             this.Controls.Add(this.tbZoek);
             this.Controls.Add(this.btnZoek);
             this.Controls.Add(this.btnDownload);
@@ -199,8 +185,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.GroupBox gbBestand;
         private System.Windows.Forms.PictureBox pbBestand;
-        private System.Windows.Forms.ListBox lbReacties;
-        private System.Windows.Forms.ListBox lbBerichten;
         private System.Windows.Forms.GroupBox gbBerichten;
         private System.Windows.Forms.RichTextBox rtbTekst;
         private System.Windows.Forms.TextBox tbTags;
@@ -209,5 +193,6 @@
         private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.Button btnZoek;
         private System.Windows.Forms.TextBox tbZoek;
+        private System.Windows.Forms.TreeView tvBericht;
     }
 }

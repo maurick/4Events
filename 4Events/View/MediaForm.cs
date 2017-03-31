@@ -36,18 +36,37 @@ namespace _4Events.View
             viewModel.Bericht = new Bericht();
             viewModel.Bericht.Bestand = null;
 
-            lbBerichten.Items.Clear();
+            tvBericht.Nodes.Clear();
 
-            foreach (var bericht in viewModel.ListBerichten)
+            foreach (var item in viewModel.ListBerichten)
             {
-                if(bericht.ReplyTo == 0)
+                if(item.ReplyTo == 0)
                 {
-                    lbBerichten.Items.Add(bericht);
+                    TreeNode tn = new TreeNode(item.Tekst);
+                    tn.Tag = item;
+                    tvBericht.Nodes.Add(tn);
+                    PopulateTreeNode(item.ID, tn);
                 }
             }
 
             rtbTekst.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tekst);
             tbTags.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tags);
+        }
+
+        private void PopulateTreeNode(int parentID, TreeNode parentNode)
+        {
+            foreach (var item in viewModel.ListBerichten)
+            {
+                if(item.ReplyTo == parentID)
+                {
+                    TreeNode tn = new TreeNode(item.Tekst);
+                    tn.Tag = item;
+
+                    parentNode.Nodes.Add(tn);
+                    PopulateTreeNode(item.ID, tn);
+                }
+                
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -84,43 +103,6 @@ namespace _4Events.View
             RefreshForm();
         }
 
-        // Selected Index changed
-        private void GetBericht(object sender, EventArgs e)
-        {
-            var listbox = (ListBox)sender;
-
-            if(listbox.SelectedItem == null)
-            {
-                return;
-            }
-
-            viewModel.SelectedBericht = (Bericht)listbox.SelectedItem;
-
-            if(listbox == lbBerichten)
-            {
-                lbReacties.Items.Clear();
-
-                foreach (var bericht in viewModel.ListBerichten)
-                {
-                    if (bericht.ReplyTo == viewModel.SelectedBericht.ID)
-                    {
-                        lbReacties.Items.Add(bericht);
-                    }
-                }
-            }
-
-            if (viewModel.SelectedBericht != null && viewModel.SelectedBericht.Bestand != null)
-            {
-                //TODO zet buiten de form
-
-                pbBestand.Image = (Bitmap)((new ImageConverter()).ConvertFrom(viewModel.SelectedBericht.Bestand));
-            }
-            else
-            {
-                pbBestand.Image = null;
-            }
-        }
-
         private void btnBestand_Click(object sender, EventArgs e)
         {
             OpenFileDialog openBestand = new OpenFileDialog();
@@ -152,13 +134,13 @@ namespace _4Events.View
 
         private void btnZoek_Click(object sender, EventArgs e)
         {
-            lbBerichten.Items.Clear();
+            //lbBerichten.Items.Clear();
 
-            // Kan in RefreshForm()
-            foreach (var bericht in media.SearchBerichten(tbZoek.Text))
-            {
-                lbBerichten.Items.Add(bericht);
-            }
+            //// Kan in RefreshForm()
+            //foreach (var bericht in media.SearchBerichten(tbZoek.Text))
+            //{
+            //    lbBerichten.Items.Add(bericht);
+            //}
         }
 
         private new void DoubleClick(object sender, MouseEventArgs e)
@@ -171,6 +153,24 @@ namespace _4Events.View
                 MessageBox.Show("laat reacties van dit bericht zien ofzo TODO toedeloe.");
             }
 
+        }
+
+        private void tvBericht_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            Bericht b = (Bericht)e.Node.Tag;
+
+            viewModel.SelectedBericht = b;
+
+            if (viewModel.SelectedBericht != null && viewModel.SelectedBericht.Bestand != null)
+            {
+                //TODO zet buiten de form
+
+                pbBestand.Image = (Bitmap)((new ImageConverter()).ConvertFrom(viewModel.SelectedBericht.Bestand));
+            }
+            else
+            {
+                pbBestand.Image = Resources.geenImageMelding;
+            }
         }
     }
 }
