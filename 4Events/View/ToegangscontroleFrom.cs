@@ -106,6 +106,8 @@ namespace _4Events.View
                     reserveer.UpdateReservering(viewModel.SelectedReservering);
                     statusForm.Close();
                     statusForm.Dispose();
+
+                    RefreshReserveringen();
                 }
             }
         }

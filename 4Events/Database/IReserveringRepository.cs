@@ -11,7 +11,7 @@ namespace _4Events.Database
     {
         List<Reservering> GetAllReserveringen();
         List<Reservering> GetReserveringenByEvent(int EventID);
-        void UpdateReservering(Reservering reservering);
+        bool UpdateReservering(Reservering reservering);
         List<Locatie> GetAllLocaties();
     }
 }

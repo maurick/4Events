@@ -64,7 +64,8 @@ namespace _4Events.Database
                                 "FROM RESERVERING r " +
                                 "INNER JOIN RESERVERING_ACCOUNT ra on r.ID = ra.ReserveringID " +
                                 "INNER JOIN ACCOUNT a on ra.AccountID = a.ID " +
-                                "WHERE EventID = " +  EventID +
+                                "WHERE MainAccount = 1 " +
+                                "AND EventID = " +  EventID +
                                 "ORDER BY r.ID;";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -80,9 +81,32 @@ namespace _4Events.Database
             return result;
         }
 
-        public void UpdateReservering(Reservering reservering)
+        public bool UpdateReservering(Reservering reservering)
         {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "UPDATE RESERVERING SET Betaald = @betaald, Ingechecked = @ingechecked WHERE ID = @ID";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ID", reservering.ID);
+                    command.Parameters.AddWithValue("@betaald", reservering.Betaald);
+                    command.Parameters.AddWithValue("@ingechecked", reservering.Ingechecked);
 
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        if (e.ErrorCode != 0)
+                        {
+                            return false;
+                        }
+                        throw;
+                    }
+                }
+            }
+            return true;
         }
 
         private Locatie CreateLocatieFromReader(SqlDataReader reader)

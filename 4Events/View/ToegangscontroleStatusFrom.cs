@@ -12,8 +12,8 @@ namespace _4Events.View
 {
     public partial class ToegangscontroleStatusFrom : Form
     {
-        public bool Betalingsstatus { get { return Convert.ToBoolean(cbBetalingsstatus.SelectedText); } }
-        public bool Ingechecked { get { return Convert.ToBoolean(cbIngechecked.SelectedText); } }
+        public bool Betalingsstatus { get { return Convert.ToBoolean(cbBetalingsstatus.SelectedItem); } }
+        public bool Ingechecked { get { return Convert.ToBoolean(cbIngechecked.SelectedItem); } }
 
         public ToegangscontroleStatusFrom(bool betalingsstatus, bool ingechecked)
         {
