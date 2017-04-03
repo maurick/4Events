@@ -89,9 +89,25 @@ namespace _4Events.View
 
         private void listView_DoubleClick(object sender, EventArgs e)
         {
-            viewModel.SelectedEvent = viewModel.EventList.Find(x => x.Naam == listView .SelectedItems[0].Text);
-            formState = FormState.Reservering;
-            InitializeReserveringColumns();
+            if (formState == FormState.Event)
+            {
+                viewModel.SelectedEvent = viewModel.EventList.Find(x => x.Naam == listView.SelectedItems[0].Text);
+                formState = FormState.Reservering;
+                InitializeReserveringColumns();
+            }
+            else if (formState == FormState.Reservering)
+            {
+                viewModel.SelectedReservering = viewModel.ReserveringList.Find(x => x.ID == Convert.ToInt32(listView.SelectedItems[0].Text));
+                ToegangscontroleStatusFrom statusForm = new ToegangscontroleStatusFrom(viewModel.SelectedReservering.Betaald, viewModel.SelectedReservering.Ingechecked);
+                statusForm.ShowDialog();
+                if (statusForm.DialogResult == DialogResult.OK)
+                {
+                    viewModel.SelectedReservering.Update(statusForm.Betalingsstatus, statusForm.Ingechecked);
+                    reserveer.UpdateReservering(viewModel.SelectedReservering);
+                    statusForm.Close();
+                    statusForm.Dispose();
+                }
+            }
         }
 
         private void btnTerug_Click(object sender, EventArgs e)

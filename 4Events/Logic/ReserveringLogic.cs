@@ -27,6 +27,11 @@ namespace _4Events.Logic
             return repository.GetReserveringenByEvent(EventID);
         }
 
+        public void UpdateReservering(Reservering reservering)
+        {
+            repository.UpdateReservering(reservering);
+        }
+
         public List<Locatie> GetAllLocaties()
         {
             return repository.GetAllLocaties();

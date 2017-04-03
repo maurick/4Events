@@ -132,6 +132,12 @@
     <Compile Include="View\ToegangscontroleFrom.Designer.cs">
       <DependentUpon>ToegangscontroleFrom.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ToegangscontroleStatusFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ToegangscontroleStatusFrom.Designer.cs">
+      <DependentUpon>ToegangscontroleStatusFrom.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ToegangscontroleFrom.resx">
       <DependentUpon>ToegangscontroleFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ToegangscontroleStatusFrom.resx">
+      <DependentUpon>ToegangscontroleStatusFrom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

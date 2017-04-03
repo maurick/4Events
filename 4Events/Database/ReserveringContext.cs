@@ -80,6 +80,11 @@ namespace _4Events.Database
             return result;
         }
 
+        public void UpdateReservering(Reservering reservering)
+        {
+
+        }
+
         private Locatie CreateLocatieFromReader(SqlDataReader reader)
         {
             Locatie locatie = new Locatie()
