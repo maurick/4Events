@@ -150,7 +150,7 @@ namespace _4Events.View
         private void btnZoek_Click(object sender, EventArgs e)
         {
             tvBericht.Nodes.Clear();
-            foreach (var item in media.SearchBerichten(tbZoek.Text))
+            foreach (var item in media.SearchBerichten(tbZoek.Text, 1000))
             {
 
                 TreeNode tn = new TreeNode(item.ToString());

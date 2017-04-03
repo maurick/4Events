@@ -22,12 +22,12 @@ namespace _4Events.Logic
 
         public List<Bericht> GetBerichten(int aantal)
         {
-            return repository.GetBerichten(aantal);
+            return repository.GetBerichten(aantal); // Beter om een bepaalde range te implementeren (bericht 5 tot 10).
         }
 
-        public List<Bericht> SearchBerichten(string keyword)
+        public List<Bericht> SearchBerichten(string keyword, int amount)
         {
-            List<Bericht> listBericht = repository.GetBerichten(999);
+            List<Bericht> listBericht = repository.GetBerichten(amount); 
             List<Bericht> output = new List<Bericht>();
 
             foreach (var bericht in listBericht)
@@ -48,7 +48,10 @@ namespace _4Events.Logic
 
         public bool RaporteerBericht(Bericht bericht, Account account)
         {
-            // Als er te veel reports zijn delete/hide bericht
+            if (repository.GetReportAmount(bericht) > 5)
+            {
+                repository.DeleteBericht(bericht.ID); // Beter om het bericht onzichtbaar te maken.
+            }
 
             return repository.InsertReport(bericht, account);
         }

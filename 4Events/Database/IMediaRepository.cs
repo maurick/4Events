@@ -14,6 +14,7 @@ namespace _4Events.Database
         bool InsertLike(Bericht bericht, Account account);
         bool InsertReport(Bericht bericht, Account account);
         int GetLikesAmount(Bericht bericht);
+        int GetReportAmount(Bericht bericht);
         bool InsertBericht(Bericht bericht);
         bool DeleteBericht(int id);
     }

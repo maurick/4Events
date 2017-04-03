@@ -13,7 +13,26 @@ namespace _4Events.Database
     {
         public bool DeleteBericht(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "DELETE FROM BERICHT WHERE ID = @id";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException)
+                    {
+                        //return false;
+                        throw;
+                    }
+                    
+                }
+            }
+            return true;
         }
 
         public List<Bericht> GetBerichten(int aantal)
@@ -28,10 +47,19 @@ namespace _4Events.Database
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        try
                         {
-                            result.Add(CreateBerichtFromReader(reader));
+                            while (reader.Read())
+                            {
+                                result.Add(CreateBerichtFromReader(reader));
+                            }
                         }
+                        catch (Exception)
+                        {
+                            // return null;?
+                            throw;
+                        }
+                        
                     }
                 }
             }
@@ -54,7 +82,7 @@ namespace _4Events.Database
                     }
                     catch (SqlException)
                     {
-
+                        // return 0;
                         throw;
                     }
                 }
@@ -65,6 +93,34 @@ namespace _4Events.Database
         public List<Bericht> GetReacties()
         {
             throw new NotImplementedException();
+        }
+
+        public int GetReportAmount(Bericht bericht)
+        {
+            int result = 0;
+
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT COUNT(*) FROM REPORT WHERE BERICHTID = @id";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", bericht.ID);
+
+                    try
+                    {
+                        result = (int)command.ExecuteScalar();
+                    }
+                    catch (SqlException)
+                    {
+                        // return 0;
+                        throw;
+                    }
+                    
+                }
+            }
+
+            return result;
         }
 
         public bool InsertBericht(Bericht bericht)
