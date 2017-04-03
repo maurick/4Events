@@ -22,6 +22,16 @@ namespace _4Events.Logic
             return repository.GetAllReserveringen();
         }
 
+        public List<Model.Reservering> GetReserveringenByEvent(int EventID)
+        {
+            return repository.GetReserveringenByEvent(EventID);
+        }
+
+        public bool UpdateReservering(Reservering reservering)
+        {
+            return repository.UpdateReservering(reservering);
+        }
+
         public List<Locatie> GetAllLocaties()
         {
             return repository.GetAllLocaties();

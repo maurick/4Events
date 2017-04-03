@@ -41,7 +41,7 @@
             // btnBack
             // 
             this.btnBack.Location = new System.Drawing.Point(17, 210);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(323, 28);
             this.btnBack.TabIndex = 0;
@@ -75,7 +75,7 @@
             // 
             this.btnAccountBeheer.Enabled = false;
             this.btnAccountBeheer.Location = new System.Drawing.Point(17, 54);
-            this.btnAccountBeheer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAccountBeheer.Margin = new System.Windows.Forms.Padding(4);
             this.btnAccountBeheer.Name = "btnAccountBeheer";
             this.btnAccountBeheer.Size = new System.Drawing.Size(160, 46);
             this.btnAccountBeheer.TabIndex = 3;
@@ -86,7 +86,7 @@
             // btnMedia
             // 
             this.btnMedia.Location = new System.Drawing.Point(20, 107);
-            this.btnMedia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMedia.Margin = new System.Windows.Forms.Padding(4);
             this.btnMedia.Name = "btnMedia";
             this.btnMedia.Size = new System.Drawing.Size(157, 46);
             this.btnMedia.TabIndex = 4;
@@ -97,17 +97,18 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(185, 54);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(153, 46);
             this.button1.TabIndex = 5;
             this.button1.Text = "Toegangscontrole";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(185, 108);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(153, 44);
             this.button2.TabIndex = 6;
@@ -138,7 +139,7 @@
             this.Controls.Add(this.lblFunctie);
             this.Controls.Add(this.lblWelkom);
             this.Controls.Add(this.btnBack);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Main Form";
             this.ResumeLayout(false);

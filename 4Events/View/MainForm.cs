@@ -84,5 +84,13 @@ namespace _4Events.View
                     break;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ToegangscontroleFrom form = new ToegangscontroleFrom();
+            form.ShowDialog();
+            this.Close();
+        }
     }
 }

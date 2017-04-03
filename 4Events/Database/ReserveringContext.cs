@@ -55,6 +55,60 @@ namespace _4Events.Database
             return result;
         }
 
+        public List<Reservering> GetReserveringenByEvent(int EventID)
+        {
+            List<Reservering> result = new List<Reservering>();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT r.*, a.Naam AS MainAccountNaam " +
+                                "FROM RESERVERING r " +
+                                "INNER JOIN RESERVERING_ACCOUNT ra on r.ID = ra.ReserveringID " +
+                                "INNER JOIN ACCOUNT a on ra.AccountID = a.ID " +
+                                "WHERE MainAccount = 1 " +
+                                "AND EventID = " +  EventID +
+                                "ORDER BY r.ID;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(CreateReserveringFromReader(reader));
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        public bool UpdateReservering(Reservering reservering)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "UPDATE RESERVERING SET Betaald = @betaald, Ingechecked = @ingechecked WHERE ID = @ID";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ID", reservering.ID);
+                    command.Parameters.AddWithValue("@betaald", reservering.Betaald);
+                    command.Parameters.AddWithValue("@ingechecked", reservering.Ingechecked);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        if (e.ErrorCode != 0)
+                        {
+                            return false;
+                        }
+                        throw;
+                    }
+                }
+            }
+            return true;
+        }
+
         private Locatie CreateLocatieFromReader(SqlDataReader reader)
         {
             Locatie locatie = new Locatie()
