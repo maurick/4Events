@@ -31,5 +31,14 @@ namespace _4Events.Properties {
                 return ((bool)(this["Debug"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int ReportLimit {
+            get {
+                return ((int)(this["ReportLimit"]));
+            }
+        }
     }
 }

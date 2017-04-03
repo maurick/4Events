@@ -19,6 +19,8 @@ namespace _4Events.View
         public MediaForm()
         {
             InitializeComponent();
+            cbZoek.SelectedIndex = 0;
+
 
             viewModel.Account = beheer.GetAccountById((beheer.GetAccountCache()));
             RefreshForm();
@@ -98,6 +100,7 @@ namespace _4Events.View
 
         private void btnBestand_Click(object sender, EventArgs e)
         {
+            Image image = Resources.geenImageMelding;
             OpenFileDialog openBestand = new OpenFileDialog();
             string filename;
 
@@ -105,13 +108,20 @@ namespace _4Events.View
             {
                 MessageBox.Show("Geen bericht.");
             }
+
             if(openBestand.ShowDialog() == DialogResult.OK)
             {
                 // Kan in media logic misschien?
-
                 filename = openBestand.FileName;
-                
-                Image image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+
+                switch (openBestand.FilterIndex)
+                {
+                    case 1:
+                        image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+                        break;
+                    default:
+                        break;
+                }
 
                 pbBestand.Image = image;
                 viewModel.Bericht.Bestand = File.ReadAllBytes(filename);
@@ -122,7 +132,7 @@ namespace _4Events.View
         {
             // De byte array in bestand zou ook andere bestanden kunnen bevatten.
             SaveFileDialog saveImageDialog = new SaveFileDialog();
-            saveImageDialog.Filter = "Bitmap Image|*.bmp";
+            saveImageDialog.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             saveImageDialog.Title = "Download een plaatje";
             saveImageDialog.ShowDialog();
 
@@ -132,7 +142,18 @@ namespace _4Events.View
                 {
                     using (FileStream fs = (FileStream)saveImageDialog.OpenFile())
                     {
-                        pbBestand.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        switch (saveImageDialog.FilterIndex)
+                        {
+                            case 1:
+                                pbBestand.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+                                break;
+                            case 2:
+                                pbBestand.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Bmp);
+                                break;
+                            case 3:
+                                pbBestand.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Gif);
+                                break;
+                        }
                     }
                 }
                 catch (ArgumentNullException)
@@ -150,14 +171,28 @@ namespace _4Events.View
         private void btnZoek_Click(object sender, EventArgs e)
         {
             tvBericht.Nodes.Clear();
-            foreach (var item in media.SearchBerichten(tbZoek.Text, 1000))
+
+            switch (cbZoek.SelectedIndex)
             {
+                case (0):
+                    foreach (var item in media.SearchBerichtenTekst(tbZoek.Text, 1000))
+                    {
+                        TreeNode tn = new TreeNode(item.ToString());
+                        tn.Tag = item;
+                        tvBericht.Nodes.Add(tn);
+                    }
+                    break;
+                case (1):
+                    foreach (var item in media.SearchBerichtenTags(tbZoek.Text, 1000))
+                    {
+                        TreeNode tn = new TreeNode(item.ToString());
+                        tn.Tag = item;
+                        tvBericht.Nodes.Add(tn);
+                    }
+                    break;
+            }
 
-                TreeNode tn = new TreeNode(item.ToString());
-                tn.Tag = item;
-
-                tvBericht.Nodes.Add(tn);
-            } 
+            
         }
         private void tvBericht_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -191,7 +226,7 @@ namespace _4Events.View
 
         private void btnRaporteer_Click(object sender, EventArgs e)
         {
-            if (media.LikeBericht(viewModel.SelectedBericht, viewModel.Account))
+            if (media.RaporteerBericht(viewModel.SelectedBericht, viewModel.Account))
             {
                 RefreshForm();
             }
@@ -199,6 +234,11 @@ namespace _4Events.View
             {
                 MessageBox.Show("Al gerapporteerd.");
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshForm();
         }
     }
 }

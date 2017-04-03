@@ -61,6 +61,15 @@ namespace _4Events.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to potjandorie|wazmetjou|bravo.
+        /// </summary>
+        internal static string badwords {
+            get {
+                return ResourceManager.GetString("badwords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Camping_ReeënDal {

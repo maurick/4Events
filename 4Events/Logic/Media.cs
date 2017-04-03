@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using _4Events.Model;
 using _4Events.Database;
+using _4Events;
 using System.Drawing;
 
 namespace _4Events.Logic
@@ -17,6 +18,8 @@ namespace _4Events.Logic
     public class Media
     {
         private IMediaRepository repository = new MediaContext();
+        private int ReportLimit = Properties.Settings.Default.ReportLimit;
+        private string badwordsPattern = "(" + Properties.Resources.badwords + ")+";
 
         public Media(IMediaRepository repository)
         {
@@ -34,7 +37,7 @@ namespace _4Events.Logic
         /// <param name="keyword">De te zoeken string</param>
         /// <param name="amount">Het totaal aantal berichten</param>
         /// <returns>Een list berichten</returns>
-        public List<Bericht> SearchBerichten(string keyword, int amount)
+        public List<Bericht> SearchBerichtenTekst(string keyword, int amount)
         {
             List<Bericht> listBericht = repository.GetBerichten(amount); 
             List<Bericht> output = new List<Bericht>();
@@ -50,6 +53,23 @@ namespace _4Events.Logic
             return output;
         }
 
+        // Kan bij SearchBerichtenTeks worden toegevoegd.
+        public List<Bericht> SearchBerichtenTags(string keyword, int amount)
+        {
+            List<Bericht> listBericht = repository.GetBerichten(amount);
+            List<Bericht> output = new List<Bericht>();
+
+            foreach (var bericht in listBericht)
+            {
+                if (Search(bericht.Tags, keyword))
+                {
+                    output.Add(bericht);
+                }
+            }
+
+            return output;
+        }
+
         public bool LikeBericht(Bericht bericht, Account account)
         {
             return repository.InsertLike(bericht, account);
@@ -57,7 +77,7 @@ namespace _4Events.Logic
 
         public bool RaporteerBericht(Bericht bericht, Account account)
         {
-            if (repository.GetReportAmount(bericht) > 5)
+            if (repository.GetReportAmount(bericht) > ReportLimit)
             {
                 repository.DeleteBericht(bericht.ID); // Beter om het bericht onzichtbaar te maken.
             }
@@ -67,7 +87,7 @@ namespace _4Events.Logic
 
         public bool InsertBericht(Bericht bericht)
         {
-            if(Search(bericht.Tekst, "bad words")) // TODO bad word list
+            if(Search(bericht.Tekst, badwordsPattern))
             {
                 return false;
             }
