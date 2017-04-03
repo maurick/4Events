@@ -8,6 +8,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace _4Events.Logic
 {
+    /// <summary>
+    /// Het beheersysteem.
+    /// </summary>
     public class Beheer
     {
         private IBeheerRepository repository = new BeheerContext();
@@ -18,6 +21,12 @@ namespace _4Events.Logic
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Checkt of het emailadress en wachtwoord overeen komt.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public Account Login(string email, string password)
         {
             Account account = GetAccountByEmail(email);
@@ -76,6 +85,9 @@ namespace _4Events.Logic
             return repository.InsertEvent(Event);
         }
 
+        /// <summary>
+        /// Checkt welk account is ingelogd.
+        /// </summary>
         public int GetAccountCache()
         {
             IFormatter formatter = new BinaryFormatter();
@@ -87,7 +99,7 @@ namespace _4Events.Logic
                     return account.ID;
                 }
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException) // Laat in deze drie exceptions wat nuttigs gebeuren.
             {
                 throw;
             }
@@ -102,6 +114,9 @@ namespace _4Events.Logic
 
         }
 
+        /// <summary>
+        /// Maakt een bestand aan op de computer om het account te authentificeren.
+        /// </summary>
         public bool CreateAccountCache(Account account)
         {
             IFormatter formatter = new BinaryFormatter();
@@ -124,8 +139,7 @@ namespace _4Events.Logic
             return true;
         }
 
-        // Kan nog een salt toevoegen voor ultieme beveiliging.
-        private string EncryptPassword(string inputString)
+        private string EncryptPassword(string inputString) // Kan nog een salt toevoegen voor ultieme beveiliging.
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);

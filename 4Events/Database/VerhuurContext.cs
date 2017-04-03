@@ -7,6 +7,9 @@ using _4Events.Model;
 
 namespace _4Events.Database
 {
+    /// <summary>
+    /// Bevat alle databasecode voor het verhuur systeem.
+    /// </summary>
     class VerhuurContext : IVerhuurRepository
     {
         public List<Verhuur> GetAllVerhuur()

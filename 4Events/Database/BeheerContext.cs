@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 
 namespace _4Events.Database
 {
+    /// <summary>
+    /// Bevat alle database code voor het beheersysteem.
+    /// </summary>
     public class BeheerContext : IBeheerRepository
     {
 

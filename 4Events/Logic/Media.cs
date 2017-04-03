@@ -11,6 +11,9 @@ using System.Drawing;
 
 namespace _4Events.Logic
 {
+    /// <summary>
+    /// Het media sharing systeem.
+    /// </summary>
     public class Media
     {
         private IMediaRepository repository = new MediaContext();
@@ -25,6 +28,12 @@ namespace _4Events.Logic
             return repository.GetBerichten(aantal); // Beter om een bepaalde range te implementeren (bericht 5 tot 10).
         }
 
+        /// <summary>
+        /// Zoekt alle berichten in de database of een bepaalde string erin voorkomt.
+        /// </summary>
+        /// <param name="keyword">De te zoeken string</param>
+        /// <param name="amount">Het totaal aantal berichten</param>
+        /// <returns>Een list berichten</returns>
         public List<Bericht> SearchBerichten(string keyword, int amount)
         {
             List<Bericht> listBericht = repository.GetBerichten(amount); 

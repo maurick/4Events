@@ -9,6 +9,9 @@ using System.Data;
 
 namespace _4Events.Database
 {
+    /// <summary>
+    /// Bevat alle databasecode voor het mediasharigsysteem.
+    /// </summary>
     public class MediaContext : IMediaRepository
     {
         public bool DeleteBericht(int id)
