@@ -38,8 +38,8 @@ namespace _4Events.View
             viewModel.EventList = beheer.GetAllEvents();
             viewModel.LocatieList = reserveerRepo.GetAllLocaties();
 
-            lbAccounts.Items.Clear();
-            lbEvents.Items.Clear();
+            lvAccounts.Items.Clear();
+            lvEvents.Items.Clear();
             cbLocatie.Items.Clear();
 
             foreach (var locatie in viewModel.LocatieList)
@@ -49,12 +49,12 @@ namespace _4Events.View
 
             foreach (var account in viewModel.AccountList)
             {
-                lbAccounts.Items.Add(account);
+                lvAccounts.Items.Add(new ListViewItem(new string[] { account.ID.ToString(), account.Naam, account.Email, account.Functie.ToString() }));
             }
 
             foreach (var item in viewModel.EventList)
             {
-                lbEvents.Items.Add(item);
+                lvEvents.Items.Add(new ListViewItem(new string[] { item.Naam, item.Datum.ToString(), item.MaxBezoekers.ToString() }));
             }
 
             cbLocatie.SelectedIndex = 0;
@@ -82,9 +82,9 @@ namespace _4Events.View
 
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lbAccounts.SelectedItem != null)
+            if(lvAccounts.SelectedItems != null)
             {
-                viewModel.SelectedAccount = (Account)lbAccounts.SelectedItem;
+                viewModel.SelectedAccount = viewModel.AccountList.Find(x => x.ID == Convert.ToInt32(lvAccounts.SelectedItems[0].Text));
             }
 
             tbNaam.Text = viewModel.SelectedAccount.Naam;
@@ -97,9 +97,9 @@ namespace _4Events.View
 
         private void SelectedEventChanged(object sender, EventArgs e)
         {
-            if (lbEvents.SelectedItem != null)
+            if (lvEvents.SelectedItems != null)
             {
-                viewModel.SelectedEvent = (Event)lbEvents.SelectedItem;
+                viewModel.SelectedEvent = viewModel.EventList.Find(x => x.Naam == lvEvents.SelectedItems[0].Text);
 
                 tbEventNaam.Text = viewModel.SelectedEvent.Naam;
                 tbEventBezoekers.Text = Convert.ToString(viewModel.SelectedEvent.MaxBezoekers);
@@ -197,18 +197,15 @@ namespace _4Events.View
             {
                 viewModel.Aanwezigen = beheer.GetPresentAccountsByEventID(viewModel.SelectedEvent.ID);
                 viewModel.ReserveringList = reserveerRepo.GetAllReserveringen();
-
-                ListViewItem item;
+                
                 foreach (var reservering in viewModel.ReserveringList)
                 {
-                    item = new ListViewItem(new string[] { reservering.MainAccountNaam, Convert.ToString(reservering.Betaald) });
-                    lvReservering.Items.Add(item);
+                    lvReservering.Items.Add(new ListViewItem(new string[] { reservering.MainAccountNaam, Convert.ToString(reservering.Betaald) }));
                 }
 
                 foreach (var account in viewModel.Aanwezigen)
                 {
-                    item = new ListViewItem(new string[] { account.Naam });
-                    lvAanwezig.Items.Add(item);
+                    lvAanwezig.Items.Add(new ListViewItem(new string[] { account.Naam }));
                 }
                 if (ASelected != -1)
                     lvAanwezig.Items[ASelected].Selected = true;
