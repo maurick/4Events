@@ -18,7 +18,7 @@ namespace _4Events.Logic
     public class Media
     {
         private IMediaRepository repository = new MediaContext();
-        private int ReportLimit = 5;
+        private int ReportLimit = Properties.Settings.Default.ReportLimit;
         private string badwordsPattern = "(" + Properties.Resources.badwords + ")+";
 
         public Media(IMediaRepository repository)
