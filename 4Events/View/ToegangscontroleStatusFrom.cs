@@ -35,7 +35,10 @@ namespace _4Events.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            if (Convert.ToBoolean(cbIngechecked.SelectedItem) && !Convert.ToBoolean(cbBetalingsstatus.SelectedItem))
+                MessageBox.Show("Kan niet inchecken, nog niet betaald", "Oeps");
+            else
+                this.DialogResult = DialogResult.OK;
         }
     }
 }
