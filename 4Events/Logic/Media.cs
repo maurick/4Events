@@ -53,6 +53,11 @@ namespace _4Events.Logic
             return output;
         }
 
+        public Bestand GetBestandByBestandID(int id)
+        {
+            return repository.GetBestandById(id);
+        }
+
         // Kan bij SearchBerichtenTeks worden toegevoegd.
         public List<Bericht> SearchBerichtenTags(string keyword, int amount)
         {
@@ -61,7 +66,7 @@ namespace _4Events.Logic
 
             foreach (var bericht in listBericht)
             {
-                if (Search(bericht.Tags, keyword))
+                if (Search(bericht.Categorie.Naam, keyword))
                 {
                     output.Add(bericht);
                 }

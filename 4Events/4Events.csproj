@@ -76,6 +76,8 @@
     <Compile Include="Logic\ReserveringLogic.cs" />
     <Compile Include="Logic\VerhuurLogic.cs" />
     <Compile Include="Model\Bericht.cs" />
+    <Compile Include="Model\Bestand.cs" />
+    <Compile Include="Model\Categorie.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Locatie.cs" />
     <Compile Include="Model\Plek.cs" />

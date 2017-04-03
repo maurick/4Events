@@ -44,10 +44,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tvBericht = new System.Windows.Forms.TreeView();
             this.rtbTekst = new System.Windows.Forms.RichTextBox();
-            this.tbTags = new System.Windows.Forms.TextBox();
             this.btnPost = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.cbZoek = new System.Windows.Forms.ComboBox();
+            this.tbCategorie = new System.Windows.Forms.TextBox();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
             this.gbBerichten.SuspendLayout();
@@ -95,6 +95,7 @@
             // 
             // gbBerichten
             // 
+            this.gbBerichten.Controls.Add(this.tbCategorie);
             this.gbBerichten.Controls.Add(this.cbZoek);
             this.gbBerichten.Controls.Add(this.btnRefresh);
             this.gbBerichten.Controls.Add(this.btnRaporteer);
@@ -108,7 +109,6 @@
             this.gbBerichten.Controls.Add(this.label1);
             this.gbBerichten.Controls.Add(this.tvBericht);
             this.gbBerichten.Controls.Add(this.rtbTekst);
-            this.gbBerichten.Controls.Add(this.tbTags);
             this.gbBerichten.Controls.Add(this.btnPost);
             this.gbBerichten.Location = new System.Drawing.Point(13, 13);
             this.gbBerichten.Name = "gbBerichten";
@@ -194,11 +194,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(453, 45);
+            this.label1.Location = new System.Drawing.Point(410, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Tags";
+            this.label1.Text = "Categorie";
             // 
             // tvBericht
             // 
@@ -207,6 +207,7 @@
             this.tvBericht.Size = new System.Drawing.Size(324, 321);
             this.tvBericht.TabIndex = 14;
             this.tvBericht.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBericht_AfterSelect);
+            this.tvBericht.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tvBericht_MouseDown);
             // 
             // rtbTekst
             // 
@@ -215,13 +216,6 @@
             this.rtbTekst.Size = new System.Drawing.Size(253, 166);
             this.rtbTekst.TabIndex = 8;
             this.rtbTekst.Text = "";
-            // 
-            // tbTags
-            // 
-            this.tbTags.Location = new System.Drawing.Point(490, 42);
-            this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(100, 20);
-            this.tbTags.TabIndex = 7;
             // 
             // btnPost
             // 
@@ -254,6 +248,13 @@
             this.cbZoek.Size = new System.Drawing.Size(121, 21);
             this.cbZoek.TabIndex = 20;
             // 
+            // tbCategorie
+            // 
+            this.tbCategorie.Location = new System.Drawing.Point(468, 42);
+            this.tbCategorie.Name = "tbCategorie";
+            this.tbCategorie.Size = new System.Drawing.Size(122, 20);
+            this.tbCategorie.TabIndex = 21;
+            // 
             // MediaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,7 +280,6 @@
         private System.Windows.Forms.PictureBox pbBestand;
         private System.Windows.Forms.GroupBox gbBerichten;
         private System.Windows.Forms.RichTextBox rtbTekst;
-        private System.Windows.Forms.TextBox tbTags;
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.Button btnBestand;
         private System.Windows.Forms.Button btnDownload;
@@ -294,5 +294,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ComboBox cbZoek;
+        private System.Windows.Forms.TextBox tbCategorie;
     }
 }

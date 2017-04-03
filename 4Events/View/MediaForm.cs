@@ -22,7 +22,7 @@ namespace _4Events.View
             cbZoek.SelectedIndex = 0;
 
 
-            viewModel.Account = beheer.GetAccountById((beheer.GetAccountCache()));
+            viewModel.Account = beheer.GetAccountById(beheer.GetAccountCache());
             RefreshForm();
         }
 
@@ -44,9 +44,6 @@ namespace _4Events.View
                     PopulateTreeNode(item.ID, tn);
                 }
             }
-
-            rtbTekst.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tekst);
-            tbTags.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tags);
         }
 
         private void PopulateTreeNode(int parentID, TreeNode parentNode)
@@ -78,7 +75,10 @@ namespace _4Events.View
             viewModel.Bericht = new Bericht
             {
                 Tekst = rtbTekst.Text,
-                Tags = tbTags.Text,
+                Categorie = new Categorie
+                {
+                    Naam = tbCategorie.Text
+                },
                 Bestand = viewModel.Bericht.Bestand,
                 AccountID = viewModel.Account.ID
             };
@@ -86,6 +86,7 @@ namespace _4Events.View
             if(viewModel.SelectedBericht != null)
             {
                 viewModel.Bericht.ReplyTo = viewModel.SelectedBericht.ID;
+                viewModel.Bericht.Categorie = viewModel.SelectedBericht.Categorie;
             }
 
             if (media.InsertBericht(viewModel.Bericht) != true)
@@ -124,7 +125,8 @@ namespace _4Events.View
                 }
 
                 pbBestand.Image = image;
-                viewModel.Bericht.Bestand = File.ReadAllBytes(filename);
+                viewModel.Bericht.Bestand = new Bestand();
+                viewModel.Bericht.Bestand.BestandArray = File.ReadAllBytes(filename);
             }
         }
 
@@ -204,12 +206,14 @@ namespace _4Events.View
             if (viewModel.SelectedBericht != null
                 && viewModel.SelectedBericht.Bestand != null)
             {
-                pbBestand.Image = media.ConvertByteArrayToImage(viewModel.SelectedBericht.Bestand);
+                pbBestand.Image = media.ConvertByteArrayToImage(media.GetBestandByBestandID(viewModel.SelectedBericht.Bestand.ID).BestandArray);
             }
             else
             {
                 pbBestand.Image = Resources.geenImageMelding;
             }
+
+            tbCategorie.Text = viewModel.SelectedBericht.Categorie.Naam;
         }
 
         private void btnLike_Click(object sender, EventArgs e)
@@ -239,6 +243,13 @@ namespace _4Events.View
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshForm();
+        }
+
+        private void tvBericht_MouseDown(object sender, MouseEventArgs e)
+        {
+            tvBericht.SelectedNode = null;
+            viewModel.SelectedBericht = null;
+            lblSelectBericht.Text = "N/A";
         }
     }
 }
