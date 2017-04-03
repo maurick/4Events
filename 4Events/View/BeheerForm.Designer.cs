@@ -43,7 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnWijzig = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lbAccounts = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnOverzicht = new System.Windows.Forms.Button();
             this.btnNieuwEvent = new System.Windows.Forms.Button();
@@ -57,16 +56,24 @@
             this.tbEventNaam = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnDeleteEvent = new System.Windows.Forms.Button();
-            this.lbEvents = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.lvAanwezig = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvReservering = new System.Windows.Forms.ListView();
             this.Naam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Betaald = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvAanwezig = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.lvAccounts = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvEvents = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -88,6 +95,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lvAccounts);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
@@ -101,7 +109,6 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btnWijzig);
             this.tabPage1.Controls.Add(this.btnDelete);
-            this.tabPage1.Controls.Add(this.lbAccounts);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
@@ -231,19 +238,9 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // lbAccounts
-            // 
-            this.lbAccounts.FormattingEnabled = true;
-            this.lbAccounts.ItemHeight = 16;
-            this.lbAccounts.Location = new System.Drawing.Point(116, 7);
-            this.lbAccounts.Margin = new System.Windows.Forms.Padding(4);
-            this.lbAccounts.Name = "lbAccounts";
-            this.lbAccounts.Size = new System.Drawing.Size(480, 276);
-            this.lbAccounts.TabIndex = 4;
-            this.lbAccounts.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lvEvents);
             this.tabPage2.Controls.Add(this.btnOverzicht);
             this.tabPage2.Controls.Add(this.btnNieuwEvent);
             this.tabPage2.Controls.Add(this.btnEventWijzig);
@@ -256,7 +253,6 @@
             this.tabPage2.Controls.Add(this.tbEventNaam);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.btnDeleteEvent);
-            this.tabPage2.Controls.Add(this.lbEvents);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
@@ -383,17 +379,6 @@
             this.btnDeleteEvent.Text = "Verwijder";
             this.btnDeleteEvent.UseVisualStyleBackColor = true;
             // 
-            // lbEvents
-            // 
-            this.lbEvents.FormattingEnabled = true;
-            this.lbEvents.ItemHeight = 16;
-            this.lbEvents.Location = new System.Drawing.Point(116, 7);
-            this.lbEvents.Margin = new System.Windows.Forms.Padding(4);
-            this.lbEvents.Name = "lbEvents";
-            this.lbEvents.Size = new System.Drawing.Size(480, 276);
-            this.lbEvents.TabIndex = 0;
-            this.lbEvents.SelectedIndexChanged += new System.EventHandler(this.SelectedEventChanged);
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.lvAanwezig);
@@ -407,6 +392,45 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reservering";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lvAanwezig
+            // 
+            this.lvAanwezig.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvAanwezig.FullRowSelect = true;
+            this.lvAanwezig.Location = new System.Drawing.Point(442, 28);
+            this.lvAanwezig.Name = "lvAanwezig";
+            this.lvAanwezig.Size = new System.Drawing.Size(460, 244);
+            this.lvAanwezig.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lvAanwezig.TabIndex = 5;
+            this.lvAanwezig.UseCompatibleStateImageBehavior = false;
+            this.lvAanwezig.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Naam";
+            // 
+            // lvReservering
+            // 
+            this.lvReservering.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Naam,
+            this.Betaald});
+            this.lvReservering.FullRowSelect = true;
+            this.lvReservering.Location = new System.Drawing.Point(4, 28);
+            this.lvReservering.Name = "lvReservering";
+            this.lvReservering.Size = new System.Drawing.Size(432, 244);
+            this.lvReservering.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lvReservering.TabIndex = 4;
+            this.lvReservering.UseCompatibleStateImageBehavior = false;
+            this.lvReservering.View = System.Windows.Forms.View.Details;
+            // 
+            // Naam
+            // 
+            this.Naam.Text = "Naam";
+            // 
+            // Betaald
+            // 
+            this.Betaald.Text = "Betaald";
             // 
             // label11
             // 
@@ -439,45 +463,67 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // lvReservering
+            // lvAccounts
             // 
-            this.lvReservering.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Naam,
-            this.Betaald});
-            this.lvReservering.FullRowSelect = true;
-            this.lvReservering.Location = new System.Drawing.Point(4, 28);
-            this.lvReservering.Name = "lvReservering";
-            this.lvReservering.Size = new System.Drawing.Size(432, 244);
-            this.lvReservering.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.lvReservering.TabIndex = 4;
-            this.lvReservering.UseCompatibleStateImageBehavior = false;
-            this.lvReservering.View = System.Windows.Forms.View.Details;
+            this.lvAccounts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.lvAccounts.FullRowSelect = true;
+            this.lvAccounts.Location = new System.Drawing.Point(115, 14);
+            this.lvAccounts.Name = "lvAccounts";
+            this.lvAccounts.Size = new System.Drawing.Size(482, 272);
+            this.lvAccounts.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lvAccounts.TabIndex = 40;
+            this.lvAccounts.UseCompatibleStateImageBehavior = false;
+            this.lvAccounts.View = System.Windows.Forms.View.Details;
+            this.lvAccounts.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChanged);
             // 
-            // Naam
+            // columnHeader2
             // 
-            this.Naam.Text = "Naam";
+            this.columnHeader2.Text = "ID";
             // 
-            // Betaald
+            // columnHeader3
             // 
-            this.Betaald.Text = "Betaald";
-            this.Betaald.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Text = "Naam";
             // 
-            // lvAanwezig
+            // columnHeader4
             // 
-            this.lvAanwezig.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lvAanwezig.FullRowSelect = true;
-            this.lvAanwezig.Location = new System.Drawing.Point(442, 28);
-            this.lvAanwezig.Name = "lvAanwezig";
-            this.lvAanwezig.Size = new System.Drawing.Size(460, 244);
-            this.lvAanwezig.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.lvAanwezig.TabIndex = 5;
-            this.lvAanwezig.UseCompatibleStateImageBehavior = false;
-            this.lvAanwezig.View = System.Windows.Forms.View.Details;
+            this.columnHeader4.Text = "Email";
             // 
-            // columnHeader1
+            // columnHeader5
             // 
-            this.columnHeader1.Text = "Naam";
+            this.columnHeader5.Text = "Functie";
+            this.columnHeader5.Width = 56;
+            // 
+            // lvEvents
+            // 
+            this.lvEvents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.lvEvents.FullRowSelect = true;
+            this.lvEvents.Location = new System.Drawing.Point(115, 7);
+            this.lvEvents.Name = "lvEvents";
+            this.lvEvents.Size = new System.Drawing.Size(482, 272);
+            this.lvEvents.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lvEvents.TabIndex = 41;
+            this.lvEvents.UseCompatibleStateImageBehavior = false;
+            this.lvEvents.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Naam";
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Datum";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Max Bezoekers";
+            this.columnHeader8.Width = 105;
             // 
             // BeheerForm
             // 
@@ -506,10 +552,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnWijzig;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.ListBox lbAccounts;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnDeleteEvent;
-        private System.Windows.Forms.ListBox lbEvents;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -541,5 +585,14 @@
         private System.Windows.Forms.ColumnHeader Betaald;
         private System.Windows.Forms.ListView lvAanwezig;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ListView lvAccounts;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ListView lvEvents;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }
