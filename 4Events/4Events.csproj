@@ -185,5 +185,8 @@
   <ItemGroup>
     <None Include="Resources\geenImageMelding.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\badwords.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

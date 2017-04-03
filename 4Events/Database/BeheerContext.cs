@@ -127,7 +127,7 @@ namespace _4Events.Database
                     }
                     catch (SqlException e)
                     {
-                        // TODO: make this work.
+                        // TODO: make this work.?
                         if (e.ErrorCode != 0)
                         {
                             return null;
