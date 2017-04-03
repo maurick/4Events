@@ -10,6 +10,7 @@ namespace _4Events.Database
     public interface IReserveringRepository
     {
         List<Reservering> GetAllReserveringen();
+        List<Reservering> GetReserveringenByEvent(int EventID);
         List<Locatie> GetAllLocaties();
     }
 }

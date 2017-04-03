@@ -19,7 +19,7 @@ namespace _4Events.View
     {
         BeheerViewModel viewModel = new BeheerViewModel();
         Beheer beheer = new Beheer(new BeheerContext());
-        ReserveringLogic reserveerRepo = new ReserveringLogic(new ReserveringContext());
+        ReserveringLogic reserveer = new ReserveringLogic(new ReserveringContext());
         System.Timers.Timer timer;
 
         public BeheerForm()
@@ -36,7 +36,7 @@ namespace _4Events.View
         {
             viewModel.AccountList = beheer.GetAllAccounts();
             viewModel.EventList = beheer.GetAllEvents();
-            viewModel.LocatieList = reserveerRepo.GetAllLocaties();
+            viewModel.LocatieList = reserveer.GetAllLocaties();
 
             lvAccounts.Items.Clear();
             lvEvents.Items.Clear();
@@ -196,7 +196,7 @@ namespace _4Events.View
             if (viewModel.SelectedEvent != null)
             {
                 viewModel.Aanwezigen = beheer.GetPresentAccountsByEventID(viewModel.SelectedEvent.ID);
-                viewModel.ReserveringList = reserveerRepo.GetAllReserveringen();
+                viewModel.ReserveringList = reserveer.GetAllReserveringen();
                 
                 foreach (var reservering in viewModel.ReserveringList)
                 {

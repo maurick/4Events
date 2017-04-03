@@ -55,6 +55,31 @@ namespace _4Events.Database
             return result;
         }
 
+        public List<Reservering> GetReserveringenByEvent(int EventID)
+        {
+            List<Reservering> result = new List<Reservering>();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT r.*, a.Naam AS MainAccountNaam " +
+                                "FROM RESERVERING r " +
+                                "INNER JOIN RESERVERING_ACCOUNT ra on r.ID = ra.ReserveringID " +
+                                "INNER JOIN ACCOUNT a on ra.AccountID = a.ID " +
+                                "WHERE EventID = " +  EventID +
+                                "ORDER BY r.ID;";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(CreateReserveringFromReader(reader));
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
         private Locatie CreateLocatieFromReader(SqlDataReader reader)
         {
             Locatie locatie = new Locatie()
