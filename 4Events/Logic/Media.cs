@@ -59,7 +59,7 @@ namespace _4Events.Logic
         }
 
         // Kan bij SearchBerichtenTeks worden toegevoegd.
-        public List<Bericht> SearchBerichtenTags(string keyword, int amount)
+        public List<Bericht> SearchBerichtenCategorie(string keyword, int amount)
         {
             List<Bericht> listBericht = repository.GetBerichten(amount);
             List<Bericht> output = new List<Bericht>();

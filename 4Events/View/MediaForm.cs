@@ -185,7 +185,7 @@ namespace _4Events.View
                     }
                     break;
                 case (1):
-                    foreach (var item in media.SearchBerichtenTags(tbZoek.Text, 1000))
+                    foreach (var item in media.SearchBerichtenCategorie(tbZoek.Text, 1000))
                     {
                         TreeNode tn = new TreeNode(item.ToString());
                         tn.Tag = item;

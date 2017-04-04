@@ -33,6 +33,9 @@
             this.btnDownload = new System.Windows.Forms.Button();
             this.pbBestand = new System.Windows.Forms.PictureBox();
             this.gbBerichten = new System.Windows.Forms.GroupBox();
+            this.tbCategorie = new System.Windows.Forms.TextBox();
+            this.cbZoek = new System.Windows.Forms.ComboBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRaporteer = new System.Windows.Forms.Button();
             this.lblSelectBericht = new System.Windows.Forms.Label();
             this.btnLike = new System.Windows.Forms.Button();
@@ -45,9 +48,6 @@
             this.tvBericht = new System.Windows.Forms.TreeView();
             this.rtbTekst = new System.Windows.Forms.RichTextBox();
             this.btnPost = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.cbZoek = new System.Windows.Forms.ComboBox();
-            this.tbCategorie = new System.Windows.Forms.TextBox();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
             this.gbBerichten.SuspendLayout();
@@ -116,6 +116,34 @@
             this.gbBerichten.TabIndex = 7;
             this.gbBerichten.TabStop = false;
             this.gbBerichten.Text = "Berichten";
+            // 
+            // tbCategorie
+            // 
+            this.tbCategorie.Location = new System.Drawing.Point(468, 42);
+            this.tbCategorie.Name = "tbCategorie";
+            this.tbCategorie.Size = new System.Drawing.Size(122, 20);
+            this.tbCategorie.TabIndex = 21;
+            // 
+            // cbZoek
+            // 
+            this.cbZoek.FormattingEnabled = true;
+            this.cbZoek.Items.AddRange(new object[] {
+            "Woorden",
+            "Categorie"});
+            this.cbZoek.Location = new System.Drawing.Point(408, 13);
+            this.cbZoek.Name = "cbZoek";
+            this.cbZoek.Size = new System.Drawing.Size(121, 21);
+            this.cbZoek.TabIndex = 20;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(535, 11);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(55, 23);
+            this.btnRefresh.TabIndex = 19;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnRaporteer
             // 
@@ -226,34 +254,6 @@
             this.btnPost.Text = "Post";
             this.btnPost.UseVisualStyleBackColor = true;
             this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(535, 11);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(55, 23);
-            this.btnRefresh.TabIndex = 19;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // cbZoek
-            // 
-            this.cbZoek.FormattingEnabled = true;
-            this.cbZoek.Items.AddRange(new object[] {
-            "Woorden",
-            "Tags"});
-            this.cbZoek.Location = new System.Drawing.Point(408, 13);
-            this.cbZoek.Name = "cbZoek";
-            this.cbZoek.Size = new System.Drawing.Size(121, 21);
-            this.cbZoek.TabIndex = 20;
-            // 
-            // tbCategorie
-            // 
-            this.tbCategorie.Location = new System.Drawing.Point(468, 42);
-            this.tbCategorie.Name = "tbCategorie";
-            this.tbCategorie.Size = new System.Drawing.Size(122, 20);
-            this.tbCategorie.TabIndex = 21;
             // 
             // MediaForm
             // 

@@ -26,23 +26,31 @@ namespace _4Events
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if ((viewModel.Account = beheer.Login(tbEmail.Text, tbWachtwoord.Text)) != null)
+            try
             {
-                if (!beheer.CreateAccountCache(viewModel.Account))
+                if ((viewModel.Account = beheer.Login(tbEmail.Text, tbWachtwoord.Text)) != null)
                 {
-                    MessageBox.Show("Kan geen account niet serialiseren.");
-                    return;
-                }
+                    if (!beheer.CreateAccountCache(viewModel.Account))
+                    {
+                        MessageBox.Show("Kan geen account niet serialiseren.");
+                        return;
+                    }
 
-                this.Hide();
-                MainForm Form = new MainForm();
-                Form.ShowDialog();
-                this.Close();
+                    this.Hide();
+                    MainForm Form = new MainForm();
+                    Form.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Email of wachtwoord is verkeerd.");
+                }
             }
-            else
+            catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show("Email of wachtwoord is verkeerd.");
+                MessageBox.Show(ex.Message);
             }
+            
         }
 
         private void btnRegistreer_Click(object sender, EventArgs e)
