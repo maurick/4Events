@@ -300,5 +300,18 @@ namespace _4Events.Database
             }
             return result;
         }
+
+        public bool InsertRFIDAccount(int AccountID, string RFID)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO ";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                }
+            }
+        }
     }
 }
