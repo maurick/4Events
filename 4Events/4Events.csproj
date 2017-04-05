@@ -83,6 +83,7 @@
     <Compile Include="Model\Plek.cs" />
     <Compile Include="Model\Reservering.cs" />
     <Compile Include="Model\Verhuur.cs" />
+    <Compile Include="RFID\RFID.cs" />
     <Compile Include="ViewModel\BeheerViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -207,6 +208,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\badwords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Phidget21COM">
+      <Guid>{50484945-4745-5453-0000-000000000000}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
