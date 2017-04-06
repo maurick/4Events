@@ -92,5 +92,13 @@ namespace _4Events.View
             form.ShowDialog();
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            VerhuurForm form = new VerhuurForm();
+            form.ShowDialog();
+            this.Close();
+        }
     }
 }

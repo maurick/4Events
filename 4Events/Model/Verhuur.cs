@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace _4Events.Model
 {
-    public class Verhuur
+    class Verhuur
     {
-        public int AccountID { get; set; }
+        public Account Account { get; set; }
+        public Exemplaar Exemplaar { get; set; }
+        public DateTime DatumBegin { get; set; }
+        public DateTime DatumEind { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using _4Events.Model;
 
 namespace _4Events.Logic
 {
-    public class VerhuurLogic
+    class VerhuurLogic
     {
         private IVerhuurRepository repository = new VerhuurContext();
 
@@ -17,9 +17,9 @@ namespace _4Events.Logic
             this.repository = repository;
         }
 
-        public List<Model.Verhuur> GetAllMessages()
+        public List<Exemplaar> GetExemplaren(int amount)
         {
-            return repository.GetAllVerhuur();
+            return repository.GetExemplaren(amount);
         }
     }
 }

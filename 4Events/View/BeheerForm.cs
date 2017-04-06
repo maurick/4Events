@@ -323,11 +323,11 @@ namespace _4Events.View
         {
             if(beheer.InsertRFID(viewModel.SelectedAccount.ID, "rfidnummer"/* tbRFID.Text */))
             {
-                MessageBox.Show("RFID aan account gekoppeld.");
+                MessageBox.Show("RFID aan account gekoppeld.", "Melding");
             }
             else
             {
-                MessageBox.Show("Kan RFID niet aan account koppelen.\nCheck of de RFID tag in de database zit od het account is al aan deze tag gekoppelt.");
+                MessageBox.Show("Kan RFID niet aan account koppelen.\nCheck of de RFID tag in de database zit od het account is al aan deze tag gekoppelt.", "Error");
             }
         }
     }
