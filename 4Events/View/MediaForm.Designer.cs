@@ -265,6 +265,7 @@
             this.Controls.Add(this.btnBack);
             this.Name = "MediaForm";
             this.Text = "MediaForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MediaForm_FormClosed);
             this.gbBestand.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).EndInit();
             this.gbBerichten.ResumeLayout(false);

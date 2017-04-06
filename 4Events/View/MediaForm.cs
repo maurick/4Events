@@ -256,5 +256,10 @@ namespace _4Events.View
             viewModel.SelectedBericht = null;
             lblSelectBericht.Text = "N/A";
         }
+
+        private void MediaForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            mpv.FormClose();
+        }
     }
 }
