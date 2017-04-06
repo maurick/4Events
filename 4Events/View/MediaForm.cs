@@ -15,6 +15,7 @@ namespace _4Events.View
         Media media = new Media(new MediaContext());
         Beheer beheer = new Beheer(new BeheerContext());
         MediaViewModel viewModel = new MediaViewModel();
+        Mpv mpv = new Mpv();
 
         public MediaForm()
         {
@@ -103,6 +104,7 @@ namespace _4Events.View
         {
             Image image = Resources.geenImageMelding;
             OpenFileDialog openBestand = new OpenFileDialog();
+            openBestand.Filter = "Image (*.*)|*.*|Video (*.*)|*.*";
             string filename;
 
             if(viewModel.Bericht == null)
@@ -120,6 +122,9 @@ namespace _4Events.View
                     case 1:
                         image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
                         break;
+                    case 2:
+                        mpv.PlayVid(filename, pbBestand.Handle.ToInt64());
+                        return;
                     default:
                         break;
                 }
