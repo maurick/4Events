@@ -318,5 +318,17 @@ namespace _4Events.View
             rf.Close();
             Dispose();
         }
+
+        private void btnRFID_Click(object sender, EventArgs e)
+        {
+            if(beheer.InsertRFID(viewModel.SelectedAccount.ID, "rfidnummer"/* tbRFID.Text */))
+            {
+                MessageBox.Show("RFID aan account gekoppeld.");
+            }
+            else
+            {
+                MessageBox.Show("Kan RFID niet aan account koppelen.\nCheck of de RFID tag in de database zit od het account is al aan deze tag gekoppelt.");
+            }
+        }
     }
 }

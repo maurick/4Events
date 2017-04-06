@@ -301,17 +301,46 @@ namespace _4Events.Database
             return result;
         }
 
+        private int GetRFIDidBYRFID(string RFID)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT Id FROM RFID WHERE Nummer = @rfid";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@rfid", RFID);
+
+                    return (int)command.ExecuteScalar();
+                }
+            }
+        }
+
         public bool InsertRFIDAccount(int AccountID, string RFID)
         {
             using (SqlConnection connection = Database.Connection)
             {
-                string query = "INSERT INTO ";
+                string query = "INSERT INTO RFID_ACCOUNT (AccountID, RFID, EventID) VALUES (@accountid, @rfid, @eventid)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@accountid", AccountID);
+                    command.Parameters.AddWithValue("rfid", GetRFIDidBYRFID(RFID));
+                    //TODO event
+                    command.Parameters.AddWithValue("eventid", 1);
 
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException)
+                    {
+                        return false;
+                        throw;
+                    }
                 }
             }
+            return true;
         }
     }
 }

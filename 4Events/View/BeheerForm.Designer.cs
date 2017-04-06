@@ -30,6 +30,8 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbRFID = new System.Windows.Forms.TextBox();
             this.lvAccounts = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -74,8 +76,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            this.tbRFID = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnRFID = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -96,6 +97,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnRFID);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.tbRFID);
             this.tabPage1.Controls.Add(this.lvAccounts);
@@ -114,11 +116,28 @@
             this.tabPage1.Controls.Add(this.btnDelete);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(677, 236);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Account";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(453, 184);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(32, 13);
+            this.label12.TabIndex = 42;
+            this.label12.Text = "RFID";
+            // 
+            // tbRFID
+            // 
+            this.tbRFID.Enabled = false;
+            this.tbRFID.Location = new System.Drawing.Point(532, 181);
+            this.tbRFID.Name = "tbRFID";
+            this.tbRFID.Size = new System.Drawing.Size(140, 20);
+            this.tbRFID.TabIndex = 41;
             // 
             // lvAccounts
             // 
@@ -129,7 +148,7 @@
             this.columnHeader5});
             this.lvAccounts.FullRowSelect = true;
             this.lvAccounts.Location = new System.Drawing.Point(86, 11);
-            this.lvAccounts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvAccounts.Margin = new System.Windows.Forms.Padding(2);
             this.lvAccounts.Name = "lvAccounts";
             this.lvAccounts.Size = new System.Drawing.Size(362, 222);
             this.lvAccounts.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -279,7 +298,7 @@
             this.tabPage2.Controls.Add(this.btnDeleteEvent);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(677, 236);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Event";
@@ -293,7 +312,7 @@
             this.columnHeader8});
             this.lvEvents.FullRowSelect = true;
             this.lvEvents.Location = new System.Drawing.Point(86, 6);
-            this.lvEvents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvEvents.Margin = new System.Windows.Forms.Padding(2);
             this.lvEvents.Name = "lvEvents";
             this.lvEvents.Size = new System.Drawing.Size(362, 222);
             this.lvEvents.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -438,7 +457,7 @@
             this.columnHeader1});
             this.lvAanwezig.FullRowSelect = true;
             this.lvAanwezig.Location = new System.Drawing.Point(332, 23);
-            this.lvAanwezig.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvAanwezig.Margin = new System.Windows.Forms.Padding(2);
             this.lvAanwezig.Name = "lvAanwezig";
             this.lvAanwezig.Size = new System.Drawing.Size(346, 199);
             this.lvAanwezig.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -457,7 +476,7 @@
             this.Betaald});
             this.lvReservering.FullRowSelect = true;
             this.lvReservering.Location = new System.Drawing.Point(3, 23);
-            this.lvReservering.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvReservering.Margin = new System.Windows.Forms.Padding(2);
             this.lvReservering.Name = "lvReservering";
             this.lvReservering.Size = new System.Drawing.Size(325, 199);
             this.lvReservering.Sorting = System.Windows.Forms.SortOrder.Ascending;
@@ -501,22 +520,15 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // tbRFID
+            // btnRFID
             // 
-            this.tbRFID.Enabled = false;
-            this.tbRFID.Location = new System.Drawing.Point(532, 137);
-            this.tbRFID.Name = "tbRFID";
-            this.tbRFID.Size = new System.Drawing.Size(140, 20);
-            this.tbRFID.TabIndex = 41;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(454, 140);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 13);
-            this.label12.TabIndex = 42;
-            this.label12.Text = "RFID";
+            this.btnRFID.Location = new System.Drawing.Point(454, 207);
+            this.btnRFID.Name = "btnRFID";
+            this.btnRFID.Size = new System.Drawing.Size(217, 23);
+            this.btnRFID.TabIndex = 43;
+            this.btnRFID.Text = "Voeg RFID toe";
+            this.btnRFID.UseVisualStyleBackColor = true;
+            this.btnRFID.Click += new System.EventHandler(this.btnRFID_Click);
             // 
             // BeheerForm
             // 
@@ -589,5 +601,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tbRFID;
+        private System.Windows.Forms.Button btnRFID;
     }
 }
