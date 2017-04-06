@@ -63,7 +63,19 @@ namespace _4Events.View
 
         private void btnTeruggave_Click(object sender, EventArgs e)
         {
+            if (lbAccount.SelectedItem == null)
+            {
+                MessageBox.Show("Selecteer een verhuurd item uit de accout list box.");
+                return;
+            }
+            if (rf.CurrentRFIDTag == null)
+            {
+                MessageBox.Show("Geen RFID tag gevonden.\nHou de tag boven de scanner.");
+                return;
+            }
+            viewmodel.Account = beheer.GetAccountByRFID(rf.CurrentRFIDTag);
 
+            // ?? staat niet in de requirement
         }
 
         private void btnVerhuur_Click(object sender, EventArgs e)
