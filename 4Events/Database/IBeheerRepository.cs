@@ -10,6 +10,7 @@ namespace _4Events.Database
         List<Event> GetAllEvents();
         Account GetAccountById(int id);
         Account GetAccountByEmail(string email);
+        Account GetAccountByRFID(string RFID);
         List<Account> GetPresentAccountsByEventID(int EventID);
         Event GetEventById(int id);
         // Insert

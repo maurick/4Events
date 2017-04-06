@@ -30,11 +30,12 @@ namespace _4Events.Database
                 {
                     command.Parameters.AddWithValue("@amount", amount);
 
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        result.Add(CreateExemplaarFromReader(reader));
+                        while (reader.Read())
+                        {
+                            result.Add(CreateExemplaarFromReader(reader));
+                        }
                     }
                 }
             }
@@ -44,7 +45,28 @@ namespace _4Events.Database
 
         public bool InsertVerhuur(Verhuur verhuur)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO VERHUUR (AccountID, ExemplaarID, DatumBegin, DatumEind) VALUES (@accountid, @exemplaarid, @datumbegin, @datumeind)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@exemplaarid", verhuur.Exemplaar.ExemplaarID);
+                    command.Parameters.AddWithValue("@accountid", verhuur.Account.ID);
+                    command.Parameters.AddWithValue("@datumbegin", verhuur.DatumBegin);
+                    command.Parameters.AddWithValue("@datumeind", verhuur.DatumEind);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private Product GetProductByID(int id)
@@ -59,12 +81,13 @@ namespace _4Events.Database
                 {
                     command.Parameters.AddWithValue("@id", id);
 
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        result = CreateProductFromReader(reader);
-                    }
+                        while (reader.Read())
+                        {
+                            result = CreateProductFromReader(reader);
+                        }
+                    } 
                 }
             }
 

@@ -10,22 +10,35 @@ using System.Windows.Forms;
 using _4Events.Logic;
 using _4Events.Database;
 using _4Events.ViewModel;
+using _4Events.Model;
+using _4Events.RFID;
 
 namespace _4Events.View
 {
     public partial class VerhuurForm : Form
     {
         VerhuurLogic verhuurLogic;
+        Beheer beheer;
         VerhuurViewModel viewmodel;
+        RFID.RFID rf;
 
         public VerhuurForm()
         {
             InitializeComponent();
 
             verhuurLogic = new VerhuurLogic(new VerhuurContext());
+            beheer = new Beheer(new BeheerContext());
             viewmodel = new VerhuurViewModel();
 
+            rf = new RFID.RFID();
+            rf.Open();
+            if (rf.IsAttached == false)
+            {
+                MessageBox.Show("Geen RFID reader gevonden.\nDit form werkt niet zonder RFID!");
+            }
+
             viewmodel.ExemplaarList = verhuurLogic.GetExemplaren(999);
+            
 
             RefreshForm();
         }
@@ -46,6 +59,54 @@ namespace _4Events.View
             MainForm form = new MainForm();
             form.ShowDialog();
             this.Close();
+        }
+
+        private void btnTeruggave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVerhuur_Click(object sender, EventArgs e)
+        {
+            if (lbVoorraad.SelectedItem == null)
+            {
+                MessageBox.Show("Selecteer een item uit de voorraad om te verhuren.");
+                return;
+            }
+            if(rf.CurrentRFIDTag == null)
+            {
+                MessageBox.Show("Geen RFID tag gevonden.\nHou de tag boven de scanner.");
+                return;
+            }
+            viewmodel.Account = beheer.GetAccountByRFID(rf.CurrentRFIDTag);
+
+            verhuurLogic.InsertVerhuur(new Verhuur()
+            {
+                Account = viewmodel.Account,
+                Exemplaar = (Exemplaar)lbVoorraad.SelectedItem,
+                DatumBegin = DateTime.Today,
+                DatumEind = DateTime.Today
+            });
+        }
+
+        private void VerhuurForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            rf.Close();
+            Dispose();
+        }
+
+        private void btnOverzicht_Click(object sender, EventArgs e)
+        {
+            if (rf.CurrentRFIDTag == null)
+            {
+                MessageBox.Show("Geen RFID tag gevonden.\nHou de tag boven de scanner.");
+                return;
+            }
+
+            MessageBox.Show("nee");
+            //GetListVerhuurAccount(Account)
+
+            // foreach exemplaar in verhuur lbAccount.add(exemplaar)
         }
     }
 }

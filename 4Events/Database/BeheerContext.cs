@@ -342,5 +342,29 @@ namespace _4Events.Database
             }
             return true;
         }
+
+        public Account GetAccountByRFID(string RFID)
+        {
+            Account result = null;
+
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT * FROM ACCOUNT " +
+                    "JOIN RFID_ACCOUNT ON(RFID_ACCOUNT.AccountID = ACCOUNT.ID)" +
+                    "JOIN RFID ON(RFID_ACCOUNT.RFID = RFID.ID)" +
+                    "WHERE Nummer = @rfid";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@rfid", RFID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        result = CreateAccountFromReader(reader);
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

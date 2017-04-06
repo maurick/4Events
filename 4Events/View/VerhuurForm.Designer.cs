@@ -35,13 +35,14 @@
             this.btnTeruggave = new System.Windows.Forms.Button();
             this.lblVoorraad = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnOverzicht = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(12, 352);
+            this.btnBack.Location = new System.Drawing.Point(360, 352);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(450, 23);
+            this.btnBack.Size = new System.Drawing.Size(102, 23);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Terug";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -69,8 +70,9 @@
             this.btnVerhuur.Name = "btnVerhuur";
             this.btnVerhuur.Size = new System.Drawing.Size(57, 42);
             this.btnVerhuur.TabIndex = 4;
-            this.btnVerhuur.Text = ">>";
+            this.btnVerhuur.Text = "<<";
             this.btnVerhuur.UseVisualStyleBackColor = true;
+            this.btnVerhuur.Click += new System.EventHandler(this.btnVerhuur_Click);
             // 
             // btnTeruggave
             // 
@@ -78,8 +80,9 @@
             this.btnTeruggave.Name = "btnTeruggave";
             this.btnTeruggave.Size = new System.Drawing.Size(57, 42);
             this.btnTeruggave.TabIndex = 5;
-            this.btnTeruggave.Text = "<<";
+            this.btnTeruggave.Text = ">>";
             this.btnTeruggave.UseVisualStyleBackColor = true;
+            this.btnTeruggave.Click += new System.EventHandler(this.btnTeruggave_Click);
             // 
             // lblVoorraad
             // 
@@ -99,11 +102,22 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Account";
             // 
+            // btnOverzicht
+            // 
+            this.btnOverzicht.Location = new System.Drawing.Point(13, 352);
+            this.btnOverzicht.Name = "btnOverzicht";
+            this.btnOverzicht.Size = new System.Drawing.Size(341, 23);
+            this.btnOverzicht.TabIndex = 8;
+            this.btnOverzicht.Text = "Overzicht van Account";
+            this.btnOverzicht.UseVisualStyleBackColor = true;
+            this.btnOverzicht.Click += new System.EventHandler(this.btnOverzicht_Click);
+            // 
             // VerhuurForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 387);
+            this.Controls.Add(this.btnOverzicht);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblVoorraad);
             this.Controls.Add(this.btnTeruggave);
@@ -113,6 +127,7 @@
             this.Controls.Add(this.btnBack);
             this.Name = "VerhuurForm";
             this.Text = "Verhuur";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerhuurForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +142,6 @@
         private System.Windows.Forms.Button btnTeruggave;
         private System.Windows.Forms.Label lblVoorraad;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnOverzicht;
     }
 }

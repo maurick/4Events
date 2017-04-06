@@ -21,5 +21,10 @@ namespace _4Events.Logic
         {
             return repository.GetExemplaren(amount);
         }
+
+        public bool InsertVerhuur(Verhuur verhuur)
+        {
+            return repository.InsertVerhuur(verhuur);
+        }
     }
 }
