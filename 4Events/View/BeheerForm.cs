@@ -38,7 +38,7 @@ namespace _4Events.View
             rf.Open();
             if (rf.IsAttached == false)
             {
-                MessageBox.Show("Geen RFID gevonden.", "Melding");
+                MessageBox.Show("Geen RFID reader gevonden.", "Melding");
             }
 
             RefreshForm();

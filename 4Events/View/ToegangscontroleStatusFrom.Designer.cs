@@ -33,11 +33,13 @@
             this.cbBetalingsstatus = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbIngechecked = new System.Windows.Forms.ComboBox();
+            this.tbRFID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(15, 84);
+            this.btnSave.Location = new System.Drawing.Point(15, 145);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(255, 39);
             this.btnSave.TabIndex = 0;
@@ -85,11 +87,31 @@
             this.cbIngechecked.Size = new System.Drawing.Size(121, 24);
             this.cbIngechecked.TabIndex = 4;
             // 
+            // tbRFID
+            // 
+            this.tbRFID.Enabled = false;
+            this.tbRFID.Location = new System.Drawing.Point(15, 116);
+            this.tbRFID.Margin = new System.Windows.Forms.Padding(4);
+            this.tbRFID.Name = "tbRFID";
+            this.tbRFID.Size = new System.Drawing.Size(173, 22);
+            this.tbRFID.TabIndex = 42;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(176, 17);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Scan RFID om te koppelen";
+            // 
             // ToegangscontroleStatusFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 134);
+            this.ClientSize = new System.Drawing.Size(282, 196);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbRFID);
             this.Controls.Add(this.cbIngechecked);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbBetalingsstatus);
@@ -97,6 +119,7 @@
             this.Controls.Add(this.btnSave);
             this.Name = "ToegangscontroleStatusFrom";
             this.Text = "Status";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ToegangscontroleStatusFrom_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +132,7 @@
         private System.Windows.Forms.ComboBox cbBetalingsstatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbIngechecked;
+        private System.Windows.Forms.TextBox tbRFID;
+        private System.Windows.Forms.Label label3;
     }
 }

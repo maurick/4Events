@@ -98,14 +98,13 @@ namespace _4Events.View
             else if (formState == FormState.Reservering)
             {
                 viewModel.SelectedReservering = viewModel.ReserveringList.Find(x => x.ID == Convert.ToInt32(listView.SelectedItems[0].Text));
-                ToegangscontroleStatusFrom statusForm = new ToegangscontroleStatusFrom(viewModel.SelectedReservering.Betaald, viewModel.SelectedReservering.Ingechecked);
+                ToegangscontroleStatusFrom statusForm = new ToegangscontroleStatusFrom(viewModel.SelectedReservering.Betaald, viewModel.SelectedReservering.Ingechecked, beheer, viewModel);
                 statusForm.ShowDialog();
                 if (statusForm.DialogResult == DialogResult.OK)
                 {
                     viewModel.SelectedReservering.Update(statusForm.Betalingsstatus, statusForm.Ingechecked);
                     reserveer.UpdateReservering(viewModel.SelectedReservering);
                     statusForm.Close();
-                    statusForm.Dispose();
 
                     RefreshReserveringen();
                 }
