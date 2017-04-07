@@ -65,6 +65,7 @@ namespace _4Events.View
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            mpv.FormClose();
             this.Hide();
             MainForm form = new MainForm();
             form.ShowDialog();
@@ -120,7 +121,16 @@ namespace _4Events.View
                 switch (openBestand.FilterIndex)
                 {
                     case 1:
-                        image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+                        try
+                        {
+                            mpv.FormClose();
+                            image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Niet een image bestand.");
+                        }
+                        
                         break;
                     case 2:
                         mpv.PlayVid(filename, pbBestand.Handle.ToInt64());

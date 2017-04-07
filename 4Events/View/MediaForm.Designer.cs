@@ -55,6 +55,8 @@
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Location = new System.Drawing.Point(622, 364);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(256, 23);
@@ -65,6 +67,9 @@
             // 
             // gbBestand
             // 
+            this.gbBestand.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbBestand.Controls.Add(this.btnDownload);
             this.gbBestand.Controls.Add(this.pbBestand);
             this.gbBestand.Location = new System.Drawing.Point(616, 13);
@@ -76,6 +81,8 @@
             // 
             // btnDownload
             // 
+            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownload.Location = new System.Drawing.Point(6, 311);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(256, 23);
@@ -86,6 +93,9 @@
             // 
             // pbBestand
             // 
+            this.pbBestand.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbBestand.Location = new System.Drawing.Point(6, 19);
             this.pbBestand.Name = "pbBestand";
             this.pbBestand.Size = new System.Drawing.Size(256, 286);

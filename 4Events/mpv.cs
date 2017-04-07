@@ -11,7 +11,7 @@ namespace _4Events
     /// <summary>
     /// Gebruikt de mpv API om videos in windows forms af te spelen.
     /// Voor nu moet je handmatig de mpv-1.dll file in de debug folder zetten. Deze is hier te vinden https://mpv.srsfckn.biz/
-    /// De processor setting moet op x64 staan.
+    /// De processor setting moet op x86 staan.
     /// </summary>
     class Mpv
     {
