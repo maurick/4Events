@@ -6,20 +6,17 @@ using System.Threading.Tasks;
 
 namespace _4Events
 {
-    public class Enums
+    public enum Functie
     {
-        public enum Functie
-        {
-            Bezoeker,
-            Medewerker,
-            Beheerder
-        }
+        Bezoeker,
+        Medewerker,
+        Beheerder
+    }
 
-        public enum Specificatie
-        {
-            Normaal,
-            Green,
-            Luxe
-        }
+    public enum Specificatie
+    {
+        Normaal,
+        Green,
+        Luxe
     }
 }

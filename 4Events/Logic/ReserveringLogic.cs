@@ -36,5 +36,20 @@ namespace _4Events.Logic
         {
             return repository.GetAllLocaties();
         }
+
+        public bool InsertReservering(Reservering reservering)
+        {
+            return repository.InsertReservering(reservering);
+        }
+
+        public Reservering NewReservering(Event e, bool betaald)
+        {
+            Reservering r = new Reservering();
+            r.Datum = DateTime.Now;
+            r.EventID = e.ID;
+            r.Betaald = betaald;
+
+            return r;
+        }
     }
 }

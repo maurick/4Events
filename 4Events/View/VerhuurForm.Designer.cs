@@ -40,9 +40,10 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(360, 352);
+            this.btnBack.Location = new System.Drawing.Point(480, 433);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(102, 23);
+            this.btnBack.Size = new System.Drawing.Size(136, 28);
             this.btnBack.TabIndex = 0;
             this.btnBack.Text = "Terug";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -51,24 +52,29 @@
             // lbVoorraad
             // 
             this.lbVoorraad.FormattingEnabled = true;
-            this.lbVoorraad.Location = new System.Drawing.Point(272, 25);
+            this.lbVoorraad.ItemHeight = 16;
+            this.lbVoorraad.Location = new System.Drawing.Point(363, 31);
+            this.lbVoorraad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbVoorraad.Name = "lbVoorraad";
-            this.lbVoorraad.Size = new System.Drawing.Size(190, 316);
+            this.lbVoorraad.Size = new System.Drawing.Size(252, 388);
             this.lbVoorraad.TabIndex = 2;
             // 
             // lbAccount
             // 
             this.lbAccount.FormattingEnabled = true;
-            this.lbAccount.Location = new System.Drawing.Point(12, 25);
+            this.lbAccount.ItemHeight = 16;
+            this.lbAccount.Location = new System.Drawing.Point(16, 31);
+            this.lbAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lbAccount.Name = "lbAccount";
-            this.lbAccount.Size = new System.Drawing.Size(190, 316);
+            this.lbAccount.Size = new System.Drawing.Size(252, 388);
             this.lbAccount.TabIndex = 3;
             // 
             // btnVerhuur
             // 
-            this.btnVerhuur.Location = new System.Drawing.Point(209, 105);
+            this.btnVerhuur.Location = new System.Drawing.Point(279, 129);
+            this.btnVerhuur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVerhuur.Name = "btnVerhuur";
-            this.btnVerhuur.Size = new System.Drawing.Size(57, 42);
+            this.btnVerhuur.Size = new System.Drawing.Size(76, 52);
             this.btnVerhuur.TabIndex = 4;
             this.btnVerhuur.Text = "<<";
             this.btnVerhuur.UseVisualStyleBackColor = true;
@@ -76,9 +82,10 @@
             // 
             // btnTeruggave
             // 
-            this.btnTeruggave.Location = new System.Drawing.Point(209, 153);
+            this.btnTeruggave.Location = new System.Drawing.Point(279, 188);
+            this.btnTeruggave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTeruggave.Name = "btnTeruggave";
-            this.btnTeruggave.Size = new System.Drawing.Size(57, 42);
+            this.btnTeruggave.Size = new System.Drawing.Size(76, 52);
             this.btnTeruggave.TabIndex = 5;
             this.btnTeruggave.Text = ">>";
             this.btnTeruggave.UseVisualStyleBackColor = true;
@@ -87,26 +94,29 @@
             // lblVoorraad
             // 
             this.lblVoorraad.AutoSize = true;
-            this.lblVoorraad.Location = new System.Drawing.Point(272, 6);
+            this.lblVoorraad.Location = new System.Drawing.Point(363, 7);
+            this.lblVoorraad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVoorraad.Name = "lblVoorraad";
-            this.lblVoorraad.Size = new System.Drawing.Size(50, 13);
+            this.lblVoorraad.Size = new System.Drawing.Size(67, 17);
             this.lblVoorraad.TabIndex = 6;
             this.lblVoorraad.Text = "Voorraad";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Account";
             // 
             // btnOverzicht
             // 
-            this.btnOverzicht.Location = new System.Drawing.Point(13, 352);
+            this.btnOverzicht.Location = new System.Drawing.Point(17, 433);
+            this.btnOverzicht.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOverzicht.Name = "btnOverzicht";
-            this.btnOverzicht.Size = new System.Drawing.Size(341, 23);
+            this.btnOverzicht.Size = new System.Drawing.Size(455, 28);
             this.btnOverzicht.TabIndex = 8;
             this.btnOverzicht.Text = "Overzicht van Account";
             this.btnOverzicht.UseVisualStyleBackColor = true;
@@ -114,9 +124,9 @@
             // 
             // VerhuurForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 387);
+            this.ClientSize = new System.Drawing.Size(632, 476);
             this.Controls.Add(this.btnOverzicht);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblVoorraad);
@@ -125,6 +135,7 @@
             this.Controls.Add(this.lbAccount);
             this.Controls.Add(this.lbVoorraad);
             this.Controls.Add(this.btnBack);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "VerhuurForm";
             this.Text = "Verhuur";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerhuurForm_FormClosed);

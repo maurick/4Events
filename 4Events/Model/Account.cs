@@ -4,7 +4,7 @@
     public class Account
     {
         public int ID { get; set; }
-        public Enums.Functie Functie { get; set; }
+        public Functie Functie { get; set; }
         public string Naam { get; set; }
         public string Plaats { get; set; }
         public string Straat { get; set; }

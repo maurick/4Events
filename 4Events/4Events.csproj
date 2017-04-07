@@ -94,6 +94,12 @@
     <Compile Include="ViewModel\MediaViewModel.cs" />
     <Compile Include="ViewModel\RegistreerViewModel.cs" />
     <Compile Include="ViewModel\VerhuurViewModel.cs" />
+    <Compile Include="View\AddAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddAccountForm.Designer.cs">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BeheerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\AddAccountForm.resx">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\BeheerForm.resx">
       <DependentUpon>BeheerForm.cs</DependentUpon>
     </EmbeddedResource>

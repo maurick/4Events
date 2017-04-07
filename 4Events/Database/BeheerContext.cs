@@ -263,7 +263,7 @@ namespace _4Events.Database
             Account account = new Account
             {
                 ID = Convert.ToInt32(reader["ID"]),
-                Functie = (Enums.Functie)Enum.Parse(typeof(Enums.Functie), Convert.ToString(reader["Functie"])),
+                Functie = (Functie)Enum.Parse(typeof(Functie), Convert.ToString(reader["Functie"])),
                 Naam = Convert.ToString(reader["Naam"]),
                 Email = Convert.ToString(reader["Email"]),
                 Huisnummer = Convert.ToInt32(reader["Huisnr"]),

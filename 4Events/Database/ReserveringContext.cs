@@ -138,5 +138,33 @@ namespace _4Events.Database
 
             return reservering;
         }
+
+        public bool InsertReservering(Reservering reservering)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO RESERVERING (EventID, Datum, Betaald) VALUES (@EventID, @Datum, @Ingechecked)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@EventID", reservering.EventID);
+                    command.Parameters.AddWithValue("@Datum", reservering.Datum);
+                    command.Parameters.AddWithValue("@Ingechecked", reservering.Ingechecked);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        if (e.ErrorCode != 0)
+                        {
+                            return false;
+                        }
+                        throw;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
