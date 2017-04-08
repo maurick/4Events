@@ -45,11 +45,23 @@ namespace _4Events.View
 
         private void RefreshForm()
         {
+            lbAccount.Items.Clear();
             lbVoorraad.Items.Clear();
 
             foreach (var exemplaar in viewmodel.ExemplaarList)
             {
                 lbVoorraad.Items.Add(exemplaar);
+            }
+
+            // Account moet eerst worden opgehaald met RFID
+            if (viewmodel.Account != null)
+            {
+                /* TODO
+                foreach (var verhuur in accountverhuur)
+                {
+
+                }
+                */
             }
         }
 
@@ -80,7 +92,26 @@ namespace _4Events.View
 
         private void btnVerhuur_Click(object sender, EventArgs e)
         {
-
+            if (lbVoorraad.SelectedItem == null)
+            {
+                MessageBox.Show("Selecteer een item uit de voorraad list box.");
+                return;
+            }
+            if (rf.CurrentRFIDTag == null)
+            {
+                MessageBox.Show("Geen RFID tag gevonden.\nHou de tag boven de scanner.");
+                return;
+            }
+            viewmodel.Account = beheer.GetAccountByRFID(rf.CurrentRFIDTag);
+            verhuurLogic.InsertVerhuur(new Verhuur()
+            {
+                Account = viewmodel.Account,
+                DatumBegin = DateTime.Today,
+                DatumEind = DateTime.Today,
+                Exemplaar = (Exemplaar)lbVoorraad.SelectedItem
+            });
+            MessageBox.Show("Item verhuurd");
+            RefreshForm();
         }
 
         private void VerhuurForm_FormClosed(object sender, FormClosedEventArgs e)
