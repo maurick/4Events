@@ -56,12 +56,12 @@ namespace _4Events.View
             // Account moet eerst worden opgehaald met RFID
             if (viewmodel.Account != null)
             {
-                /* TODO
-                foreach (var verhuur in accountverhuur)
+                viewmodel.AccountVerhuur = new List<Verhuur>();
+                viewmodel.AccountVerhuur = verhuurLogic.GetVerhuurByAccount(viewmodel.Account);
+                foreach (var verhuur in viewmodel.AccountVerhuur)
                 {
-
+                    lbAccount.Items.Add(verhuur);
                 }
-                */
             }
         }
 
@@ -87,7 +87,11 @@ namespace _4Events.View
             }
             viewmodel.Account = beheer.GetAccountByRFID(rf.CurrentRFIDTag);
 
-            // ?? staat niet in de requirement
+            if (viewmodel.AccountVerhuur != null)
+            {
+                //verhuurLogic.DeleteVerhuurById(((Verhuur)lbAccount.SelectedItem).ID);
+                //mbox
+            }
         }
 
         private void btnVerhuur_Click(object sender, EventArgs e)
@@ -129,9 +133,7 @@ namespace _4Events.View
             }
 
             MessageBox.Show("nee");
-            //GetListVerhuurAccount(Account)
-
-            // foreach exemplaar in verhuur lbAccount.add(exemplaar)
+            RefreshForm();
         }
     }
 }
