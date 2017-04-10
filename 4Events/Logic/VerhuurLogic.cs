@@ -26,5 +26,10 @@ namespace _4Events.Logic
         {
             return repository.InsertVerhuur(verhuur);
         }
+
+        public List<Verhuur> GetVerhuurByAccount(Account account)
+        {
+            return repository.GetVerhuurByAccount(account);
+        }
     }
 }

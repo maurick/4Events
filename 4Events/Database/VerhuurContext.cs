@@ -13,10 +13,6 @@ namespace _4Events.Database
     /// </summary>
     class VerhuurContext : IVerhuurRepository
     {
-        public List<Verhuur> GetAllVerhuur()
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Exemplaar> GetExemplaren(int amount)
         {
@@ -94,6 +90,24 @@ namespace _4Events.Database
             return result;
         }
 
+        private Verhuur CreateVerhuurFromReader(SqlDataReader reader)
+        {
+            Verhuur verhuur;
+            return verhuur = new Verhuur
+            {
+                Account = new Account()
+                {
+                    ID = Convert.ToInt32(reader["AccountID"])
+                },
+                DatumBegin = Convert.ToDateTime(reader["DatumBegin"]),
+                DatumEind = Convert.ToDateTime(reader["DatumEind"]),
+                Exemplaar = new Exemplaar
+                {
+                    ExemplaarID = Convert.ToInt32(reader["ExemplaarID"])
+                }
+            };
+        }
+
         private Product CreateProductFromReader(SqlDataReader reader)
         {
             Product product;
@@ -114,6 +128,39 @@ namespace _4Events.Database
                 Aantal = Convert.ToInt32(reader["Exemplaar_Nummer"]),
                 Product = GetProductByID(Convert.ToInt32(reader["ProductID"]))
             };
+        }
+
+        public List<Verhuur> GetVerhuurByAccount(Account account)
+        {
+            List<Verhuur> result = new List<Verhuur>();
+
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT * FROM VERHUUR WHERE AccountID = @accountid";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@accountid", account.ID);
+
+                    try
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                result.Add(CreateVerhuurFromReader(reader));
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        
+                        throw;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

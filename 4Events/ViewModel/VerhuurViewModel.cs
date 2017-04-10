@@ -10,6 +10,7 @@ namespace _4Events.ViewModel
     class VerhuurViewModel
     {
         public Account Account { get; set; }
+        public List<Verhuur> AccountVerhuur { get; set; }
         public List<Exemplaar> ExemplaarList { get; set; }
     }
 }

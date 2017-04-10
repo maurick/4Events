@@ -9,7 +9,7 @@ namespace _4Events.Database
 {
     interface IVerhuurRepository
     {
-        List<Verhuur> GetAllVerhuur();
+        List<Verhuur> GetVerhuurByAccount(Account account);
         List<Exemplaar> GetExemplaren(int amount);
         bool InsertVerhuur(Verhuur verhuur);
     }
