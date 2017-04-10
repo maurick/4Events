@@ -34,7 +34,7 @@
             this.lbl_filter = new System.Windows.Forms.Label();
             this.cb_Filter = new System.Windows.Forms.ComboBox();
             this.lblAantalpersonen = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudAantalpersonen = new System.Windows.Forms.NumericUpDown();
             this.dtpBegindatum = new System.Windows.Forms.DateTimePicker();
             this.lblBegindatum = new System.Windows.Forms.Label();
             this.lblEinddatum = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.lblPrijs = new System.Windows.Forms.Label();
             this.tbPrijs = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Plattegrond)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAantalpersonen)).BeginInit();
             this.SuspendLayout();
             // 
             // pb_Plattegrond
@@ -98,12 +98,12 @@
             this.lblAantalpersonen.TabIndex = 5;
             this.lblAantalpersonen.Text = "Aantal personen";
             // 
-            // numericUpDown1
+            // nudAantalpersonen
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(937, 103);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(138, 22);
-            this.numericUpDown1.TabIndex = 6;
+            this.nudAantalpersonen.Location = new System.Drawing.Point(937, 103);
+            this.nudAantalpersonen.Name = "nudAantalpersonen";
+            this.nudAantalpersonen.Size = new System.Drawing.Size(138, 22);
+            this.nudAantalpersonen.TabIndex = 6;
             // 
             // dtpBegindatum
             // 
@@ -145,6 +145,7 @@
             this.btnReserveer.TabIndex = 11;
             this.btnReserveer.Text = "Reserveer";
             this.btnReserveer.UseVisualStyleBackColor = true;
+            this.btnReserveer.Click += new System.EventHandler(this.btnReserveer_Click);
             // 
             // lblPrijs
             // 
@@ -175,7 +176,7 @@
             this.Controls.Add(this.lblEinddatum);
             this.Controls.Add(this.lblBegindatum);
             this.Controls.Add(this.dtpBegindatum);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.nudAantalpersonen);
             this.Controls.Add(this.lblAantalpersonen);
             this.Controls.Add(this.cb_Filter);
             this.Controls.Add(this.lbl_filter);
@@ -185,7 +186,7 @@
             this.Name = "ReserveringsForm";
             this.Text = "ReserveringsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pb_Plattegrond)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAantalpersonen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,7 +200,7 @@
         private System.Windows.Forms.Label lbl_filter;
         private System.Windows.Forms.ComboBox cb_Filter;
         private System.Windows.Forms.Label lblAantalpersonen;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudAantalpersonen;
         private System.Windows.Forms.DateTimePicker dtpBegindatum;
         private System.Windows.Forms.Label lblBegindatum;
         private System.Windows.Forms.Label lblEinddatum;

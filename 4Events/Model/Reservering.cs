@@ -10,6 +10,11 @@ namespace _4Events.Model
     {
         public int ID { get; set; }
         public int EventID { get; set; }
+        public int Aantalpersonen { get; set; }
+        public DateTime BeginDatum { get; set; }
+        public DateTime EindDatum { get; set; }
+        public int Kampeerplaats { get; set; }
+
         public DateTime Datum { get; set; }
         public bool Ingechecked { get; set; }
         public bool Betaald { get; set; }

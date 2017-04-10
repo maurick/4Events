@@ -11,6 +11,7 @@ namespace _4Events.Logic
     public class ReserveringLogic
     {
         private IReserveringRepository repository = new ReserveringContext();
+        Reservering reserveringsmodel = new Reservering();
 
         public ReserveringLogic(IReserveringRepository repository)
         {
@@ -30,6 +31,10 @@ namespace _4Events.Logic
         public List<Locatie> GetAllLocaties()
         {
             return repository.GetAllLocaties();
+        }
+        public void Reserveer(int kampeerplaats, int aantalpersonen, DateTime begindatum, DateTime einddatum)
+        {
+            reserveringsmodel.Kampeerplaats = kampeerplaats;
         }
     }
 }
