@@ -21,5 +21,6 @@ namespace _4Events.ViewModel
         public List<Reservering> ReserveringList { get; set; }
         public Reservering SelectedReservering { get; set; }
         public List<Account> Aanwezigen { get; set; }
+        public List<Plek> PlekList { get; set; }
     }
 }

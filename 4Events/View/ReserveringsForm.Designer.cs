@@ -45,6 +45,7 @@
             // 
             // pb_Plattegrond
             // 
+            this.pb_Plattegrond.Image = global::_4Events.Properties.Resources.Camping_ReeënDal;
             this.pb_Plattegrond.InitialImage = global::_4Events.Properties.Resources.Camping_ReeënDal;
             this.pb_Plattegrond.Location = new System.Drawing.Point(12, 12);
             this.pb_Plattegrond.Name = "pb_Plattegrond";
@@ -81,10 +82,15 @@
             // cb_Filter
             // 
             this.cb_Filter.FormattingEnabled = true;
+            this.cb_Filter.Items.AddRange(new object[] {
+            "Normaal",
+            "Luxe",
+            "Green"});
             this.cb_Filter.Location = new System.Drawing.Point(1079, 106);
             this.cb_Filter.Name = "cb_Filter";
             this.cb_Filter.Size = new System.Drawing.Size(119, 24);
             this.cb_Filter.TabIndex = 4;
+            this.cb_Filter.SelectedIndexChanged += new System.EventHandler(this.cb_Filter_SelectedIndexChanged_1);
             // 
             // btnReserveer
             // 

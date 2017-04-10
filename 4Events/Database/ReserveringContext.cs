@@ -29,6 +29,26 @@ namespace _4Events.Database
             }
             return result;
         }
+        public List<Plek> GetAllKampeerPlekByLocatie(Locatie locatie)
+        {
+            List<Plek> result = new List<Plek>();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT * FROM Plek WHERE LocatieID = @locatieid ORDER BY Id";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@locatieid", locatie.ID);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(CreatePlekFromReader(reader));
+                        }
+                    }
+                }
+            }
+            return result;
+        }
 
         public List<Reservering> GetAllReserveringen()
         {
@@ -122,6 +142,36 @@ namespace _4Events.Database
             };
 
             return locatie;
+        }
+        private Plek CreatePlekFromReader(SqlDataReader reader)
+        {
+            int id = Convert.ToInt32(reader["ID"]);
+            Plek plek = new Plek()
+            {
+                ID = id,
+                LocatieID = Convert.ToInt32(reader["LocatieID"]),
+                specificatie = GetSpecificatie(id)
+            };
+            return plek;
+        }
+        private Specificatie GetSpecificatie(int id)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT Naam FROM Specificatie INNER JOIN Specificatie_Plek ON (SpecificatieID = ID) WHERE PlekID = @plekid";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@plekid", id);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                           return (Specificatie)Enum.Parse(typeof(Specificatie), Convert.ToString(reader["Naam"]));
+                        }
+                    }
+                }
+            }
+            return Specificatie.Green;
         }
 
         private Reservering CreateReserveringFromReader(SqlDataReader reader)

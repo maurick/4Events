@@ -29,7 +29,7 @@ namespace _4Events.View
         {
             viewModel.EventList = beheer.GetAllEvents();
             foreach (Event e in viewModel.EventList)
-                cbEvent.Items.Add(e.Naam);
+                cbEvent.Items.Add(e);
         }
 
         private void btnReserveer_Click(object sender, EventArgs e)
@@ -50,6 +50,15 @@ namespace _4Events.View
         private void cbEvent_SelectedIndexChanged(object sender, EventArgs e)
         {
             viewModel.SelectedEvent = viewModel.EventList.Find(x => x.Naam == cbEvent.SelectedItem.ToString());
+            ComboBox events = (ComboBox)sender;
+            Event evenement = (Event)events.SelectedItem;
+            Locatie locatie = new Locatie { ID = evenement.LocatieID };
+            viewModel.PlekList = reservering.GetAllKampeerPlekByLocatie(locatie);
+            foreach (var item in viewModel.PlekList)
+            {
+                cbKampeerplaatsen.Items.Add(item);
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +68,41 @@ namespace _4Events.View
             if (aaf.DialogResult == DialogResult.OK)
             {
                 lbAccounts.Items.AddRange(aaf.Accounts);
+            }
+        }
+
+        private void cb_Filter_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            cbKampeerplaatsen.Items.Clear();
+            switch (cb_Filter.SelectedIndex)
+            {
+                case 0:
+                    foreach (var item in viewModel.PlekList)
+                    {
+                        if (Specificatie.Normaal == item.specificatie)
+                        {
+                            cbKampeerplaatsen.Items.Add(item);
+                        }
+                    }
+                    break;
+                case 1:
+                    foreach (var item in viewModel.PlekList)
+                    {
+                        if (Specificatie.Green == item.specificatie)
+                        {
+                            cbKampeerplaatsen.Items.Add(item);
+                        }
+                    }
+                    break;
+                case 2:
+                    foreach (var item in viewModel.PlekList)
+                    {
+                        if (Specificatie.Luxe == item.specificatie)
+                        {
+                            cbKampeerplaatsen.Items.Add(item);
+                        }
+                    }
+                    break;
             }
         }
     }

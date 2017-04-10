@@ -51,5 +51,9 @@ namespace _4Events.Logic
 
             return r;
         }
+        public List<Plek> GetAllKampeerPlekByLocatie(Locatie locatie)
+        {
+            return repository.GetAllKampeerPlekByLocatie(locatie);
+        }
     }
 }
