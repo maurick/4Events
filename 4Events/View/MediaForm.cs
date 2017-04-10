@@ -129,6 +129,8 @@ namespace _4Events.View
                         catch (Exception)
                         {
                             MessageBox.Show("Niet een image bestand.");
+                            pbBestand.Image = image;
+                            return;
                         }
                         
                         break;
