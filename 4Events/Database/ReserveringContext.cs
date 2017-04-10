@@ -49,6 +49,26 @@ namespace _4Events.Database
             }
             return result;
         }
+        public List<Plek> GetAllFreeKampeerPlek()
+        {
+            List<Plek> result = new List<Plek>();
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT ID FROM PLEK WHERE ID NOT IN (SELECT PlekID FROM PLEK_RESERVERING)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                  
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result.Add(CreatePlekFromReader(reader));
+                        }
+                    }
+                }
+            }
+            return result;
+        }
 
         public List<Reservering> GetAllReserveringen()
         {
@@ -220,7 +240,33 @@ namespace _4Events.Database
             }
             return 0;
         }
-        
+        public bool InsertReserveringPlek(Reservering reservering, Plek plek)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO PLEK_RESERVERING (PlekID, ReserveringID) VALUES (@PlekID, @ReserveringID)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ReserveringID", reservering.ID);
+                    command.Parameters.AddWithValue("@PlekID", plek.ID);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        if (e.ErrorCode != 0)
+                        {
+                            //  return false;
+                        }
+                        throw;
+                    }
+                }
+            }
+            return true;
+        }
+
         public bool InsertReserveringAccount(Reservering reservering, Account account)
         {
             using (SqlConnection connection = Database.Connection)

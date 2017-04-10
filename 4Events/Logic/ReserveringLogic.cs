@@ -41,7 +41,10 @@ namespace _4Events.Logic
         {
             return repository.InsertReservering(reservering);
         }
-
+        public bool InsertReserveringPlek(Reservering reservering, Plek plek)
+        {
+            return repository.InsertReserveringPlek(reservering, plek);
+        }
         public Reservering NewReservering(Event e, bool betaald)
         {
             Reservering r = new Reservering();
@@ -54,6 +57,10 @@ namespace _4Events.Logic
         public List<Plek> GetAllKampeerPlekByLocatie(Locatie locatie)
         {
             return repository.GetAllKampeerPlekByLocatie(locatie);
+        }
+        public List<Plek> GetAllFreeKampeerPlek()
+        {
+            return repository.GetAllFreeKampeerPlek();
         }
         public bool InsertReserveringAccount(Reservering reservering, Account account)
         {

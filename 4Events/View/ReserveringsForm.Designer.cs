@@ -86,7 +86,8 @@
             this.cb_Filter.Items.AddRange(new object[] {
             "Normaal",
             "Luxe",
-            "Green"});
+            "Green",
+            "Vrij"});
             this.cb_Filter.Location = new System.Drawing.Point(1079, 106);
             this.cb_Filter.Name = "cb_Filter";
             this.cb_Filter.Size = new System.Drawing.Size(119, 24);

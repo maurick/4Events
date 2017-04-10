@@ -50,7 +50,7 @@ namespace _4Events.View
             {
                 reservering.InsertReserveringAccount(new Reservering { ID = lastinserted }, (Account)item);
             }
-            
+            reservering.InsertReserveringPlek(new Reservering { ID = lastinserted }, (Plek)cbKampeerplaatsen.SelectedItem);
         }
 
         private void cbEvent_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,7 +80,9 @@ namespace _4Events.View
 
         private void cb_Filter_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            List<Plek> VrijePlekken;
             cbKampeerplaatsen.Items.Clear();
+            cbKampeerplaatsen.Text = "";
             switch (cb_Filter.SelectedIndex)
             {
                 case 0:
@@ -108,6 +110,13 @@ namespace _4Events.View
                         {
                             cbKampeerplaatsen.Items.Add(item);
                         }
+                    }
+                    break;
+                case 3:
+                    VrijePlekken = reservering.GetAllFreeKampeerPlek();
+                    foreach (var item in VrijePlekken)
+                    {
+                        cbKampeerplaatsen.Items.Add(item);
                     }
                     break;
             }
