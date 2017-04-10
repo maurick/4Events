@@ -28,7 +28,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -76,16 +77,29 @@
     <Compile Include="Logic\ReserveringLogic.cs" />
     <Compile Include="Logic\VerhuurLogic.cs" />
     <Compile Include="Model\Bericht.cs" />
+    <Compile Include="Model\Bestand.cs" />
+    <Compile Include="Model\Categorie.cs" />
     <Compile Include="Model\Event.cs" />
+    <Compile Include="Model\Exemplaar.cs" />
     <Compile Include="Model\Locatie.cs" />
     <Compile Include="Model\Plek.cs" />
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Reservering.cs" />
     <Compile Include="Model\Verhuur.cs" />
+    <Compile Include="mpv.cs" />
+    <Compile Include="RFID\RFID.cs" />
     <Compile Include="ViewModel\BeheerViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MediaViewModel.cs" />
     <Compile Include="ViewModel\RegistreerViewModel.cs" />
+    <Compile Include="ViewModel\VerhuurViewModel.cs" />
+    <Compile Include="View\AddAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddAccountForm.Designer.cs">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BeheerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +146,18 @@
     <Compile Include="View\ToegangscontroleFrom.Designer.cs">
       <DependentUpon>ToegangscontroleFrom.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ToegangscontroleStatusFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ToegangscontroleStatusFrom.Designer.cs">
+      <DependentUpon>ToegangscontroleStatusFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\VerhuurForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VerhuurForm.Designer.cs">
+      <DependentUpon>VerhuurForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -142,6 +168,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\AddAccountForm.resx">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\BeheerForm.resx">
       <DependentUpon>BeheerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ToegangscontroleFrom.resx">
       <DependentUpon>ToegangscontroleFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ToegangscontroleStatusFrom.resx">
+      <DependentUpon>ToegangscontroleStatusFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VerhuurForm.resx">
+      <DependentUpon>VerhuurForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -196,6 +231,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\badwords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Phidget21COM">
+      <Guid>{50484945-4745-5453-0000-000000000000}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

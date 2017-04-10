@@ -85,6 +85,16 @@ namespace _4Events.Logic
             return repository.InsertEvent(Event);
         }
 
+        public bool InsertRFID(int AccountID, string rfid)
+        {
+            return repository.InsertRFIDAccount(AccountID, rfid);
+        }
+
+        public Account GetAccountByRFID(string nummer)
+        {
+            return repository.GetAccountByRFID(nummer);
+        }
+
         /// <summary>
         /// Checkt welk account is ingelogd.
         /// </summary>

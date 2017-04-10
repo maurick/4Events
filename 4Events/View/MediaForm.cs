@@ -15,6 +15,7 @@ namespace _4Events.View
         Media media = new Media(new MediaContext());
         Beheer beheer = new Beheer(new BeheerContext());
         MediaViewModel viewModel = new MediaViewModel();
+        Mpv mpv = new Mpv();
 
         public MediaForm()
         {
@@ -22,7 +23,7 @@ namespace _4Events.View
             cbZoek.SelectedIndex = 0;
 
 
-            viewModel.Account = beheer.GetAccountById((beheer.GetAccountCache()));
+            viewModel.Account = beheer.GetAccountById(beheer.GetAccountCache());
             RefreshForm();
         }
 
@@ -44,9 +45,6 @@ namespace _4Events.View
                     PopulateTreeNode(item.ID, tn);
                 }
             }
-
-            rtbTekst.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tekst);
-            tbTags.Text = ((viewModel.SelectedBericht == null) ? "" : viewModel.SelectedBericht.Tags);
         }
 
         private void PopulateTreeNode(int parentID, TreeNode parentNode)
@@ -67,6 +65,7 @@ namespace _4Events.View
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            mpv.FormClose();
             this.Hide();
             MainForm form = new MainForm();
             form.ShowDialog();
@@ -78,7 +77,10 @@ namespace _4Events.View
             viewModel.Bericht = new Bericht
             {
                 Tekst = rtbTekst.Text,
-                Tags = tbTags.Text,
+                Categorie = new Categorie
+                {
+                    Naam = tbCategorie.Text
+                },
                 Bestand = viewModel.Bericht.Bestand,
                 AccountID = viewModel.Account.ID
             };
@@ -86,6 +88,7 @@ namespace _4Events.View
             if(viewModel.SelectedBericht != null)
             {
                 viewModel.Bericht.ReplyTo = viewModel.SelectedBericht.ID;
+                viewModel.Bericht.Categorie = viewModel.SelectedBericht.Categorie;
             }
 
             if (media.InsertBericht(viewModel.Bericht) != true)
@@ -102,6 +105,7 @@ namespace _4Events.View
         {
             Image image = Resources.geenImageMelding;
             OpenFileDialog openBestand = new OpenFileDialog();
+            openBestand.Filter = "Image (*.*)|*.*|Video (*.*)|*.*";
             string filename;
 
             if(viewModel.Bericht == null)
@@ -117,14 +121,27 @@ namespace _4Events.View
                 switch (openBestand.FilterIndex)
                 {
                     case 1:
-                        image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+                        try
+                        {
+                            mpv.FormClose();
+                            image = (Bitmap)((new ImageConverter()).ConvertFrom(File.ReadAllBytes(filename)));
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Niet een image bestand.");
+                        }
+                        
                         break;
+                    case 2:
+                        mpv.PlayVid(filename, pbBestand.Handle.ToInt64());
+                        return;
                     default:
                         break;
                 }
 
                 pbBestand.Image = image;
-                viewModel.Bericht.Bestand = File.ReadAllBytes(filename);
+                viewModel.Bericht.Bestand = new Bestand();
+                viewModel.Bericht.Bestand.BestandArray = File.ReadAllBytes(filename);
             }
         }
 
@@ -183,7 +200,7 @@ namespace _4Events.View
                     }
                     break;
                 case (1):
-                    foreach (var item in media.SearchBerichtenTags(tbZoek.Text, 1000))
+                    foreach (var item in media.SearchBerichtenCategorie(tbZoek.Text, 1000))
                     {
                         TreeNode tn = new TreeNode(item.ToString());
                         tn.Tag = item;
@@ -204,12 +221,14 @@ namespace _4Events.View
             if (viewModel.SelectedBericht != null
                 && viewModel.SelectedBericht.Bestand != null)
             {
-                pbBestand.Image = media.ConvertByteArrayToImage(viewModel.SelectedBericht.Bestand);
+                pbBestand.Image = media.ConvertByteArrayToImage(media.GetBestandByBestandID(viewModel.SelectedBericht.Bestand.ID).BestandArray);
             }
             else
             {
                 pbBestand.Image = Resources.geenImageMelding;
             }
+
+            tbCategorie.Text = viewModel.SelectedBericht.Categorie.Naam;
         }
 
         private void btnLike_Click(object sender, EventArgs e)
@@ -239,6 +258,18 @@ namespace _4Events.View
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             RefreshForm();
+        }
+
+        private void tvBericht_MouseDown(object sender, MouseEventArgs e)
+        {
+            tvBericht.SelectedNode = null;
+            viewModel.SelectedBericht = null;
+            lblSelectBericht.Text = "N/A";
+        }
+
+        private void MediaForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            mpv.FormClose();
         }
     }
 }

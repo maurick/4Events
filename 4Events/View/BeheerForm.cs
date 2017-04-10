@@ -11,6 +11,7 @@ using _4Events.ViewModel;
 using _4Events.Logic;
 using _4Events.Database;
 using _4Events.Model;
+using _4Events.RFID;
 using System.Timers;
 
 namespace _4Events.View
@@ -21,14 +22,25 @@ namespace _4Events.View
         Beheer beheer = new Beheer(new BeheerContext());
         ReserveringLogic reserveer = new ReserveringLogic(new ReserveringContext());
         System.Timers.Timer timer;
+        System.Timers.Timer timerRFID;
+        RFID.RFID rf;
+
 
         public BeheerForm()
         {
             InitializeComponent();
             InitializeTimer();
+            InitializeRFIDTimer();
 
             viewModel.Account = beheer.GetAccountById(beheer.GetAccountCache());
-            
+
+            rf = new RFID.RFID();
+            rf.Open();
+            if (rf.IsAttached == false)
+            {
+                MessageBox.Show("Geen RFID reader gevonden.", "Melding");
+            }
+
             RefreshForm();
         }
 
@@ -82,7 +94,7 @@ namespace _4Events.View
 
         private void SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lvAccounts.SelectedItems != null)
+            if(lvAccounts.SelectedItems.Count != 0)
             {
                 viewModel.SelectedAccount = viewModel.AccountList.Find(x => x.ID == Convert.ToInt32(lvAccounts.SelectedItems[0].Text));
             }
@@ -168,21 +180,6 @@ namespace _4Events.View
             RefreshForm();
         }
 
-        private void InvokeOverzicht()
-        {
-            if (InvokeRequired)
-                try
-                {
-                    MethodInvoker method = new MethodInvoker(RefreshOverzicht);
-                    Invoke(method);
-                    return;
-                }
-                catch (Exception)
-                {
-                    
-                }
-        }
-
         private void RefreshOverzicht()
         {
             int RSelected = -1,
@@ -239,6 +236,56 @@ namespace _4Events.View
             timer.Interval = 5000;
         }
 
+        private void InitializeRFIDTimer()
+        {
+            timerRFID = new System.Timers.Timer();
+            timerRFID.Elapsed += new ElapsedEventHandler(RFIDTimerTick);
+            timerRFID.Interval = 1000;
+            timerRFID.Start();
+        }
+
+        private void RFIDTimerTick(object sender, ElapsedEventArgs e)
+        {
+            if(rf.CurrentRFIDTag != null)
+            {
+                InvokeRFID();
+            }
+        }
+
+        private void InvokeRFID()
+        {
+            if (InvokeRequired)
+            {
+                try
+                {
+                    MethodInvoker method = new MethodInvoker(InvokeRFID);
+                    Invoke(method);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            tbRFID.Text = rf.CurrentRFIDTag;
+        }
+
+        private void InvokeOverzicht()
+        {
+            if (InvokeRequired)
+                try
+                {
+                    MethodInvoker method = new MethodInvoker(RefreshOverzicht);
+                    Invoke(method);
+                    return;
+                }
+                catch (Exception)
+                {
+
+                }
+        }
+
         private void TimerTick(object sender, ElapsedEventArgs e)
         {
             InvokeOverzicht();
@@ -246,6 +293,17 @@ namespace _4Events.View
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Enables RFID on the account page
+            if(tabControl.SelectedTab == tabPage1)
+            {
+                if (!timerRFID.Enabled)
+                {
+                    timerRFID.Start();
+                }
+            }
+            else if (timerRFID.Enabled)
+                timerRFID.Stop();
+
             if (tabControl.SelectedTab == tabPage3)
             {
                 if (!timer.Enabled)
@@ -253,6 +311,24 @@ namespace _4Events.View
             }
             else if (timer.Enabled)
                 timer.Stop();
+        }
+
+        private void BeheerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            rf.Close();
+            Dispose();
+        }
+
+        private void btnRFID_Click(object sender, EventArgs e)
+        {
+            if(beheer.InsertRFID(viewModel.SelectedAccount.ID, "rfidnummer"/* tbRFID.Text */))
+            {
+                MessageBox.Show("RFID aan account gekoppeld.", "Melding");
+            }
+            else
+            {
+                MessageBox.Show("Kan RFID niet aan account koppelen.\nCheck of de RFID tag in de database zit od het account is al aan deze tag gekoppelt.", "Error");
+            }
         }
     }
 }

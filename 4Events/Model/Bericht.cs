@@ -10,12 +10,13 @@ namespace _4Events.Model
     {
 
         public int ID { get; set; }
-        public byte[] Bestand { get; set; }
+        public Bestand Bestand { get; set; }
         public int? ReplyTo { get; set; } // Kan hier een bericht type van maken.
-        public string Tags { get; set; }
         public string Tekst { get; set; }
         public int AccountID { get; set; } // Kan hier een account type van maken.
         public int AmountLikes { get; set; } = 0;
+        public Categorie Categorie { get; set; }
+        public bool IsHidden { get; set; }
 
         public override string ToString()
         {

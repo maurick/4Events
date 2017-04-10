@@ -33,6 +33,9 @@
             this.btnDownload = new System.Windows.Forms.Button();
             this.pbBestand = new System.Windows.Forms.PictureBox();
             this.gbBerichten = new System.Windows.Forms.GroupBox();
+            this.tbCategorie = new System.Windows.Forms.TextBox();
+            this.cbZoek = new System.Windows.Forms.ComboBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRaporteer = new System.Windows.Forms.Button();
             this.lblSelectBericht = new System.Windows.Forms.Label();
             this.btnLike = new System.Windows.Forms.Button();
@@ -44,10 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tvBericht = new System.Windows.Forms.TreeView();
             this.rtbTekst = new System.Windows.Forms.RichTextBox();
-            this.tbTags = new System.Windows.Forms.TextBox();
             this.btnPost = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.cbZoek = new System.Windows.Forms.ComboBox();
             this.gbBestand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).BeginInit();
             this.gbBerichten.SuspendLayout();
@@ -55,6 +55,8 @@
             // 
             // btnBack
             // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.Location = new System.Drawing.Point(622, 364);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(256, 23);
@@ -65,6 +67,9 @@
             // 
             // gbBestand
             // 
+            this.gbBestand.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbBestand.Controls.Add(this.btnDownload);
             this.gbBestand.Controls.Add(this.pbBestand);
             this.gbBestand.Location = new System.Drawing.Point(616, 13);
@@ -76,6 +81,8 @@
             // 
             // btnDownload
             // 
+            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDownload.Location = new System.Drawing.Point(6, 311);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(256, 23);
@@ -86,6 +93,9 @@
             // 
             // pbBestand
             // 
+            this.pbBestand.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbBestand.Location = new System.Drawing.Point(6, 19);
             this.pbBestand.Name = "pbBestand";
             this.pbBestand.Size = new System.Drawing.Size(256, 286);
@@ -95,6 +105,7 @@
             // 
             // gbBerichten
             // 
+            this.gbBerichten.Controls.Add(this.tbCategorie);
             this.gbBerichten.Controls.Add(this.cbZoek);
             this.gbBerichten.Controls.Add(this.btnRefresh);
             this.gbBerichten.Controls.Add(this.btnRaporteer);
@@ -108,7 +119,6 @@
             this.gbBerichten.Controls.Add(this.label1);
             this.gbBerichten.Controls.Add(this.tvBericht);
             this.gbBerichten.Controls.Add(this.rtbTekst);
-            this.gbBerichten.Controls.Add(this.tbTags);
             this.gbBerichten.Controls.Add(this.btnPost);
             this.gbBerichten.Location = new System.Drawing.Point(13, 13);
             this.gbBerichten.Name = "gbBerichten";
@@ -116,6 +126,34 @@
             this.gbBerichten.TabIndex = 7;
             this.gbBerichten.TabStop = false;
             this.gbBerichten.Text = "Berichten";
+            // 
+            // tbCategorie
+            // 
+            this.tbCategorie.Location = new System.Drawing.Point(468, 42);
+            this.tbCategorie.Name = "tbCategorie";
+            this.tbCategorie.Size = new System.Drawing.Size(122, 20);
+            this.tbCategorie.TabIndex = 21;
+            // 
+            // cbZoek
+            // 
+            this.cbZoek.FormattingEnabled = true;
+            this.cbZoek.Items.AddRange(new object[] {
+            "Woorden",
+            "Categorie"});
+            this.cbZoek.Location = new System.Drawing.Point(408, 13);
+            this.cbZoek.Name = "cbZoek";
+            this.cbZoek.Size = new System.Drawing.Size(121, 21);
+            this.cbZoek.TabIndex = 20;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(535, 11);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(55, 23);
+            this.btnRefresh.TabIndex = 19;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnRaporteer
             // 
@@ -194,11 +232,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(453, 45);
+            this.label1.Location = new System.Drawing.Point(410, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Tags";
+            this.label1.Text = "Categorie";
             // 
             // tvBericht
             // 
@@ -207,6 +245,7 @@
             this.tvBericht.Size = new System.Drawing.Size(324, 321);
             this.tvBericht.TabIndex = 14;
             this.tvBericht.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBericht_AfterSelect);
+            this.tvBericht.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tvBericht_MouseDown);
             // 
             // rtbTekst
             // 
@@ -215,13 +254,6 @@
             this.rtbTekst.Size = new System.Drawing.Size(253, 166);
             this.rtbTekst.TabIndex = 8;
             this.rtbTekst.Text = "";
-            // 
-            // tbTags
-            // 
-            this.tbTags.Location = new System.Drawing.Point(490, 42);
-            this.tbTags.Name = "tbTags";
-            this.tbTags.Size = new System.Drawing.Size(100, 20);
-            this.tbTags.TabIndex = 7;
             // 
             // btnPost
             // 
@@ -233,27 +265,6 @@
             this.btnPost.UseVisualStyleBackColor = true;
             this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(535, 11);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(55, 23);
-            this.btnRefresh.TabIndex = 19;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // cbZoek
-            // 
-            this.cbZoek.FormattingEnabled = true;
-            this.cbZoek.Items.AddRange(new object[] {
-            "Woorden",
-            "Tags"});
-            this.cbZoek.Location = new System.Drawing.Point(408, 13);
-            this.cbZoek.Name = "cbZoek";
-            this.cbZoek.Size = new System.Drawing.Size(121, 21);
-            this.cbZoek.TabIndex = 20;
-            // 
             // MediaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,6 +275,7 @@
             this.Controls.Add(this.btnBack);
             this.Name = "MediaForm";
             this.Text = "MediaForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MediaForm_FormClosed);
             this.gbBestand.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbBestand)).EndInit();
             this.gbBerichten.ResumeLayout(false);
@@ -279,7 +291,6 @@
         private System.Windows.Forms.PictureBox pbBestand;
         private System.Windows.Forms.GroupBox gbBerichten;
         private System.Windows.Forms.RichTextBox rtbTekst;
-        private System.Windows.Forms.TextBox tbTags;
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.Button btnBestand;
         private System.Windows.Forms.Button btnDownload;
@@ -294,5 +305,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ComboBox cbZoek;
+        private System.Windows.Forms.TextBox tbCategorie;
     }
 }

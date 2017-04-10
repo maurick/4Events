@@ -56,9 +56,9 @@ namespace _4Events.View
             };
 
             if (Properties.Settings.Default.Debug)
-                newAccount.Functie = Enums.Functie.Beheerder;
+                newAccount.Functie = Functie.Beheerder;
             else
-                newAccount.Functie = Enums.Functie.Bezoeker;
+                newAccount.Functie = Functie.Bezoeker;
 
 
             if (beheer.InsertAccount(newAccount) != null)

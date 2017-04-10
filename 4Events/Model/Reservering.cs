@@ -20,6 +20,12 @@ namespace _4Events.Model
         public bool Betaald { get; set; }
         public string MainAccountNaam { get; set; }
 
+        public void Update(bool betaald, bool ingechecked)
+        {
+            Betaald = betaald;
+            Ingechecked = ingechecked;
+        }
+
         public override string ToString()
         {
             return ID + " " + Datum.ToShortDateString() + " " + MainAccountNaam + " " + Betaald;

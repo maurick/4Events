@@ -72,13 +72,13 @@ namespace _4Events.View
                 // Alle controls als default disabled.
                 // Hier worden ze op enabled gezet.
 
-                case (Enums.Functie.Beheerder):
+                case (Functie.Beheerder):
                     btnAccountBeheer.Enabled = true;
                     break;
-                case (Enums.Functie.Medewerker):
+                case (Functie.Medewerker):
                     btnAccountBeheer.Enabled = true;
                     break;
-                case (Enums.Functie.Bezoeker):
+                case (Functie.Bezoeker):
                     break;
                 default:
                     break;
@@ -89,6 +89,14 @@ namespace _4Events.View
         {
             this.Hide();
             ToegangscontroleFrom form = new ToegangscontroleFrom();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            VerhuurForm form = new VerhuurForm();
             form.ShowDialog();
             this.Close();
         }

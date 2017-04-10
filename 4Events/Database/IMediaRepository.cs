@@ -11,6 +11,7 @@ namespace _4Events.Database
     {
         List<Bericht> GetBerichten(int aantal);
         List<Bericht> GetReacties();
+        Bestand GetBestandById(int id);
         bool InsertLike(Bericht bericht, Account account);
         bool InsertReport(Bericht bericht, Account account);
         int GetLikesAmount(Bericht bericht);

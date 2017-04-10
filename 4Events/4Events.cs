@@ -12,6 +12,6 @@ namespace _4Events
         public Beheer BeheerRepository { get; set; }
         public Media MediaRepository { get; set; }
         public ReserveringLogic ReserveringRepository { get; set; }
-        public VerhuurLogic VerhuurRepository { get; set; }
+        //public VerhuurLogic VerhuurRepository { get; set; }
     }
 }

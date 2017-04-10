@@ -7,8 +7,10 @@ using _4Events.Model;
 
 namespace _4Events.Database
 {
-    public interface IVerhuurRepository
+    interface IVerhuurRepository
     {
-        List<Verhuur> GetAllVerhuur();
+        List<Verhuur> GetVerhuurByAccount(Account account);
+        List<Exemplaar> GetExemplaren(int amount);
+        bool InsertVerhuur(Verhuur verhuur);
     }
 }

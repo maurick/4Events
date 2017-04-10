@@ -11,7 +11,6 @@ namespace _4Events.Logic
     public class ReserveringLogic
     {
         private IReserveringRepository repository = new ReserveringContext();
-        Reservering reserveringsmodel = new Reservering();
 
         public ReserveringLogic(IReserveringRepository repository)
         {
@@ -28,13 +27,29 @@ namespace _4Events.Logic
             return repository.GetReserveringenByEvent(EventID);
         }
 
+        public bool UpdateReservering(Reservering reservering)
+        {
+            return repository.UpdateReservering(reservering);
+        }
+
         public List<Locatie> GetAllLocaties()
         {
             return repository.GetAllLocaties();
         }
-        public void Reserveer(int kampeerplaats, int aantalpersonen, DateTime begindatum, DateTime einddatum)
+
+        public bool InsertReservering(Reservering reservering)
         {
-            reserveringsmodel.Kampeerplaats = kampeerplaats;
+            return repository.InsertReservering(reservering);
+        }
+
+        public Reservering NewReservering(Event e, bool betaald)
+        {
+            Reservering r = new Reservering();
+            r.Datum = DateTime.Now;
+            r.EventID = e.ID;
+            r.Betaald = betaald;
+
+            return r;
         }
     }
 }

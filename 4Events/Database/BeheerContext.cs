@@ -263,7 +263,7 @@ namespace _4Events.Database
             Account account = new Account
             {
                 ID = Convert.ToInt32(reader["ID"]),
-                Functie = (Enums.Functie)Enum.Parse(typeof(Enums.Functie), Convert.ToString(reader["Functie"])),
+                Functie = (Functie)Enum.Parse(typeof(Functie), Convert.ToString(reader["Functie"])),
                 Naam = Convert.ToString(reader["Naam"]),
                 Email = Convert.ToString(reader["Email"]),
                 Huisnummer = Convert.ToInt32(reader["Huisnr"]),
@@ -295,6 +295,72 @@ namespace _4Events.Database
                         {
                             result.Add(CreateAccountFromReader(reader));
                         }
+                    }
+                }
+            }
+            return result;
+        }
+
+        private int GetRFIDidBYRFID(string RFID)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT Id FROM RFID WHERE Nummer = @rfid";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@rfid", RFID);
+
+                    return (int)command.ExecuteScalar();
+                }
+            }
+        }
+
+        public bool InsertRFIDAccount(int AccountID, string RFID)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO RFID_ACCOUNT (AccountID, RFID, EventID) VALUES (@accountid, @rfid, @eventid)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@accountid", AccountID);
+                    command.Parameters.AddWithValue("rfid", GetRFIDidBYRFID(RFID));
+                    //TODO event
+                    command.Parameters.AddWithValue("eventid", 1);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException)
+                    {
+                        return false;
+                        throw;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public Account GetAccountByRFID(string RFID)
+        {
+            Account result = null;
+
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "SELECT * FROM ACCOUNT " +
+                    "JOIN RFID_ACCOUNT ON(RFID_ACCOUNT.AccountID = ACCOUNT.ID)" +
+                    "JOIN RFID ON(RFID_ACCOUNT.RFID = RFID.ID)" +
+                    "WHERE Nummer = @rfid";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@rfid", RFID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        result = CreateAccountFromReader(reader);
                     }
                 }
             }
