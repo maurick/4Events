@@ -50,6 +50,7 @@
             this.pb_Plattegrond.Location = new System.Drawing.Point(12, 12);
             this.pb_Plattegrond.Name = "pb_Plattegrond";
             this.pb_Plattegrond.Size = new System.Drawing.Size(918, 626);
+            this.pb_Plattegrond.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_Plattegrond.TabIndex = 0;
             this.pb_Plattegrond.TabStop = false;
             // 

@@ -37,7 +37,7 @@ namespace _4Events.Logic
             return repository.GetAllLocaties();
         }
 
-        public bool InsertReservering(Reservering reservering)
+        public int InsertReservering(Reservering reservering)
         {
             return repository.InsertReservering(reservering);
         }
@@ -54,6 +54,10 @@ namespace _4Events.Logic
         public List<Plek> GetAllKampeerPlekByLocatie(Locatie locatie)
         {
             return repository.GetAllKampeerPlekByLocatie(locatie);
+        }
+        public bool InsertReserveringAccount(Reservering reservering, Account account)
+        {
+            return repository.InsertReserveringAccount(reservering, account);
         }
     }
 }

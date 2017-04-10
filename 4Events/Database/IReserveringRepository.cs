@@ -14,6 +14,7 @@ namespace _4Events.Database
         bool UpdateReservering(Reservering reservering);
         List<Locatie> GetAllLocaties();
         List<Plek> GetAllKampeerPlekByLocatie(Locatie locatie);
-        bool InsertReservering(Reservering reservering);
+        int InsertReservering(Reservering reservering);
+        bool InsertReserveringAccount(Reservering reservering, Account account);
     }
 }

@@ -85,7 +85,7 @@ namespace _4Events.Database
                                 "INNER JOIN RESERVERING_ACCOUNT ra on r.ID = ra.ReserveringID " +
                                 "INNER JOIN ACCOUNT a on ra.AccountID = a.ID " +
                                 "WHERE MainAccount = 1 " +
-                                "AND EventID = " +  EventID +
+                                "AND EventID = " + EventID +
                                 "ORDER BY r.ID;";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -166,7 +166,7 @@ namespace _4Events.Database
                     {
                         while (reader.Read())
                         {
-                           return (Specificatie)Enum.Parse(typeof(Specificatie), Convert.ToString(reader["Naam"]));
+                            return (Specificatie)Enum.Parse(typeof(Specificatie), Convert.ToString(reader["Naam"]));
                         }
                     }
                 }
@@ -189,16 +189,47 @@ namespace _4Events.Database
             return reservering;
         }
 
-        public bool InsertReservering(Reservering reservering)
+        public int InsertReservering(Reservering reservering)
         {
             using (SqlConnection connection = Database.Connection)
             {
                 string query = "INSERT INTO RESERVERING (EventID, Datum, Betaald) VALUES (@EventID, @Datum, @Ingechecked)";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+    
                     command.Parameters.AddWithValue("@EventID", reservering.EventID);
                     command.Parameters.AddWithValue("@Datum", reservering.Datum);
                     command.Parameters.AddWithValue("@Ingechecked", reservering.Ingechecked);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        command.CommandText = "SELECT TOP 1 ID FROM RESERVERING ORDER BY ID DESC";
+                        return (int)command.ExecuteScalar();
+                    }
+                    catch (SqlException e)
+                    {
+                        if (e.ErrorCode != 0)
+                        {
+                            //return false;
+                            throw;
+                        }
+                        
+                    }
+                }
+            }
+            return 0;
+        }
+        
+        public bool InsertReserveringAccount(Reservering reservering, Account account)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "INSERT INTO RESERVERING_ACCOUNT (ReserveringID, AccountID) VALUES (@ReserveringID, @AccountID)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ReserveringID", reservering.ID);
+                    command.Parameters.AddWithValue("@AccountID", account.ID);
 
                     try
                     {
@@ -208,7 +239,7 @@ namespace _4Events.Database
                     {
                         if (e.ErrorCode != 0)
                         {
-                            return false;
+                          //  return false;
                         }
                         throw;
                     }

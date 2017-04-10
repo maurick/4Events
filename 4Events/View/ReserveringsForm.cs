@@ -43,13 +43,20 @@ namespace _4Events.View
 
         private void MaakReservering()
         {
-            reservering.InsertReservering(reservering.NewReservering(viewModel.SelectedEvent, false));
-            //Koppel aan accounts
+            int lastinserted = 0;
+            Reservering Reservering = reservering.NewReservering(viewModel.SelectedEvent, false);
+            lastinserted = reservering.InsertReservering(Reservering);
+            foreach (var item in lbAccounts.Items)
+            {
+                reservering.InsertReserveringAccount(new Reservering { ID = lastinserted }, (Account)item);
+            }
+            
         }
 
         private void cbEvent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            viewModel.SelectedEvent = viewModel.EventList.Find(x => x.Naam == cbEvent.SelectedItem.ToString());
+            //  viewModel.SelectedEvent = viewModel.EventList.Find(x => x.Naam == cbEvent.SelectedItem.ToString());
+            viewModel.SelectedEvent = (Event)cbEvent.SelectedItem;
             ComboBox events = (ComboBox)sender;
             Event evenement = (Event)events.SelectedItem;
             Locatie locatie = new Locatie { ID = evenement.LocatieID };
