@@ -27,6 +27,11 @@ namespace _4Events.Logic
             return repository.InsertVerhuur(verhuur);
         }
 
+        public bool DeleteVerhuurById(int id, int exemplaarid)
+        {
+            return repository.DeleteVerhuurById(id, exemplaarid);
+        }
+
         public List<Verhuur> GetVerhuurByAccount(Account account)
         {
             return repository.GetVerhuurByAccount(account);

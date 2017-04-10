@@ -12,5 +12,6 @@ namespace _4Events.Database
         List<Verhuur> GetVerhuurByAccount(Account account);
         List<Exemplaar> GetExemplaren(int amount);
         bool InsertVerhuur(Verhuur verhuur);
+        bool DeleteVerhuurById(int id, int exemplaarid);
     }
 }

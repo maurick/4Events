@@ -162,5 +162,30 @@ namespace _4Events.Database
 
             return result;
         }
+
+        public bool DeleteVerhuurById(int id, int exemplaarid)
+        {
+            using (SqlConnection connection = Database.Connection)
+            {
+                string query = "DELETE FROM VERHUUR WHERE AccountID = @id AND ExemplaarID = @exemplaarid";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@exemplaarid", exemplaarid);
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

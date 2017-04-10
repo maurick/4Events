@@ -89,8 +89,12 @@ namespace _4Events.View
 
             if (viewmodel.AccountVerhuur != null)
             {
-                //verhuurLogic.DeleteVerhuurById(((Verhuur)lbAccount.SelectedItem).ID);
-                //mbox
+                Verhuur selectedVerhuur = (Verhuur)lbAccount.SelectedItem;
+
+                if (!verhuurLogic.DeleteVerhuurById(selectedVerhuur.Account.ID, selectedVerhuur.Exemplaar.ExemplaarID))
+                {
+                    MessageBox.Show("Kan verhuur niet verwijderen.");
+                }
             }
         }
 
